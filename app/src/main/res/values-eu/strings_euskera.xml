@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AGO</string>
+
+    <!--Opciones del menú-->
+    <string name="Ranking">Sailkapena</string>
+    <string name="QuienSomos">Nor gara?</string>
+    <string name="CerrarSesion">Itxi sesioa</string>
+    <string name="Salir">Irten</string>
+
+</resources>
