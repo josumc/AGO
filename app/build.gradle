@@ -24,6 +24,10 @@ android {
         }
     }
     buildFeatures{
+<<<<<<< Updated upstream
+=======
+        //noinspection DataBindingWithoutKapt
+>>>>>>> Stashed changes
         viewBinding=true
     }
     compileOptions {
