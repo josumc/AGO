@@ -5,9 +5,6 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.g2.ago.databinding.QsactivityBinding
-//import kotlinx.android.synthetic.main.qsactivity.*
-
-//import com.g2.ago.databinding.QSActivityBinding
 
 class QSActivity : AppCompatActivity() {
     lateinit var binding:QsactivityBinding
