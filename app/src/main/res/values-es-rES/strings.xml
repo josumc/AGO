@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AGO</string>
+    <string name="app_name">Historia de Santurtzi</string>
     <string name="QS">Esta aplicación ha sido desarrollada por alumnos de la Universidad del País Vasco(Alain Alaña, Ana Garaitagoitia, Alazne Hernández, Oier Melsio y Garazi Siara) y de CIFP Txurdinaga (Mikel Ayala, Gonzalo Alonso y Josu Morán) con el fin de ayudar a los profesores de E.P y a sus alumnos a conocer Santurtzi mediante juegos didácticos de manera que aprendan divirtiéndose.</string>
     <string name="Ranking">Clasificación</string>
     <string name="QuienSomos">¿Quiénes somos?</string>
