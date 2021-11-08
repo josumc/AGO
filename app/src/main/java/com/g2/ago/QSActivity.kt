@@ -4,38 +4,38 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.g2.ago.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.qsactivity.*
+import com.g2.ago.databinding.QsactivityBinding
+//import kotlinx.android.synthetic.main.qsactivity.*
 
 //import com.g2.ago.databinding.QSActivityBinding
 
 class QSActivity : AppCompatActivity() {
-    lateinit var binding:ActivityMainBinding
+    lateinit var binding:QsactivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.qsactivity)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = QsactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //llamar
-        imgllamada.setOnClickListener{
-            val nTel = Uri.parse("tel:"+txtllamada.text.toString())
+        binding.imgllamada.setOnClickListener{
+            val nTel = Uri.parse("tel:"+binding.txtllamada.text.toString())
             val phone = Intent(Intent.ACTION_DIAL, nTel)
             startActivity(phone)
         }
-        txtllamada.setOnClickListener{
-            val nTel = Uri.parse("tel:"+txtllamada.text.toString())
+        binding.txtllamada.setOnClickListener{
+            val nTel = Uri.parse("tel:"+binding.txtllamada.text.toString())
             val phone = Intent(Intent.ACTION_DIAL, nTel)
             startActivity(phone)
         }
         //enlace a WhatsAPP
-        imgwas.setOnClickListener{
-            abrirweb("https://www.instagram.com/ago_Santurtzi/?hl=es")
+        binding.imgwas.setOnClickListener{
+            abrirweb("https://wa.me/48980?text=Me%20interesa%20el%20auto%20que%20estás%20vendiendo")
         }
-        txtwas.setOnClickListener{
-            abrirweb("https://www.instagram.com/ago_Santurtzi/?hl=es")
+        binding.txtwas.setOnClickListener{
+            abrirweb("https://wa.me/48980?text=Buenos%20días.%20Necesito%20ayuda%20con%20la%20aplicacion.")
         }
         //Enlace a Gmail
-        imggmail.setOnClickListener{
+        binding.imggmail.setOnClickListener{
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/html"
             intent.putExtra(Intent.EXTRA_EMAIL, "ago@gmail.com")
@@ -44,7 +44,7 @@ class QSActivity : AppCompatActivity() {
 
             startActivity(Intent(intent))
         }
-        txtmail.setOnClickListener{
+        binding.txtmail.setOnClickListener{
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/html"
             intent.putExtra(Intent.EXTRA_EMAIL, "ago@gmail.com")
@@ -54,24 +54,24 @@ class QSActivity : AppCompatActivity() {
             startActivity(Intent(intent))
         }
         //Enlace a instagram
-        imginsta.setOnClickListener{
+        binding.imginsta.setOnClickListener{
             abrirweb("https://www.instagram.com/ago_Santurtzi/?hl=es")
         }
-        txtinsta.setOnClickListener{
+        binding.txtinsta.setOnClickListener{
             abrirweb("https://www.instagram.com/ago_Santurtzi/?hl=es")
         }
         //Enlace a twiter
-        imgtwiter.setOnClickListener{
+        binding.imgtwiter.setOnClickListener{
             abrirweb("https://twitter.com/ago_santurtzi")
         }
-        txttuit.setOnClickListener{
+        binding.txttuit.setOnClickListener{
             abrirweb("https://twitter.com/ago_santurtzi")
         }
         //enlace a facebook
-        imgfacebook.setOnClickListener{
+        binding.imgfacebook.setOnClickListener{
             abrirweb("https://es-la.facebook.com/ago_santurtzi/")
         }
-        txtfacebook.setOnClickListener{
+        binding.txtfacebook.setOnClickListener{
             abrirweb("https://es-la.facebook.com/ago_santurtzi/")
         }
 
