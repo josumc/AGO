@@ -1,13 +1,10 @@
 <resources>
     <string name="app_name">AGO</string>
-<<<<<<< Updated upstream
     <string name="QS">Aplikazio hori Euskal Herriko Unibertsitateko (Alain Alaña, Ana Garaitagoitia, Alazne Hernández, Oier Melsio eta Garazi Siara) eta CIFP Txurdinagako (Mikel Ayala, Gonzalo Alonso eta Josu Morán) ikasleek garatu dute, LHko irakasleei eta haien ikasleei Santurtzi jolas didaktikoen bidez ezagutzen laguntzeko, dibertituz ikas dezaten.</string>
-=======
-
     <!--Opciones del menú-->
-    <string name="Ranking">Clasificación</string>
-    <string name="QuienSomos">¿Quiénes somos?</string>
-    <string name="CerrarSesion">Cerrar sesión</string>
-    <string name="Salir">Salir</string>
->>>>>>> Stashed changes
+    <string name="CerrarSesion">Itxi sesioa</string>
+    <string name="Salir">Irten</string>
+    <string name="Ranking">Sailkapena</string>
+    <string name="QuienSomos">Nor gara?</string>
+    >>>>>>> Stashed changes
 </resources>
