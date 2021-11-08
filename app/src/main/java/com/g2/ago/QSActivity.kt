@@ -29,16 +29,16 @@ class QSActivity : AppCompatActivity() {
         }
         //enlace a WhatsAPP
         binding.imgwas.setOnClickListener{
-            abrirweb("https://wa.me/48980?text=Me%20interesa%20el%20auto%20que%20estás%20vendiendo")
+            abrirweb("https://api.whatsapp.com/send?phone=+3448980&text=Buenos%20d%C3%ADas.%20Necesito%20ayuda%20con%20la%20aplicacion.")
         }
         binding.txtwas.setOnClickListener{
-            abrirweb("https://wa.me/48980?text=Buenos%20días.%20Necesito%20ayuda%20con%20la%20aplicacion.")
+            abrirweb("https://api.whatsapp.com/send?phone=+3448980&text=Buenos%20d%C3%ADas.%20Necesito%20ayuda%20con%20la%20aplicacion.")
         }
         //Enlace a Gmail
         binding.imggmail.setOnClickListener{
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/html"
-            intent.putExtra(Intent.EXTRA_EMAIL, "ago@gmail.com")
+            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("G2_2DM3@fptxurdinaga.com"))
             intent.putExtra(Intent.EXTRA_SUBJECT, "")
             intent.putExtra(Intent.EXTRA_TEXT, "")
 
@@ -47,7 +47,7 @@ class QSActivity : AppCompatActivity() {
         binding.txtmail.setOnClickListener{
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/html"
-            intent.putExtra(Intent.EXTRA_EMAIL, "ago@gmail.com")
+            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("G2_2DM3@fptxurdinaga.com"))
             intent.putExtra(Intent.EXTRA_SUBJECT, "")
             intent.putExtra(Intent.EXTRA_TEXT, "")
 

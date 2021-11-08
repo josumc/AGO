@@ -20,9 +20,14 @@ class MainActivity : AppCompatActivity() {
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val iditem = item.getItemId()
-        when{
-            iditem==R.id.QS -> startActivity(Intent(this, QSActivity::class.java))
+        when(item.getItemId()){
+            R.id.QS -> {
+                startActivity(Intent(this, QSActivity::class.java))
+                finish()
+            }
+            R.id.Salir -> {
+
+            }
         }
         return true
     }
