@@ -34,7 +34,7 @@ class MapsFragment : Fragment() {
             val nomMarcador="Parada${i+1}"
             googleMap.addMarker(MarkerOptions().position(arrayParadas[i]).title("Marker in $nomMarcador"))
         }
-        googleMap.animateCamera(CameraUpdateFactory.newLatLng(arrayParadas[0]))
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arrayParadas[0], 15f))
 
     }
 
