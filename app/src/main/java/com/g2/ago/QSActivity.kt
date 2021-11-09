@@ -13,6 +13,7 @@ class QSActivity : AppCompatActivity() {
         setContentView(R.layout.qsactivity)
         binding = QsactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         //llamar
         binding.imgllamada.setOnClickListener{
             val nTel = Uri.parse("tel:"+binding.txtllamada.text.toString())
