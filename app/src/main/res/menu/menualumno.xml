@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/clasificacion"
+        android:title="@string/Profe" />
+    <item android:title="@string/QuienSomos" android:id="@+id/QS"/>
+    <item android:title="@string/CerrarSesion" android:id="@+id/CS"/>
+    <item android:title="@string/Salir" android:id="@+id/Salir"/>
+</menu>

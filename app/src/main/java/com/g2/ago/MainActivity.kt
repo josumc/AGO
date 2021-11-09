@@ -23,10 +23,9 @@ class MainActivity : AppCompatActivity() {
         when(item.getItemId()){
             R.id.QS -> {
                 startActivity(Intent(this, QSActivity::class.java))
-                finish()
             }
             R.id.Salir -> {
-
+                finishAndRemoveTask()
             }
         }
         return true
