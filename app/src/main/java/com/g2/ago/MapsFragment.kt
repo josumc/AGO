@@ -22,6 +22,8 @@ class MapsFragment : Fragment() {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
+
+        //Coordenadas de las diferentes ubicaciones
         val parada1 = LatLng(43.330306, -3.029750)
         val parada2 = LatLng(43.330611, -3.030861)
         val parada3 = LatLng(43.330778, -3.031583)
@@ -29,10 +31,16 @@ class MapsFragment : Fragment() {
         val parada5 = LatLng(43.328861, -3.032944)
         val parada6 = LatLng(43.333750, -3.038722)
         val parada7 = LatLng(43.334417, -3.039278)
+        //Array de ubicaciones
         val arrayParadas= arrayOf(parada1,parada2,parada3,parada4,parada5,parada6,parada7)
-        for(i in 0..6){
-            val nomMarcador="Parada${i+1}"
-            googleMap.addMarker(MarkerOptions().position(arrayParadas[i]).title("Marker in $nomMarcador"))
+
+//        for(i in 0..6){
+//            val nomMarcador="Parada${i+1}"
+//            googleMap.addMarker(MarkerOptions().position(arrayParadas[i]).title("Marker in $nomMarcador"))
+//        }
+
+        arrayParadas.forEach {
+            googleMap.addMarker(MarkerOptions().position(it).title("Marker in $it"))
         }
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arrayParadas[0], 15f))
 
