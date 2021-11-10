@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             val x : Fragment = LogFragment()
             val transacion = supportFragmentManager.beginTransaction().add(R.id.fragmentMapas, x).addToBackStack(null).commit()
         }else if (Sharedapp.tipousu.tipo.equals("alumno")){
-            val y : Fragment = fragment2()
+            val y : Fragment = RankingFragment()
             val transacion = supportFragmentManager.beginTransaction().add(R.id.fragmentMapas, y).addToBackStack(null).commit()
         }
 
