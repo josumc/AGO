@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentMapas"
+        android:id="@+id/fragmentPrincipal"
         android:layout_width="300dp"
         android:layout_height="400dp"
         android:layout_marginStart="28dp"

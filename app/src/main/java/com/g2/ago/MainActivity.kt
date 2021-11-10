@@ -59,10 +59,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if (Sharedapp.tipousu.tipo.equals("profesor")){
             val x : Fragment = LogFragment()
-            val transacion = supportFragmentManager.beginTransaction().add(R.id.fragmentMapas, x).addToBackStack(null).commit()
+            val transacion = supportFragmentManager.beginTransaction().add(R.id.fragmentPrincipal, x).addToBackStack(null).commit()
         }else if (Sharedapp.tipousu.tipo.equals("alumno")){
             val y : Fragment = RankingFragment()
-            val transacion = supportFragmentManager.beginTransaction().add(R.id.fragmentMapas, y).addToBackStack(null).commit()
+            val transacion = supportFragmentManager.beginTransaction().add(R.id.fragmentPrincipal, y).addToBackStack(null).commit()
         }
 
     }
