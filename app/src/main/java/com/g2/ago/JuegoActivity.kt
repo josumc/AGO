@@ -29,8 +29,6 @@ class JuegoActivity : AppCompatActivity(), Comunicador {
             return
         }
 
-
-
     override fun onPasarDato(dato: String) {
         TODO("Not yet implemented")
     }

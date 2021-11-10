@@ -2,20 +2,38 @@ package com.g2.ago
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.g2.ago.databinding.QsactivityBinding
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.g2.ago.databinding.FragmentQSBinding
 
-class QSActivity : AppCompatActivity() {
-    lateinit var binding:QsactivityBinding
+class QSFragment : Fragment() {
+
+    lateinit var binding: FragmentQSBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.qsactivity)
-        binding = QsactivityBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+    }
+
+    fun abrirweb(web:String){
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(web))
+        startActivity(browserIntent)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+
+        binding = FragmentQSBinding.inflate(layoutInflater)
 
         //llamar
         binding.imgllamada.setOnClickListener{
+            print("nononoonono")
             val nTel = Uri.parse("tel:"+binding.txtllamada.text.toString())
             val phone = Intent(Intent.ACTION_DIAL, nTel)
             startActivity(phone)
@@ -73,10 +91,7 @@ class QSActivity : AppCompatActivity() {
             abrirweb("https://es-la.facebook.com/ago_santurtzi/")
         }
 
+        return binding.root
+    }
 
-    }
-    fun abrirweb(web:String){
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(web))
-        startActivity(browserIntent)
-    }
 }

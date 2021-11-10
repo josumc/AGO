@@ -6,7 +6,7 @@
     <string name="Home">Hasiera</string>
     <string name="CerrarSesion">Itxi saioa</string>
     <string name="Salir">Irten</string>
-    <string name="Cuenta">¿Quiénes somos?</string>
+    <string name="Cuenta">Saioa</string>
     <string name="Ranking">Sailkapena</string>
     <string name="QuienSomos">Nor gara?</string>
     <string name="Profe">Irakasle</string>
@@ -17,4 +17,6 @@
     <!--Login profesor-->
     <string name="Bootonlog">Sartu</string>
     <string name="explicacionprofesor">" Irakaslearen funtzionalitate berezietara sartzeko, sartu maesta pasahitza jarraian. "</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
