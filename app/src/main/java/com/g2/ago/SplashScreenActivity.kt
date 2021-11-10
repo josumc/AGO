@@ -9,7 +9,8 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         startActivity(Intent(this, MainActivity::class.java))
-
+        Sharedapp.tipousu.tipo = "alumno"
+        Sharedapp.users.user = ""
         finish()
     }
 }

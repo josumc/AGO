@@ -7,6 +7,7 @@ import android.os.SystemClock
 
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         if (Sharedapp.tipousu.tipo.equals("profesor")){
             inflater.inflate(R.menu.menu, menu)
-        }else{
+        }else if (Sharedapp.tipousu.tipo.equals("alumno")){
             inflater.inflate(R.menu.menualumno, menu)
         }
         return true
@@ -27,16 +28,24 @@ class MainActivity : AppCompatActivity() {
             R.id.clasificacion -> {
                if (Sharedapp.tipousu.tipo.equals("profesor")){
                     //Activar fragment ranking
-                }else{
+                }else if (Sharedapp.tipousu.tipo.equals("alumno")){
                     //Activar fragment de profesor
                     Sharedapp.tipousu.tipo = "profesor"
+                   finish()
+                   startActivity(Intent(this, MainActivity::class.java))
+
+
                 }
             }
             R.id.QS -> {
                 startActivity(Intent(this, QSActivity::class.java))
             }
             R.id.CS -> {
-                //Activar fragment y cerrar sesion
+                //Activar fragment
+
+                //Se cierra la sesion
+                Sharedapp.users.user = ""
+                Sharedapp.tipousu.tipo = "alumno"
             }
             R.id.Salir -> {
                 finishAndRemoveTask()
@@ -48,7 +57,13 @@ class MainActivity : AppCompatActivity() {
         SystemClock.sleep(1000)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       Sharedapp.tipousu.tipo="alumno"
+        if (Sharedapp.tipousu.tipo.equals("profesor")){
+            val x : Fragment = LogFragment()
+            val transacion = supportFragmentManager.beginTransaction().add(R.id.fragmentMapas, x).addToBackStack(null).commit()
+        }else if (Sharedapp.tipousu.tipo.equals("alumno")){
+            val y : Fragment = fragment2()
+            val transacion = supportFragmentManager.beginTransaction().add(R.id.fragmentMapas, y).addToBackStack(null).commit()
+        }
 
     }
 
