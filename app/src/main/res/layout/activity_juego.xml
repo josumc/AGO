@@ -8,8 +8,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentMapaJuego"
-        android:name="com.g2.ago.MapsFragment"
-        android:layout_width="406dp"
+        android:layout_width="wrap_content"
         android:layout_height="368dp"
         android:layout_marginStart="55dp"
         android:layout_marginEnd="55dp"
@@ -22,7 +21,6 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentExplicacion"
-        android:name="com.g2.ago.MapsFragment"
         android:layout_width="405dp"
         android:layout_height="356dp"
         android:layout_marginStart="55dp"

@@ -1,11 +1,14 @@
 package com.g2.ago
 
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -13,6 +16,11 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsFragment : Fragment() {
+
+    var Activityppal: Comunicador?=null
+    var _binding: MapsFragment?=null
+    private val binding get()= _binding!!
+    var marcador:String=""
     private val callback = OnMapReadyCallback { googleMap ->
         /**
          * Manipulates the map once available.
@@ -23,6 +31,10 @@ class MapsFragment : Fragment() {
          * user has installed Google Play services and returned to the app.
          */
 
+
+//        googleMap.isMyLocationEnabled=true
+        googleMap.uiSettings.isZoomControlsEnabled=true
+        googleMap.uiSettings.isCompassEnabled=true
         //Coordenadas de las diferentes ubicaciones
         val parada1 = LatLng(43.330306, -3.029750)
         val parada2 = LatLng(43.330611, -3.030861)
@@ -39,11 +51,25 @@ class MapsFragment : Fragment() {
 //            googleMap.addMarker(MarkerOptions().position(arrayParadas[i]).title("Marker in $nomMarcador"))
 //        }
 
+        //Generar marcadores y ubicar la cámara
         arrayParadas.forEach {
             googleMap.addMarker(MarkerOptions().position(it).title("Marker in $it"))
         }
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arrayParadas[0], 15f))
 
+        googleMap.setOnMarkerClickListener { marker ->
+//            if (marker.isInfoWindowShown) {
+//                marker.hideInfoWindow()
+//            } else {
+//                marker.showInfoWindow()
+//            }
+
+            //Genera un mensaje "Prueba: "+mX .Donde X es la posición del array
+            println("Prueba: "+marker.id)
+
+            marcador=marker.id
+            true
+        }
     }
 
     override fun onCreateView(
@@ -58,5 +84,9 @@ class MapsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+    }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
     }
 }
