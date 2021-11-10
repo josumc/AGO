@@ -4,11 +4,15 @@
     <string name="QS">Esta aplicación ha sido desarrollada por alumnos de la Universidad del País Vasco(Alain Alaña, Ana Garaitagoitia, Alazne Hernández, Oier Melsio y Garazi Siara) y de CIFP Txurdinaga (Mikel Ayala, Gonzalo Alonso y Josu Morán) con el fin de ayudar a los profesores de E.P y a sus alumnos a conocer Santurtzi mediante juegos didácticos de manera que aprendan divirtiéndose.</string>
 
     <!--Opciones del menú-->
+    <string name="Home">Inicio</string>
     <string name="Ranking">Clasificación</string>
+    <string name="Cuenta">Cuenta</string>
     <string name="QuienSomos">¿Quiénes somos?</string>
     <string name="CerrarSesion">Cerrar sesión</string>
     <string name="Salir">Salir</string>
     <string name="Profe">Profesor</string>
+    <string name="menu_abrir">Abrir</string>
+    <string name="menu_cerrar">Cerrar</string>
 
     <!--Login profesor-->
     <string name="Bootonlog">Acceder</string>

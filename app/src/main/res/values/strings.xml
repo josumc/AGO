@@ -3,11 +3,16 @@
     <string name="QS">Aplikazio hori Euskal Herriko Unibertsitateko (Alain Alaña, Ana Garaitagoitia, Alazne Hernández, Oier Melsio eta Garazi Siara) eta CIFP Txurdinagako (Mikel Ayala, Gonzalo Alonso eta Josu Morán) ikasleek garatu dute, LHko irakasleei eta haien ikasleei Santurtzi jolas didaktikoen bidez ezagutzen laguntzeko, dibertituz ikas dezaten.</string>
 
     <!--Opciones del menú-->
-    <string name="CerrarSesion">Itxi sesioa</string>
+    <string name="Home">Hasiera</string>
+    <string name="CerrarSesion">Itxi saioa</string>
     <string name="Salir">Irten</string>
+    <string name="Cuenta">¿Quiénes somos?</string>
     <string name="Ranking">Sailkapena</string>
     <string name="QuienSomos">Nor gara?</string>
     <string name="Profe">Irakasle</string>
+    <string name="menu_abrir">Ireki</string>
+    <string name="menu_cerrar">Itxi</string>
+
 
     <!--Login profesor-->
     <string name="Bootonlog">Sartu</string>
