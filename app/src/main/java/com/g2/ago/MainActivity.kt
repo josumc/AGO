@@ -55,11 +55,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId){
+            R.id.nav_inicio -> {
+
+            }
+            R.id.nav_mapa -> {
+
+            }
             R.id.nav_ranking -> {
                 if (Sharedapp.tipousu.tipo.equals("profesor")){
-                    //Activar fragment ranking
+                    fragment = RankingFragment()
+                    cambiarFragment(fragment)
                 }else if (Sharedapp.tipousu.tipo.equals("alumno")){
-                    //Activar fragment de profesor
                     fragment = LogFragment()
                     cambiarFragment(fragment)
                 }
@@ -68,13 +74,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fragment = QSFragment()
                 cambiarFragment(fragment)
             }
+            R.id.nav_alumno -> {
+                Sharedapp.users.user = ""
+                Sharedapp.tipousu.tipo = "alumno"
+                fragment = LogFragment()
+                cambiarFragment(fragment)
+            }
             R.id.nav_profe -> {
                 fragment = LogFragment()
                 cambiarFragment(fragment)
             }
             R.id.nav_cerrar_sesion -> {
                 //Activar fragment
-                
+
                 //Se cierra la sesion
                 Sharedapp.users.user = ""
                 Sharedapp.tipousu.tipo = "alumno"
