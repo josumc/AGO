@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AGO">
         <activity
+            android:name=".MJFragment"
+            android:exported="false" />
+        <activity
             android:name=".JuegoActivity"
             android:exported="false" />
         <!--
@@ -34,6 +37,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
