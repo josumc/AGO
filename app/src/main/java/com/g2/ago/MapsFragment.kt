@@ -27,7 +27,6 @@ class MapsFragment : Fragment() {
          * user has installed Google Play services and returned to the app.
          */
 
-
 //        googleMap.isMyLocationEnabled=true
         googleMap.uiSettings.isZoomControlsEnabled=true
         googleMap.uiSettings.isCompassEnabled=true
@@ -42,11 +41,6 @@ class MapsFragment : Fragment() {
         //Array de ubicaciones
         val arrayParadas= arrayOf(parada1,parada2,parada3,parada4,parada5,parada6,parada7)
 
-//        for(i in 0..6){
-//            val nomMarcador="Parada${i+1}"
-//            googleMap.addMarker(MarkerOptions().position(arrayParadas[i]).title("Marker in $nomMarcador"))
-//        }
-
         //Generar marcadores y ubicar la cámara
         arrayParadas.forEach {
             googleMap.addMarker(MarkerOptions().position(it).title("Marker in $it"))
@@ -54,11 +48,6 @@ class MapsFragment : Fragment() {
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arrayParadas[0], 15f))
 
         googleMap.setOnMarkerClickListener { marker ->
-//            if (marker.isInfoWindowShown) {
-//                marker.hideInfoWindow()
-//            } else {
-//                marker.showInfoWindow()
-//            }
 
             //Genera un mensaje "Prueba: "+mX .Donde X es la posición del array
             println("Prueba: "+marker.id)
