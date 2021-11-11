@@ -9,6 +9,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -17,6 +20,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var navigationView: NavigationView
     lateinit var button: FloatingActionButton
     lateinit var fragment: Fragment
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         SystemClock.sleep(1000)
@@ -86,5 +91,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     fun cambiarFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
     }
+
+
 
 }
