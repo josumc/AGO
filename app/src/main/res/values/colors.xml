@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="dark">#25283D</color>
-    <color name="purple_1">#A466C2</color>
-    <color name="purple_2">#B950AD</color>
-    <color name="beige">#E4D9FF</color>
-    <color name="grey">#CFB4C5</color>
-    <color name="white">#FBF5F3</color>
+    <color name="Primary">#A466C2</color>
+    <color name="Secondary">#B950AD</color>
 </resources>

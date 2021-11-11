@@ -30,6 +30,7 @@ tools:openDrawer="start">
             android:layout_height="wrap_content"
             android:layout_gravity="start|top"
             android:layout_margin="16dp"
+            android:contentDescription="@string/Menu"
             android:src="@drawable/ic_baseline_menu_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

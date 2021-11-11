@@ -9,6 +9,11 @@
             android:icon="@drawable/ic_outline_home_24" />
 
         <item
+            android:id="@+id/nav_mapa"
+            android:title="@string/Mapa"
+            android:icon="@drawable/ic_outline_my_location_24" />
+
+        <item
             android:id="@+id/nav_ranking"
             android:title="@string/Ranking"
             android:icon="@drawable/ic_baseline_star_outline_24" />
@@ -27,9 +32,15 @@
             <group android:checkableBehavior="single">
 
                 <item
+                    android:id="@+id/nav_alumno"
+                    android:title="@string/Alumno"
+                    android:icon="@drawable/ic_outline_boy_24" />
+
+                <item
                     android:id="@+id/nav_profe"
                     android:title="@string/Profe"
                     android:icon="@drawable/ic_outline_admin_panel_settings_24" />
+
 
                 <item
                     android:id="@+id/nav_cerrar_sesion"

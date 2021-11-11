@@ -11,10 +11,14 @@
     <string name="CerrarSesion">Cerrar sesión</string>
     <string name="Salir">Salir</string>
     <string name="Profe">Profesor</string>
+    <string name="Alumno">Alumno</string>
     <string name="menu_abrir">Abrir</string>
     <string name="menu_cerrar">Cerrar</string>
+    <string name="Mapa">Mapa</string>
+    <string name="Menu">Menu</string>
 
     <!--Login profesor-->
     <string name="Bootonlog">Acceder</string>
     <string name="explicacionprofesor">Accede a las funcionalidades especiales de profesor introduciendo la contraseña maestra a continuacion.</string>
+
 </resources>

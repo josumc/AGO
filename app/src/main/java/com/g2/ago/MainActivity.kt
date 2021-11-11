@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
     lateinit var button: FloatingActionButton
+    lateinit var fragment: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         SystemClock.sleep(1000)
@@ -33,11 +34,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView.bringToFront()
 
         if (Sharedapp.tipousu.tipo.equals("profesor")){
-            val x : Fragment = LogFragment()
-            supportFragmentManager.beginTransaction().add(R.id.fragmentPrincipal, x).addToBackStack(null).commit()
+            fragment = LogFragment()
+            cambiarFragment(fragment)
         }else if (Sharedapp.tipousu.tipo.equals("alumno")){
-            val y : Fragment = RankingFragment()
-            supportFragmentManager.beginTransaction().add(R.id.fragmentPrincipal, y).addToBackStack(null).commit()
+            fragment = RankingFragment()
+            cambiarFragment(fragment)
         }
 
         navigationView.setNavigationItemSelectedListener(this)
@@ -59,14 +60,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     //Activar fragment ranking
                 }else if (Sharedapp.tipousu.tipo.equals("alumno")){
                     //Activar fragment de profesor
-                    Sharedapp.tipousu.tipo = "profesor"
-                    finish()
-                    startActivity(Intent(this, MainActivity::class.java))
+                    fragment = LogFragment()
+                    cambiarFragment(fragment)
                 }
             }
             R.id.nav_quienes -> {
-                val qs = QSFragment()
-                supportFragmentManager.beginTransaction().add(R.id.fragmentPrincipal, qs).addToBackStack(null).commit()
+                fragment = QSFragment()
+                cambiarFragment(fragment)
             }
             R.id.nav_cerrar_sesion -> {
                 //Activar fragment
@@ -81,6 +81,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    fun cambiarFragment(fragment: Fragment){
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
     }
 
 }
