@@ -1,10 +1,14 @@
 package com.g2.ago
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -12,7 +16,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsFragment : Fragment() {
-
+    private lateinit var fusedLocation: FusedLocationProviderClient
     var Activityppal: Comunicador?=null
     var _binding: MapsFragment?=null
     private val binding get()= _binding!!
@@ -26,8 +30,12 @@ class MapsFragment : Fragment() {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
-
-//        googleMap.isMyLocationEnabled=true
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1)
+            return@OnMapReadyCallback
+        }
+        googleMap.isMyLocationEnabled=true
         googleMap.uiSettings.isZoomControlsEnabled=true
         googleMap.uiSettings.isCompassEnabled=true
         //Coordenadas de las diferentes ubicaciones
@@ -45,8 +53,13 @@ class MapsFragment : Fragment() {
         arrayParadas.forEach {
             googleMap.addMarker(MarkerOptions().position(it).title("Marker in $it"))
         }
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arrayParadas[0], 15f))
-
+        fusedLocation.lastLocation.addOnSuccessListener {
+            if (it != null) {
+                val ubicacion = LatLng(it.latitude, it.longitude)
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 20f))
+                println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
+            }
+        }
         googleMap.setOnMarkerClickListener { marker ->
 
             //Genera un mensaje "Prueba: "+mX .Donde X es la posición del array
