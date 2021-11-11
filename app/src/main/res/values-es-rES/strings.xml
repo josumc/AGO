@@ -16,8 +16,10 @@
     <string name="Mapa">Mapa</string>
     <string name="Menu">Menu</string>
     <!--Login profesor-->
-    <string name="botonlibre">Libre</string>
-    <string name="botonguiado">Guiado</string>
+    <string name="ModoGuiado">Modo guiado</string>
+    <string name="ModoLibre">Modo libre</string>
+    <string name="Jugar">Jugar</string>
+
     <!--Login profesor-->
     <string name="Bootonlog">Acceder</string>
     <string name="explicacionprofesor">Accede a las funcionalidades especiales de profesor introduciendo la contraseña maestra a continuacion.</string>

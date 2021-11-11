@@ -16,9 +16,12 @@
     <string name="Menu">Menu</string>
     <string name="Mapa">Mapa</string>
     <!--Modo profesor-->
-    <string name="botonlibre">Aske</string>
-    <string name="botonguiado">Gidaketa</string><!--Login profesor-->
+    <string name="ModoGuiado">Modu askean</string>
+    <string name="ModoLibre">Modu librean</string>
+    <string name="Jugar">Jokatu</string>
+    <!--Login profesor-->
     <string name="Bootonlog">Sartu</string>
     <string name="explicacionprofesor">" Irakaslearen funtzionalitate berezietara sartzeko, sartu maesta pasahitza jarraian. "</string>
+    <!-- TODO: Remove or change this placeholder text -->
 
 </resources>
