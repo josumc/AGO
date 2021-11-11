@@ -68,9 +68,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fragment = QSFragment()
                 cambiarFragment(fragment)
             }
+            R.id.nav_profe -> {
+                fragment = LogFragment()
+                cambiarFragment(fragment)
+            }
             R.id.nav_cerrar_sesion -> {
                 //Activar fragment
-
+                
                 //Se cierra la sesion
                 Sharedapp.users.user = ""
                 Sharedapp.tipousu.tipo = "alumno"
