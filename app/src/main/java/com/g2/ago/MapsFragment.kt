@@ -2,6 +2,7 @@ package com.g2.ago
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsFragment : Fragment() {
@@ -53,6 +55,25 @@ class MapsFragment : Fragment() {
         arrayParadas.forEach {
             googleMap.addMarker(MarkerOptions().position(it).title("Marker in $it"))
         }
+        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_NO -> {
+                googleMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                        requireContext(),
+                        R.raw.style
+                    )
+                )
+            } // Night mode is not active, we're using the light theme
+            Configuration.UI_MODE_NIGHT_YES -> {
+                googleMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                        requireContext(),
+                        R.raw.styledark
+                    )
+                )
+            } // Night mode is active, we're using dark theme
+        }
+
         fusedLocation.lastLocation.addOnSuccessListener {
             if (it != null) {
                 val ubicacion = LatLng(it.latitude, it.longitude)
