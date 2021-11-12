@@ -24,6 +24,13 @@ class ModoJuegoFragment : Fragment() {
 
         binding = FragmentModoJuegoBinding.inflate(layoutInflater)
 
+        binding.btnGuiado.setOnClickListener(){
+
+        }
+
+        binding.btnLibre.setOnClickListener(){
+
+        }
 
         return binding.root
     }

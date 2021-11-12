@@ -18,4 +18,8 @@ class JuegoActivity : AppCompatActivity(), Comunicador {
     override fun onPasarDato(dato: String) {
         TODO("Not yet implemented")
     }
+
+    override fun replaceFragment(fragment: Fragment) {
+        TODO("Not yet implemented")
+    }
 }
