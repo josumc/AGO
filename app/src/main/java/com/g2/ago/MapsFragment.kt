@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -38,8 +39,9 @@ class MapsFragment : Fragment() {
             return@OnMapReadyCallback
         }
         googleMap.isMyLocationEnabled=true
+        googleMap.uiSettings.isMyLocationButtonEnabled = false
         googleMap.uiSettings.isZoomControlsEnabled=true
-        googleMap.uiSettings.isCompassEnabled=true
+        googleMap.uiSettings.isCompassEnabled=false
         //Coordenadas de las diferentes ubicaciones
         val parada1 = LatLng(43.330306, -3.029750)
         val parada2 = LatLng(43.330611, -3.030861)
@@ -60,7 +62,7 @@ class MapsFragment : Fragment() {
                 googleMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(
                         requireContext(),
-                        R.raw.style
+                        R.raw.styleday
                     )
                 )
             } // Night mode is not active, we're using the light theme
@@ -68,7 +70,7 @@ class MapsFragment : Fragment() {
                 googleMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(
                         requireContext(),
-                        R.raw.styledark
+                        R.raw.stylenight
                     )
                 )
             } // Night mode is active, we're using dark theme
@@ -96,6 +98,7 @@ class MapsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        fusedLocation = LocationServices.getFusedLocationProviderClient(requireActivity())
         return inflater.inflate(R.layout.fragment_maps, container, false)
     }
 

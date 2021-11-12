@@ -6,7 +6,6 @@
         <item name="colorSecondary">@color/Secondary</item>
 
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
     </style>
     <style name="SplashTheme" parent="Theme.AGO">
         <item name="android:windowBackground">@drawable/santurtziko_mapa</item>
