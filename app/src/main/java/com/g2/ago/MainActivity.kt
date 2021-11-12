@@ -1,6 +1,5 @@
 package com.g2.ago
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
@@ -9,13 +8,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, Comunicador {
 
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
@@ -41,11 +36,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView.bringToFront()
 
         if (Sharedapp.tipousu.tipo.equals("profesor")){
-            fragment = LogFragment()
-            cambiarFragment(fragment)
-        }else if (Sharedapp.tipousu.tipo.equals("alumno")){
+            fragment = ModoJuegoFragment()
+            replaceFragment(fragment)
+        }else if (Sharedapp.tipousu.tipo.equals("alumno")) {
             fragment = RankingFragment()
-            cambiarFragment(fragment)
+            replaceFragment(fragment)
         }
 
         navigationView.setNavigationItemSelectedListener(this)
@@ -71,32 +66,31 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_ranking -> {
                 if (Sharedapp.tipousu.tipo.equals("profesor")){
                     fragment = RankingFragment()
-                    cambiarFragment(fragment)
+                    replaceFragment(fragment)
                 }else if (Sharedapp.tipousu.tipo.equals("alumno")){
                     fragment = LogFragment()
-                    cambiarFragment(fragment)
+                    replaceFragment(fragment)
                 }
             }
             R.id.nav_quienes -> {
                 fragment = QSFragment()
-                cambiarFragment(fragment)
+                replaceFragment(fragment)
             }
             R.id.nav_alumno -> {
                 Sharedapp.users.user = ""
                 Sharedapp.tipousu.tipo = "alumno"
                 fragment = LogFragment()
-                cambiarFragment(fragment)
+                replaceFragment(fragment)
             }
             R.id.nav_profe -> {
                 fragment = LogFragment()
-                cambiarFragment(fragment)
+                replaceFragment(fragment)
             }
             R.id.nav_cerrar_sesion -> {
-                //Activar fragment
-
-                //Se cierra la sesion
                 Sharedapp.users.user = ""
                 Sharedapp.tipousu.tipo = "alumno"
+                fragment = RankingFragment()
+                replaceFragment(fragment)
             }
             R.id.nav_salir -> {
                 finishAndRemoveTask()
@@ -106,10 +100,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    fun cambiarFragment(fragment: Fragment){
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
+    override fun onPasarDato(dato: String) {
+
     }
 
-
+    override fun replaceFragment(fragment: Fragment){
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
+    }
 
 }

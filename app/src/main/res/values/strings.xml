@@ -16,8 +16,8 @@
     <string name="Menu">Menu</string>
     <string name="Mapa">Mapa</string>
     <!--Modo profesor-->
-    <string name="ModoGuiado">Modu askean</string>
-    <string name="ModoLibre">Modu librean</string>
+    <string name="ModoGuiado">Modu guidatuan</string>
+    <string name="ModoLibre">Modu askean</string>
     <string name="Jugar">Jokatu</string>
     <!--Login profesor-->
     <string name="Bootonlog">Sartu</string>
