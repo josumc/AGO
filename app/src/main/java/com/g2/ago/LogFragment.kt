@@ -20,15 +20,14 @@ class LogFragment : Fragment() {
         binding = FragmentLogBinding.inflate(layoutInflater)
 
         binding.btnLog.setOnClickListener() {
-           if(txtpsw.text.toString().equals("123456Aa")){
+            if (txtpsw.text.toString().equals("123456Aa")) {
                 var fragment: Fragment = ModoJuegoFragment()
                 val comunicador: Comunicador? = activity as Comunicador?
                 if (comunicador != null) {
                     comunicador.replaceFragment(fragment)
                 }
-           }
+            }
         }
-
         return binding.root
 
     }
