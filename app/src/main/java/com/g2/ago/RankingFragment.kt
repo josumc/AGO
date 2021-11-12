@@ -16,15 +16,7 @@ override  fun onCreateView(
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val root = inflater.inflate(R.layout.fragment_ranking, container, false)
-        setupNavigation(root)
-        return root
-    }
-    private fun setupNavigation(root: View){
-        val botonb = root.findViewById<Button>(R.id.button)
-        botonb.setOnClickListener{view : View ->
-            val navControler = findNavController()
-            view.findNavController().navigate(R.id.action_rankingFragment_to_logFragment)
-        }
+        return inflater.inflate(R.layout.fragment_ranking, container, false)
+
     }
 }

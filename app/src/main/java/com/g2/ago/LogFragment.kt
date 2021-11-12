@@ -25,7 +25,7 @@ class LogFragment : Fragment() {
         val botona = root.findViewById<Button>(R.id.btnLog)
         botona.setOnClickListener{view : View ->
             if (txtpsw.text.toString().equals("123456Aa")) {
-                view.findNavController().navigate(R.id.action_logFragment_to_MJFragment)
+               // Meter aqui la navegcion al modo de juego
             }
         }
     }

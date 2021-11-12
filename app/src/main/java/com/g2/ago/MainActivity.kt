@@ -9,6 +9,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         SystemClock.sleep(1000)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         drawerLayout = findViewById(R.id.drawerlayout)
         navigationView = findViewById(R.id.nav_view)
