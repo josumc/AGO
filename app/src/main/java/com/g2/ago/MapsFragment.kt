@@ -79,7 +79,7 @@ class MapsFragment : Fragment() {
         fusedLocation.lastLocation.addOnSuccessListener {
             if (it != null) {
                 val ubicacion = LatLng(it.latitude, it.longitude)
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 20f))
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 12f))
                 println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
             }
         }
