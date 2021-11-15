@@ -34,7 +34,7 @@ class SLFragemt : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_s_l_fragemt, container, false)
+        return inflater.inflate(R.layout.fragment_s_l, container, false)
     }
 
     companion object {

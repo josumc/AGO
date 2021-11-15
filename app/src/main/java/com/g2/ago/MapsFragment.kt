@@ -84,11 +84,10 @@ class MapsFragment : Fragment() {
             }
         }
         googleMap.setOnMarkerClickListener { marker ->
-
             //Genera un mensaje "Prueba: "+mX .Donde X es la posición del array
             println("Prueba: "+marker.id)
-
-            marcador=marker.id
+            Activityppal=requireContext() as Comunicador
+            Activityppal!!.onPasarDato(marker.id)
             true
         }
     }
@@ -101,6 +100,7 @@ class MapsFragment : Fragment() {
         fusedLocation = LocationServices.getFusedLocationProviderClient(requireActivity())
         return inflater.inflate(R.layout.fragment_maps, container, false)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

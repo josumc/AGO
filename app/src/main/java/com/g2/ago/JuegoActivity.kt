@@ -26,10 +26,21 @@ class JuegoActivity : AppCompatActivity(), Comunicador {
     }
 
     override fun onPasarDato(dato: String) {
-        TODO("Not yet implemented")
+        when(dato){
+            "m0" -> replaceFragment(PuzzleFragment())
+            "m1" -> replaceFragment(MemoryFragment())
+            "m2" -> replaceFragment(ParrafoFragment())
+            "m3" -> replaceFragment(PreguntasFragment())
+            "m4" -> replaceFragment(TestFragment())
+            "m5" -> replaceFragment(VFFragment())
+            "m6" -> replaceFragment(SLFragemt())
+        }
     }
 
     override fun replaceFragment(fragment: Fragment) {
-        TODO("Not yet implemented")
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentMapaJuego, fragment).addToBackStack(MapsFragment().toString()).commit()
     }
+
+
 }
