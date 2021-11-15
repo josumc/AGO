@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        SystemClock.sleep(1000)
+//        SystemClock.sleep(1000)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
