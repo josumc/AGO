@@ -10,7 +10,8 @@ import com.g2.ago.databinding.ActivityJuegoBinding
 class JuegoActivity : AppCompatActivity(), Comunicador {
 
     lateinit var binding : ActivityJuegoBinding
-    lateinit var fragment: Fragment
+    lateinit var fragmentTop: Fragment
+    lateinit var fragmentBot: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,25 +22,38 @@ class JuegoActivity : AppCompatActivity(), Comunicador {
         binding.root.systemUiVisibility = SYSTEM_UI_FLAG_LAYOUT_STABLE or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
 
-        fragment = MapsFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentMapaJuego, fragment).commit()
+        fragmentTop = MapsFragment()
+        supportFragmentManager.beginTransaction().replace(R.id.FragmentMapaJuego, fragmentTop).commit()
+
+        fragmentBot = InfoRutaFragment()
+        supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragmentBot).commit()
     }
 
     override fun onPasarDato(dato: String) {
         when(dato){
-            "m0" -> replaceFragment(PuzzleFragment())
-            "m1" -> replaceFragment(MemoryFragment())
-            "m2" -> replaceFragment(ParrafoFragment())
-            "m3" -> replaceFragment(PreguntasFragment())
-            "m4" -> replaceFragment(TestFragment())
-            "m5" -> replaceFragment(VFFragment())
-            "m6" -> replaceFragment(SLFragemt())
+            "m0" -> replaceMapFragment(PuzzleFragment())
+            "m1" -> replaceMapFragment(MemoryFragment())
+            "m2" -> replaceMapFragment(ParrafoFragment())
+            "m3" -> replaceMapFragment(PreguntasFragment())
+            "m4" -> replaceMapFragment(TestFragment())
+            "m5" -> replaceMapFragment(VFFragment())
+            "m6" -> replaceMapFragment(SLFragemt())
         }
+        replaceExplFragment(InfoRutaFragment())
     }
 
     override fun replaceFragment(fragment: Fragment) {
+
+    }
+
+    private fun replaceMapFragment(fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentMapaJuego, fragment).addToBackStack(MapsFragment().toString()).commit()
+        fragmentTransaction.replace(R.id.FragmentMapaJuego, fragment).commit()
+    }
+
+    private fun replaceExplFragment(fragment: Fragment) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.FragmentExplicacionJuego, fragment).commit()
     }
 
 
