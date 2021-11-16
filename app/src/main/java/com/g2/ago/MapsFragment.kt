@@ -22,10 +22,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsFragment : Fragment() {
     private lateinit var fusedLocation: FusedLocationProviderClient
-    var Activityppal: Comunicador?=null
     lateinit var binding: FragmentMapsBinding
+    var Activityppal: Comunicador?=null
     lateinit var googleMapp: GoogleMap
-    var marcador:String=""
     private val callback = OnMapReadyCallback { googleMap ->
         /**
          * Manipulates the map once available.
@@ -115,11 +114,9 @@ class MapsFragment : Fragment() {
             }
 
         }
-
         fusedLocation = LocationServices.getFusedLocationProviderClient(requireActivity())
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
