@@ -3,7 +3,6 @@ package com.g2.ago
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.MenuItem
 import android.view.View
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -24,7 +23,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-//        SystemClock.sleep(1000)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
