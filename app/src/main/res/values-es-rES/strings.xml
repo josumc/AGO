@@ -23,5 +23,7 @@
     <!--Login profesor-->
     <string name="Bootonlog">Acceder</string>
     <string name="explicacionprofesor">Accede a las funcionalidades especiales de profesor introduciendo la contraseña maestra a continuacion.</string>
+    <string name="Verdadero">Verdadero</string>
+    <string name="Falso">Falso</string>
 
 </resources>
