@@ -100,10 +100,10 @@ class MapsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMapsBinding.inflate(layoutInflater)
 
-        binding.UbicacionButton.setOnClickListener(){
+        binding.UbicacionButton.setOnClickListener {
 
             fusedLocation.lastLocation.addOnSuccessListener {
                 if (it != null) {
