@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import java.util.prefs.PreferencesFactory
 
-data class Partidas(var Nickname: String, var PuntoJuego: String)
+data class Partida(var Nickname: String, var PuntoJuego: String)
 class Base_de_Datos(context:Context, name: String, factory: SQLiteDatabase.CursorFactory?, version:Int): SQLiteOpenHelper(context,name,factory, version){
     override fun onCreate(db: SQLiteDatabase?) {
         db!!.execSQL("create table Partida(player text primary key, play_point text)")

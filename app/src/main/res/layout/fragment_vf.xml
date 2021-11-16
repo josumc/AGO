@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VFFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="100dp"
-        android:text="Este el juego de verdadero/falso" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/txtVF"
+        android:layout_width="311dp"
+        android:layout_height="70dp"
+        android:text="Aqui pondremos la pregunta verdadera o falsa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.204" />
+
+    <RadioGroup
+        android:layout_width="133dp"
+        android:layout_height="93dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbtnVerdadero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Verdadero" />
+
+        <RadioButton
+            android:id="@+id/rbtnFalso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Falso" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
