@@ -9,9 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
+import com.g2.ago.databinding.FragmentMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
@@ -21,8 +23,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 class MapsFragment : Fragment() {
     private lateinit var fusedLocation: FusedLocationProviderClient
     var Activityppal: Comunicador?=null
-    var _binding: MapsFragment?=null
-    private val binding get()= _binding!!
+    lateinit var binding: FragmentMapsBinding
+    lateinit var googleMapp: GoogleMap
     var marcador:String=""
     private val callback = OnMapReadyCallback { googleMap ->
         /**
@@ -40,7 +42,7 @@ class MapsFragment : Fragment() {
         }
         googleMap.isMyLocationEnabled=true
         googleMap.uiSettings.isMyLocationButtonEnabled = false
-        googleMap.uiSettings.isZoomControlsEnabled=true
+        //googleMap.uiSettings.isZoomControlsEnabled=true
         googleMap.uiSettings.isCompassEnabled=false
         //Coordenadas de las diferentes ubicaciones
         val parada1 = LatLng(43.330306, -3.029750)
@@ -83,6 +85,7 @@ class MapsFragment : Fragment() {
                 println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
             }
         }
+
         googleMap.setOnMarkerClickListener { marker ->
             //Genera un mensaje "Prueba: "+mX .Donde X es la posición del array
             println("Prueba: "+marker.id)
@@ -90,6 +93,8 @@ class MapsFragment : Fragment() {
             Activityppal!!.onPasarDato(marker.id)
             true
         }
+
+        googleMapp = googleMap
     }
 
     override fun onCreateView(
@@ -97,8 +102,22 @@ class MapsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentMapsBinding.inflate(layoutInflater)
+
+        binding.UbicacionButton.setOnClickListener(){
+
+            fusedLocation.lastLocation.addOnSuccessListener {
+                if (it != null) {
+                    val ubicacion = LatLng(it.latitude, it.longitude)
+                    googleMapp.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+                    println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
+                }
+            }
+
+        }
+
         fusedLocation = LocationServices.getFusedLocationProviderClient(requireActivity())
-        return inflater.inflate(R.layout.fragment_maps, container, false)
+        return binding.root
     }
 
 

@@ -1,11 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AGO" parent="Theme.MaterialComponents.Light.NoActionBar">
-        
+    <style name="Theme.AGO" parent="Theme.MaterialComponents.NoActionBar">
+
         <item name="colorPrimary">@color/Primary</item>
         <item name="colorPrimaryVariant">@color/Secondary</item>
-        <item name="colorSecondary">#FFFFFF</item>
-        <item name="colorOnSecondary">#000000</item>
+        <item name="colorSecondary">#121212</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
 
         <item name="android:windowTranslucentStatus">true</item>
     </style>

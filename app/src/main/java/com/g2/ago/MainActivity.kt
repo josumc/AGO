@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawerLayout = findViewById(R.id.drawerlayout)
         navigationView = findViewById(R.id.nav_view)
-        button = findViewById(R.id.menuButton)
+        button = findViewById(R.id.MenuButton)
 
         button.setOnClickListener(){
             drawerLayout.openDrawer(GravityCompat.START);
