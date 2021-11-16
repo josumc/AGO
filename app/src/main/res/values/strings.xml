@@ -22,8 +22,5 @@
     <!--Login profesor-->
     <string name="Bootonlog">Sartu</string>
     <string name="explicacionprofesor">" Irakaslearen funtzionalitate berezietara sartzeko, sartu maesta pasahitza jarraian. "</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- TODO: Remove or change this placeholder text -->
 
 </resources>

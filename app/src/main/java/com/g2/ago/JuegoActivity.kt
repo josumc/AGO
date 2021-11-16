@@ -47,20 +47,34 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         fragmentBot = InfoRutaFragment()
         supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragmentBot).commit()
 
+        replaceExplFragment(InfoRutaFragment())
+
         navigationView.setNavigationItemSelectedListener(this)
     }
 
     override fun onPasarDato(dato: String) {
         when(dato){
-            "m0" -> replaceMapFragment(PuzzleFragment())
-            "m1" -> replaceMapFragment(MemoryFragment())
-            "m2" -> replaceMapFragment(ParrafoFragment())
-            "m3" -> replaceMapFragment(PreguntasFragment())
-            "m4" -> replaceMapFragment(TestFragment())
+            "m0" -> {
+                replaceExplFragment(ExplicacionFragment())
+                replaceMapFragment(PuzzleFragment())
+
+            }
+            "m1" -> {
+                replaceMapFragment(MemoryFragment())
+                replaceExplFragment(ExplicacionFragment())
+            }
+            "m2" -> {
+                replaceMapFragment(ParrafoFragment())
+            }
+            "m3" -> {
+                replaceMapFragment(PreguntasFragment())
+            }
+            "m4" -> {
+                replaceMapFragment(TestFragment())
+            }
             "m5" -> replaceMapFragment(VFFragment())
             "m6" -> replaceMapFragment(SLFragemt())
         }
-        replaceExplFragment(InfoRutaFragment())
     }
 
     override fun replaceFragment(fragment: Fragment) {
@@ -68,13 +82,11 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     }
 
     private fun replaceMapFragment(fragment: Fragment) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.FragmentMapaJuego, fragment).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.FragmentMapaJuego, fragment).commit()
     }
 
     private fun replaceExplFragment(fragment: Fragment) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.FragmentExplicacionJuego, fragment).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragment).commit()
     }
 
     override fun onBackPressed() {
@@ -86,7 +98,6 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-
         when(item.itemId){
             R.id.nav_inicio -> {
                 startActivity(Intent(this, MainActivity::class.java))
