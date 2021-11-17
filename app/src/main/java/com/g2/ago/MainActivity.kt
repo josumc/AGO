@@ -64,7 +64,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         when(item.itemId){
             R.id.nav_inicio -> {
-
+                fragment = RankingFragment()
+                replaceFragment(fragment)
             }
             R.id.nav_mapa -> {
                 startActivity(Intent(this, JuegoActivity::class.java))
