@@ -1,8 +1,11 @@
 package com.g2.ago
 
 import android.content.Intent
+import android.content.SharedPreferences
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -16,11 +19,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
+    lateinit var menu: Menu
     lateinit var button: FloatingActionButton
     lateinit var fragment: Fragment
     lateinit var binding: ActivityMainBinding
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout = findViewById(R.id.drawerlayout)
         navigationView = findViewById(R.id.nav_view)
         button = findViewById(R.id.MenuButton)
+        menu = navigationView.menu
 
         button.setOnClickListener(){
             drawerLayout.openDrawer(GravityCompat.START);
@@ -44,12 +47,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (Sharedapp.tipousu.tipo.equals("profesor")){
             fragment = ModoJuegoFragment()
             replaceFragment(fragment)
-        }else if (Sharedapp.tipousu.tipo.equals("alumno")) {
+        }else{
             fragment = RankingFragment()
             replaceFragment(fragment)
         }
 
         navigationView.setNavigationItemSelectedListener(this)
+
+        menu.findItem(R.id.nav_alumno).isVisible = false
     }
 
     override fun onBackPressed() {
@@ -69,6 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_mapa -> {
                 startActivity(Intent(this, JuegoActivity::class.java))
+                finish()
             }
             R.id.nav_ranking -> {
                 if (Sharedapp.tipousu.tipo.equals("profesor")){
@@ -111,7 +117,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    override fun replaceFragment(fragment: Fragment){
+    fun replaceFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
     }
 

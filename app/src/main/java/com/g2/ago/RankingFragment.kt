@@ -58,8 +58,13 @@ class RankingFragment : Fragment() {
     private fun configureView(){
        // titleNick.text = "1"
        // titlePunto.text = "1"
-        partidas.add(Partidas("a","2"))
-        partidas.add(Partidas("b","2"))
+        partidas.add(Partidas("Mikel","3/8"))
+        partidas.add(Partidas("Gonzalo","4/8"))
+        partidas.add(Partidas("Aitor","1/8"))
+        partidas.add(Partidas("Josu","6/8"))
+        partidas.add(Partidas("Iker","5/8"))
+        partidas.add(Partidas("Jaime","8/8"))
+
         setUpRecyclerView(partidas)
     }
     private fun setUpRecyclerView(partyhard : ArrayList<Partidas>){
