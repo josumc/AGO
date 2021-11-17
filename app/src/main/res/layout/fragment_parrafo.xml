@@ -1,16 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ParrafoFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
+        android:id="@+id/txtParrafo"
+        android:layout_width="306dp"
+        android:layout_height="87dp"
+        android:text="En este espacio meteremos el ...... Habra que rellenarlos con las....... en los huecos en ........"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.119" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="276dp"
+        android:layout_height="144dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbtnOP1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parrafo, palabra, gris" />
+
+        <RadioButton
+            android:id="@+id/rbtnOP2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parrafo, letras, blanco" />
+
+        <RadioButton
+            android:id="@+id/rbtnOP3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parrafo, palabra, blanco" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnComprobarParrafo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="100dp"
-        android:text="Este el juego de completar un párrafo" />
+        android:text="Check"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.721" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

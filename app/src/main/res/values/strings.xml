@@ -28,6 +28,8 @@
     <!--Verdader y falso-->
     <string name="Verdadero">Egia</string>
     <string name="Falso">Gezurra</string>
+    <!--Validar-->
+    <string name="Validar">Egiaztatu</string>
 
 
 </resources>
