@@ -44,7 +44,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         navigationView.bringToFront()
 
-        if (Sharedapp.tipousu.tipo.equals("profesor")){
+        var fr = intent.extras
+
+        if (fr != null) {
+            when(fr.get("fragment")){
+                "LogFragment()" -> replaceFragment(LogFragment())
+                "QSFragment()" -> replaceFragment(QSFragment())
+                "RankingFragment()" -> replaceFragment(RankingFragment())
+            }
+        }else if (Sharedapp.tipousu.tipo.equals("profesor")){
             fragment = ModoJuegoFragment()
             replaceFragment(fragment)
         }else{

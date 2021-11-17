@@ -1,5 +1,6 @@
 package com.g2.ago
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -98,9 +99,11 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
+        var intent = Intent(this, MainActivity::class.java)
+
         when(item.itemId){
             R.id.nav_inicio -> {
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(intent)
                 finish()
             }
             R.id.nav_mapa -> {
@@ -108,22 +111,19 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
             }
             R.id.nav_ranking -> {
                 if (Sharedapp.tipousu.tipo.equals("profesor")){
-                    fragment = RankingFragment()
-                    startActivity(Intent(this, MainActivity::class.java))
-                    MainActivity().replaceFragment(fragment)
+                    intent.putExtra("fragment", "RankingFragment()")
+                    startActivity(intent)
                     finish()
 
                 }else if (Sharedapp.tipousu.tipo.equals("alumno")){
-                    fragment = LogFragment()
-                    startActivity(Intent(this, MainActivity::class.java))
-                    MainActivity().replaceFragment(fragment)
+                    intent.putExtra("fragment", "LogFragment()")
+                    startActivity(intent)
                     finish()
                 }
             }
             R.id.nav_quienes -> {
-                fragment = QSFragment()
-                startActivity(Intent(this, MainActivity::class.java))
-                MainActivity().replaceFragment(fragment)
+                intent.putExtra("fragment", "QSFragment()")
+                startActivity(intent)
                 finish()
             }
             R.id.nav_alumno -> {
@@ -131,15 +131,14 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
                 Sharedapp.tipousu.tipo = "alumno"
             }
             R.id.nav_profe -> {
-                fragment = LogFragment()
-                startActivity(Intent(this, MainActivity::class.java))
-                MainActivity().replaceFragment(fragment)
+                intent.putExtra("fragment", "LogFragment()")
+                startActivity(intent)
                 finish()
             }
             R.id.nav_cerrar_sesion -> {
                 Sharedapp.users.user = ""
                 Sharedapp.tipousu.tipo = "alumno"
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(intent)
                 finish()
             }
             R.id.nav_salir -> {
@@ -151,5 +150,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     }
 
 }
+
+
 
 
