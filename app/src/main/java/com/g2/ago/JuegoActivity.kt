@@ -42,7 +42,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         menu = navigationView.menu
 
         button.setOnClickListener(){
-            drawerLayout.openDrawer(GravityCompat.START);
+            drawerLayout.openDrawer(GravityCompat.START)
         }
 
         navigationView.bringToFront()

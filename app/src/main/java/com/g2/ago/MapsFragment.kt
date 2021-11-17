@@ -3,6 +3,7 @@ package com.g2.ago
 import android.Manifest
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.location.Location
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,10 +13,7 @@ import androidx.core.app.ActivityCompat
 import com.g2.ago.databinding.FragmentMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
@@ -25,6 +23,7 @@ class MapsFragment : Fragment() {
     lateinit var binding: FragmentMapsBinding
     var Activityppal: Comunicador?=null
     lateinit var googleMapp: GoogleMap
+    lateinit var camara:LatLng
     private val callback = OnMapReadyCallback { googleMap ->
         /**
          * Manipulates the map once available.
@@ -92,7 +91,10 @@ class MapsFragment : Fragment() {
             Activityppal!!.onPasarDato(marker.id)
             true
         }
-
+        googleMap.setOnMyLocationChangeListener {
+            camara= LatLng(it.latitude, it.longitude)
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(camara, 15f))
+        }
         googleMapp = googleMap
     }
 
@@ -102,7 +104,6 @@ class MapsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMapsBinding.inflate(layoutInflater)
-
         binding.UbicacionButton.setOnClickListener {
 
             fusedLocation.lastLocation.addOnSuccessListener {
