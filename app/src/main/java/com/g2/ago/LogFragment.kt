@@ -21,10 +21,11 @@ class LogFragment : Fragment() {
 
         binding.btnLog.setOnClickListener() {
             if (txtpsw.text.toString().equals("123456Aa")) {
-                var fragment: Fragment = ModoJuegoFragment()
-                val comunicador: Comunicador? = activity as Comunicador?
-                if (comunicador != null) {
-                    comunicador.replaceFragment(fragment)
+                Sharedapp.tipousu.tipo = "profesor"
+                val fragment: Fragment = ModoJuegoFragment()
+                val m: MainActivity? = activity as MainActivity?
+                if (m != null) {
+                    m.replaceFragment(fragment)
                 }
             }
         }
