@@ -13,9 +13,7 @@ import com.g2.ago.databinding.FragmentMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.*
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MapStyleOptions
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 
 class MapsFragment : Fragment() {
     private lateinit var fusedLocation: FusedLocationProviderClient
@@ -23,6 +21,7 @@ class MapsFragment : Fragment() {
     var Activityppal: Comunicador?=null
     lateinit var googleMap: GoogleMap
     lateinit var camara:LatLng
+    var marcadores:ArrayList<Marker> = arrayListOf()
     private val callback = OnMapReadyCallback { GoogleMap ->
         googleMap=GoogleMap
         /**
@@ -55,8 +54,13 @@ class MapsFragment : Fragment() {
 
         //Generar marcadores y ubicar la cámara
         arrayParadas.forEach {
-            googleMap.addMarker(MarkerOptions().position(it).title("Marker in $it"))
+            val marcador= googleMap.addMarker(MarkerOptions().position(it).title("Marker in $it"))
+//            googleMap.addMarker(MarkerOptions().position(it).title("Marker in $it"))
+            if (marcador != null) {
+                marcadores.add(marcador)
+            }
         }
+        cambiarMarcador()
         when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
             Configuration.UI_MODE_NIGHT_NO -> {
                 googleMap.setMapStyle(
@@ -122,5 +126,8 @@ class MapsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+    }
+    fun cambiarMarcador(){
+        marcadores[2].setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
     }
 }
