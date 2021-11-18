@@ -22,9 +22,11 @@ class MapsFragment : Fragment() {
     private lateinit var fusedLocation: FusedLocationProviderClient
     lateinit var binding: FragmentMapsBinding
     var Activityppal: Comunicador?=null
-    lateinit var googleMapp: GoogleMap
+    lateinit var googleMap: GoogleMap
     lateinit var camara:LatLng
-    private val callback = OnMapReadyCallback { googleMap ->
+    private val callback = OnMapReadyCallback {
+            GoogleMap ->
+        googleMap=GoogleMap
         /**
          * Manipulates the map once available.
          * This callback is triggered when the map is ready to be used.
@@ -95,7 +97,7 @@ class MapsFragment : Fragment() {
             camara= LatLng(it.latitude, it.longitude)
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(camara, 15f))
         }
-        googleMapp = googleMap
+//        googleMapp = googleMap
     }
 
     override fun onCreateView(
@@ -109,7 +111,7 @@ class MapsFragment : Fragment() {
             fusedLocation.lastLocation.addOnSuccessListener {
                 if (it != null) {
                     val ubicacion = LatLng(it.latitude, it.longitude)
-                    googleMapp.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
                     println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
                 }
             }
@@ -124,5 +126,7 @@ class MapsFragment : Fragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
     }
-    
+    fun cambiarMarcador(){
+        googleMap
+    }
 }
