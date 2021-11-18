@@ -80,15 +80,24 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
             }
             "m2" -> {
                 replaceMapFragment(ParrafoFragment())
+                replaceExplFragment(ExplicacionFragment())
             }
             "m3" -> {
                 replaceMapFragment(PreguntasFragment())
+                replaceExplFragment(ExplicacionFragment())
             }
             "m4" -> {
                 replaceMapFragment(TestFragment())
+                replaceExplFragment(ExplicacionFragment())
             }
-            "m5" -> replaceMapFragment(VFFragment())
-            "m6" -> replaceMapFragment(SLFragemt())
+            "m5" ->{
+                replaceExplFragment(ExplicacionFragment())
+                replaceMapFragment(VFFragment())
+            }
+            "m6" -> {
+            replaceExplFragment(ExplicacionFragment())
+            replaceMapFragment(SLFragemt())
+            }
         }
     }
 
