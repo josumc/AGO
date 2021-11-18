@@ -44,12 +44,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         navigationView.bringToFront()
 
-        if (Sharedapp.tipousu.tipo.equals("profesor")){
+        var fr = intent.extras
+
+        if (fr != null) {
+            when(fr.get("fragment")){
+                "LogFragment()" -> replaceFragment(LogFragment())
+                "QSFragment()" -> replaceFragment(QSFragment())
+                "RankingFragment()" -> replaceFragment(RankingFragment())
+            }
+        }else if (Sharedapp.tipousu.tipo.equals("profesor")){
             fragment = ModoJuegoFragment()
             replaceFragment(fragment)
+            menu.findItem(R.id.nav_profe).isVisible = false
+            menu.findItem(R.id.nav_cerrar_sesion).isVisible = true
         }else{
             fragment = RankingFragment()
             replaceFragment(fragment)
+            menu.findItem(R.id.nav_profe).isVisible = true
+            menu.findItem(R.id.nav_cerrar_sesion).isVisible = false
         }
 
         navigationView.setNavigationItemSelectedListener(this)
@@ -69,8 +81,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         when(item.itemId){
             R.id.nav_inicio -> {
-                fragment = RankingFragment()
-                replaceFragment(fragment)
+                if (Sharedapp.tipousu.tipo.equals("profesor")){
+                    fragment = ModoJuegoFragment()
+                    replaceFragment(fragment)
+                }else if (Sharedapp.tipousu.tipo.equals("alumno")){
+                    fragment = RankingFragment()
+                    replaceFragment(fragment)
+                }
             }
             R.id.nav_mapa -> {
                 startActivity(Intent(this, JuegoActivity::class.java))
