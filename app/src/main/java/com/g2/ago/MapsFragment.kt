@@ -16,6 +16,7 @@ import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
 
 class MapsFragment : Fragment() {
+    //Durante este fragment van a aparecer tres lineas marcadas como error pero que funcionan bien  (es un error de AS)
     private lateinit var fusedLocation: FusedLocationProviderClient
     lateinit var binding: FragmentMapsBinding
     var Activityppal: Comunicador?=null
@@ -32,11 +33,18 @@ class MapsFragment : Fragment() {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
+        //Solicitud de permisos
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
             != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1)
             return@OnMapReadyCallback
         }
+        /*
+        *
+        Error 1
+        *
+         */
+        //codigo para introducir os puntos/marcadores
         googleMap.isMyLocationEnabled=true
         googleMap.uiSettings.isMyLocationButtonEnabled = false
         //googleMap.uiSettings.isZoomControlsEnabled=true
@@ -87,7 +95,7 @@ class MapsFragment : Fragment() {
                 println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
             }
         }
-
+//se activa el boton de juego al eleccionaer un punto
         googleMap.setOnMarkerClickListener { marker ->
             //Genera un mensaje "Prueba: "+mX .Donde X es la posición del array
             println("Prueba: "+marker.id)

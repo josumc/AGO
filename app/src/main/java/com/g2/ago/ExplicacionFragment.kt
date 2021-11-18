@@ -29,6 +29,7 @@ class ExplicacionFragment : Fragment() {
         binding.textView.typeWrite(this, explicacion, 33L)
         return binding.root
     }
+    //Esta funcion se utiliza para cargar las letas del texto a utilizar de una en una
     fun TextView.typeWrite(lifecycleOwner: LifecycleOwner, text: String, intervalMs: Long) {
         this@typeWrite.text = ""
         lifecycleOwner.lifecycleScope.launch {

@@ -5,15 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_ranking.*
-import kotlinx.android.synthetic.main.tabla_ranking.*
 import java.io.Serializable
 
 class RankingFragment : Fragment() {
+    //Con el siguiente codigo generamos el ranking
     lateinit var adapter: PartidasAdapter
     private var title: String= ""
     private  var partidas=ArrayList<Partidas>()
+    private lateinit var db:Base_de_Datos
 
     companion object{
         private val TITLE = "TITLE"
@@ -48,24 +50,27 @@ class RankingFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_ranking, container, false)
 
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        db = Base_de_Datos(requireContext(), "bd", null, 1)
         configureView()
+
     }
 
     private fun configureView(){
        // titleNick.text = "1"
        // titlePunto.text = "1"
-        partidas.add(Partidas("Mikel","3/8"))
-        partidas.add(Partidas("Gonzalo","4/8"))
-        partidas.add(Partidas("Aitor","1/8"))
-        partidas.add(Partidas("Josu","6/8"))
-        partidas.add(Partidas("Iker","5/8"))
-        partidas.add(Partidas("Jaime","8/8"))
+//        partidas.add(Partidas("Mikel","3/8"))
+//        partidas.add(Partidas("Gonzalo","4/8"))
+//        partidas.add(Partidas("Aitor","1/8"))
+//        partidas.add(Partidas("Josu","6/8"))
+//        partidas.add(Partidas("Iker","5/8"))
+//        partidas.add(Partidas("Jaime","8/8"))
 
-        setUpRecyclerView(partidas)
+        setUpRecyclerView(db.Cargar())
     }
     private fun setUpRecyclerView(partyhard : ArrayList<Partidas>){
         adapter= PartidasAdapter(partyhard)
@@ -73,4 +78,9 @@ class RankingFragment : Fragment() {
         rankingLyout.layoutManager = LinearLayoutManager(activity)
         rankingLyout.adapter=adapter
     }
+
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        db.close()
+//    }
 }
