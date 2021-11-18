@@ -55,6 +55,17 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragmentBot).commit()
 
         navigationView.setNavigationItemSelectedListener(this)
+
+        menu.findItem(R.id.nav_alumno).isVisible = false
+
+        if (Sharedapp.tipousu.tipo.equals("profesor")){
+            menu.findItem(R.id.nav_profe).isVisible = false
+            menu.findItem(R.id.nav_cerrar_sesion).isVisible = true
+
+        }else{
+            menu.findItem(R.id.nav_profe).isVisible = true
+            menu.findItem(R.id.nav_cerrar_sesion).isVisible = false
+        }
     }
 
     override fun onPasarDato(dato: String) {
