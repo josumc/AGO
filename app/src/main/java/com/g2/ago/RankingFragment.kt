@@ -73,7 +73,7 @@ class RankingFragment : Fragment() {
         setUpRecyclerView(db.Cargar())
     }
     private fun setUpRecyclerView(partyhard : ArrayList<Partidas>){
-        adapter= PartidasAdapter(partyhard)
+        adapter= PartidasAdapter(partyhard, context = requireContext())
         rankingLyout.setHasFixedSize(true)
         rankingLyout.layoutManager = LinearLayoutManager(activity)
         rankingLyout.adapter=adapter
