@@ -21,7 +21,7 @@ class MapsFragment : Fragment() {
     lateinit var binding: FragmentMapsBinding
     var Activityppal: Comunicador?=null
     lateinit var googleMap: GoogleMap
-    lateinit var camara:LatLng
+    lateinit var ubicacion:LatLng
     var marcadores:ArrayList<Marker> = arrayListOf()
     private val callback = OnMapReadyCallback { GoogleMap ->
         googleMap=GoogleMap
@@ -39,16 +39,18 @@ class MapsFragment : Fragment() {
             ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1)
             return@OnMapReadyCallback
         }
+        //Configuración del mapa
         /*
         *
         Error 1
         *
          */
-        //codigo para introducir os puntos/marcadores
         googleMap.isMyLocationEnabled=true
         googleMap.uiSettings.isMyLocationButtonEnabled = false
         //googleMap.uiSettings.isZoomControlsEnabled=true
         googleMap.uiSettings.isCompassEnabled=false
+
+        //Código para introducir os puntos/marcadores
         //Coordenadas de las diferentes ubicaciones
         val parada1 = LatLng(43.330306, -3.029750)
         val parada2 = LatLng(43.330611, -3.030861)
@@ -68,7 +70,7 @@ class MapsFragment : Fragment() {
                 marcadores.add(marcador)
             }
         }
-        cambiarMarcador()
+        cambiarMarcador(3)
         when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
             Configuration.UI_MODE_NIGHT_NO -> {
                 googleMap.setMapStyle(
@@ -88,24 +90,29 @@ class MapsFragment : Fragment() {
             } // Night mode is active, we're using dark theme
         }
 
+        /*
+        *
+        Error 2
+        *
+         */
         fusedLocation.lastLocation.addOnSuccessListener {
             if (it != null) {
-                val ubicacion = LatLng(it.latitude, it.longitude)
+                ubicacion = LatLng(it.latitude, it.longitude)
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
                 println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
             }
         }
-//se activa el boton de juego al eleccionaer un punto
+        //Se activa el botón de juego al seleccionar un punto
         googleMap.setOnMarkerClickListener { marker ->
-            //Genera un mensaje "Prueba: "+mX .Donde X es la posición del array
+            //Genera un mensaje "Prueba: "+mX .Donde X es la id del marcador
             println("Prueba: "+marker.id)
             Activityppal=requireContext() as Comunicador
             Activityppal!!.onPasarDato(marker.id)
             true
         }
         googleMap.setOnMyLocationChangeListener {
-            camara= LatLng(it.latitude, it.longitude)
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(camara, 15f))
+            ubicacion= LatLng(it.latitude, it.longitude)
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
         }
     }
 
@@ -117,9 +124,14 @@ class MapsFragment : Fragment() {
         binding = FragmentMapsBinding.inflate(layoutInflater)
         binding.UbicacionButton.setOnClickListener {
 
+            /*
+            *
+            Error 3
+            *
+            */
             fusedLocation.lastLocation.addOnSuccessListener {
                 if (it != null) {
-                    val ubicacion = LatLng(it.latitude, it.longitude)
+                    ubicacion = LatLng(it.latitude, it.longitude)
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
                     println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
                 }
@@ -135,7 +147,7 @@ class MapsFragment : Fragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
     }
-    fun cambiarMarcador(){
-        marcadores[2].setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+    fun cambiarMarcador(posicion:Int){
+        marcadores[posicion].setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
     }
 }
