@@ -7,7 +7,6 @@
 
     <!--Opciones del menú-->
     <string name="Home">Inicio</string>
-    <string name="Ranking">Clasificación</string>
     <string name="Cuenta">Cuenta</string>
     <string name="QuienSomos">¿Quiénes somos?</string>
     <string name="CerrarSesion">Cerrar sesión</string>
@@ -29,5 +28,8 @@
     <string name="Verdadero">Verdadero</string>
     <string name="Falso">Falso</string>
     <string name="Validar">Validar</string>
+    <string name="Partidas">Partidas</string>
+    <string name="Ranking">Ranking</string>
+    <string name="Partida_nueva">Partida nueva</string>
 
 </resources>

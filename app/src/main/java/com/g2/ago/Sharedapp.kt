@@ -6,6 +6,8 @@ class Sharedapp : Application() {
     companion object{
         lateinit var users: User
         lateinit var tipousu: TipoUsu
+        lateinit var puntopartida: PuntoPartida
+        lateinit var puntojuego: PuntoJuego
     }
 
     override fun onCreate() {
@@ -13,5 +15,7 @@ class Sharedapp : Application() {
 
         users = User(applicationContext)
         tipousu = TipoUsu(applicationContext)
+        puntopartida = PuntoPartida(applicationContext)
+        puntojuego = PuntoJuego(applicationContext)
     }
 }

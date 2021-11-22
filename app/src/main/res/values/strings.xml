@@ -9,7 +9,8 @@
     <string name="CerrarSesion">Itxi saioa</string>
     <string name="Salir">Irten</string>
     <string name="Cuenta">Saioa</string>
-    <string name="Ranking">Sailkapena</string>
+    <string name="Partidas">Partidak</string>
+    <string name="Partida_nueva">Partida berria</string>
     <string name="QuienSomos">Nor gara?</string>
     <string name="Profe">Irakasle</string>
     <string name="Alumno">Ikasle</string>
@@ -31,6 +32,7 @@
     <string name="Falso">Gezurra</string>
     <!--Validar-->
     <string name="Validar">Egiaztatu</string>
+    <string name="Ranking">Sailkapena</string>
 
 
 </resources>
