@@ -10,7 +10,6 @@ data class Partida(var Nickname: String, var PuntoJuego: String)
 class Base_de_Datos(context: Context, name: String, factory: SQLiteDatabase.CursorFactory?, version:Int): SQLiteOpenHelper(context,name,factory, version){
     override fun onCreate(db: SQLiteDatabase?) {
         db!!.execSQL("create table Partida(player text primary key, play_point text)")
-        insertar("josu", "8", db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -18,8 +17,8 @@ class Base_de_Datos(context: Context, name: String, factory: SQLiteDatabase.Curs
         onCreate(db)
     }
     //Funcion para insertar nuevos jugadores
-    fun insertar (jugador: String, punto_partida:String, db: SQLiteDatabase?){
-        //val db=this.writableDatabase
+    fun insertar (jugador: String, punto_partida:String){
+        val db=this.writableDatabase
         val registrar=ContentValues()
         registrar.put("player", jugador)
         registrar.put("play_point", punto_partida)
@@ -37,15 +36,11 @@ class Base_de_Datos(context: Context, name: String, factory: SQLiteDatabase.Curs
         return fila
     }
     //Funcion para cargar los jugadores
-    fun Cargar_jugadores (jugadores:String):MutableList<String>{
+    fun Cargar_jugadores (jugadores:String):Boolean{
         val fila:MutableList<String> = ArrayList()
         val db = this.readableDatabase
-        val cursor:Cursor = db.rawQuery("select player from Partida", arrayOf(jugadores))
-        while (cursor.moveToNext()){
-            val todo = cursor.getString(0)
-            fila.add(todo)
-        }
-        return fila
+        val cursor:Cursor = db.rawQuery("select * from Partida where player=?", arrayOf(jugadores))
+        return cursor.count == 0
     }
     //Funcion para cargar los puntos de cada jugador
     fun Cargar_puntos (puntos:String):MutableList<String>{

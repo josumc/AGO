@@ -110,10 +110,10 @@ class MapsFragment : Fragment() {
             Activityppal!!.onPasarDato(marker.id)
             true
         }
-        googleMap.setOnMyLocationChangeListener {
-            ubicacion= LatLng(it.latitude, it.longitude)
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
-        }
+//        googleMap.setOnMyLocationChangeListener {
+//            ubicacion= LatLng(it.latitude, it.longitude)
+//            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+//        }
     }
 
     override fun onCreateView(

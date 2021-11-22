@@ -1,13 +1,17 @@
 package com.g2.ago
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_ranking.*
+import kotlinx.android.synthetic.main.tabla_ranking.view.*
 import java.io.Serializable
 
 class RankingFragment : Fragment() {
@@ -39,6 +43,8 @@ class RankingFragment : Fragment() {
             title = arguments?.getString(TITLE).toString()
             partidas = arguments?.getSerializable(PLAYS) as ArrayList<Partidas>
         }
+
+
     }
 
 
@@ -57,19 +63,21 @@ class RankingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         db = Base_de_Datos(requireContext(), "bd", null, 1)
         configureView()
-
+        //Al pulsar el boton se comprueba que el campo de texto no esta vacio y que no esta repetido y si se dan ambas condiciones nos deja crear la partida
+        btnApodo.setOnClickListener{
+            if (txtApodo.text.toString().trim().equals("")){
+                Toast.makeText(requireContext(), "Introduce un apodo por favor", Toast.LENGTH_SHORT).show()
+            }else if (!db.Cargar_jugadores(txtApodo.text.toString().toLowerCase())){
+                Toast.makeText(requireContext(), "Esta partida ya existe", Toast.LENGTH_SHORT).show()
+            }else {
+                Sharedapp.users.user = txtApodo.text.toString()
+                ContextCompat.startActivity(requireContext(), Intent(requireContext(), JuegoActivity::class.java), null)
+                db.insertar(txtApodo.text.toString(), "0")
+            }
+        }
     }
 
     private fun configureView(){
-       // titleNick.text = "1"
-       // titlePunto.text = "1"
-//        partidas.add(Partidas("Mikel","3/8"))
-//        partidas.add(Partidas("Gonzalo","4/8"))
-//        partidas.add(Partidas("Aitor","1/8"))
-//        partidas.add(Partidas("Josu","6/8"))
-//        partidas.add(Partidas("Iker","5/8"))
-//        partidas.add(Partidas("Jaime","8/8"))
-
         setUpRecyclerView(db.Cargar())
     }
     private fun setUpRecyclerView(partyhard : ArrayList<Partidas>){
@@ -79,8 +87,8 @@ class RankingFragment : Fragment() {
         rankingLyout.adapter=adapter
     }
 
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        db.close()
-//    }
+    override fun onDestroy() {
+        super.onDestroy()
+        db.close()
+    }
 }
