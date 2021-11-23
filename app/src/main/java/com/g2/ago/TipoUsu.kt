@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 
 class TipoUsu (context: Context) {
         val PREFS_NAME = "com.g2.ago.sharedpreferences"
-        val SHARED_NAME = "shared_name"
+        val SHARED_NAME = "Tipo"
         val name: SharedPreferences = context.getSharedPreferences(PREFS_NAME, 0)
         var tipo: String
             //comprobamos el archivo de shared preferences

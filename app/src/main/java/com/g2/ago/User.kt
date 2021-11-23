@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat.startActivity
 
 class User (context: Context) {
     val PREFS_NAME = "com.g2.ago.sharedpreferences.User"
-    val SHARED_NAME = "shared_name"
+    val SHARED_NAME = "User"
     val User: SharedPreferences = context.getSharedPreferences(PREFS_NAME, 0)
         var user: String
             //comprobamos el archivo de shared preferences
