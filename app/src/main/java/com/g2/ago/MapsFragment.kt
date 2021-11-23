@@ -148,6 +148,16 @@ class MapsFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
     }
     fun cambiarMarcador(posicion:Int){
-        marcadores[posicion].setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+        marcadores.forEach {
+            if (marcadores.indexOf(it)<(posicion-1)){
+                it.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+            }else if (marcadores.indexOf(it)==(posicion-1)){
+                it.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+            }
+            else if (marcadores.indexOf(it)>(posicion-1)){
+                it.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+            }
+        }
+
     }
 }
