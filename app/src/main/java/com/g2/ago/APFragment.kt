@@ -21,7 +21,7 @@ class APFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         btnValidar.setOnClickListener{
-            if(txtEmakume.text.toString().equals(respuesta)){
+            if(txtEmakume.text.toString().toLowerCase().equals(respuesta)){
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
                 Toast.makeText(requireContext(), "Bien echo", Toast.LENGTH_SHORT).show()
                 mp!!.start()
