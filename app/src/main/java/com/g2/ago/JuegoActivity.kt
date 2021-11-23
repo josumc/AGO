@@ -96,7 +96,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
             }
             "m6" -> {
             replaceExplFragment(ExplicacionFragment())
-            replaceMapFragment(SLFragemt())
+
             }
         }
     }

@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 
 class PuntoPartida (context: Context) {
     val PREFS_NAME = "com.g2.ago.sharedpreferences.PuntoPartida"
-    val SHARED_NAME = "shared_name"
+    val SHARED_NAME = "Partida"
     val PuntoPartida: SharedPreferences = context.getSharedPreferences(PREFS_NAME, 0)
     var Partida: String
         //comprobamos el archivo de shared preferences

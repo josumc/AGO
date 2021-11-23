@@ -11,54 +11,77 @@
 
     <TextView
         android:id="@+id/txtParrafo"
-        android:layout_width="306dp"
-        android:layout_height="87dp"
-        android:text="En este espacio meteremos el ...... Habra que rellenarlos con las....... en los huecos en ........"
+        android:layout_width="299dp"
+        android:layout_height="77dp"
+        android:text="Desde _______ (Santurce) a Bilbao Vengo por toda la orilla, Con mi _____ (salla) remangada Luciendo la pantorrilla, "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119" />
+        app:layout_constraintVertical_bias="0.061" />
+
+    <TextView
+        android:id="@+id/txtParrafo2"
+        android:layout_width="299dp"
+        android:layout_height="77dp"
+        android:text="Vengo deprisa y _______ (corriendo) Porque me oprime el corsé Voy _______ (gritando) por las calles ¡Quién compra! "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.178" />
+
+    <TextView
+        android:id="@+id/txtParrafo3"
+        android:layout_width="299dp"
+        android:layout_height="77dp"
+        android:text="Sardinas frescué Mis _______ (sardinitas) Que ricas son Son de ________ (Santurce) Las traigo ____ (yo) "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.354" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="276dp"
-        android:layout_height="144dp"
+        android:layout_width="357dp"
+        android:layout_height="139dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.64">
 
         <RadioButton
             android:id="@+id/rbtnOP1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Parrafo, palabra, gris" />
+            android:text="Santurce, falda, corriendo, cantando, sardinitas, Santurce, yo" />
 
         <RadioButton
             android:id="@+id/rbtnOP2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Parrafo, letras, blanco" />
+            android:text="Santurce, salla, corriendo, gritando, sardinitas, Santurce, yo" />
 
         <RadioButton
             android:id="@+id/rbtnOP3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Parrafo, palabra, blanco" />
+            android:text="Santurtzi, falda, corriendo, gritando, sardinitas, Santurtzi, yo" />
     </RadioGroup>
 
     <Button
         android:id="@+id/btnComprobarParrafo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check"
+        android:text="@string/Validar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.721" />
+        app:layout_constraintVertical_bias="0.814" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
