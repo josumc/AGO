@@ -15,17 +15,14 @@ import kotlinx.coroutines.launch
 
 class ExplicacionFragment : Fragment() {
     lateinit var binding: FragmentExplicacionBinding
-    val explicacion:String="Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
-            " Vestibulum in volutpat mauris. Pellentesque nec metus vel velit imperdiet rhoncus id non dui." +
-            " Praesent nisi leo, dignissim eget ante a, pharetra pellentesque leo. " +
-            "Phasellus neque nisi, eleifend ac ligula et, mollis gravida nunc. "
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding= FragmentExplicacionBinding.inflate(layoutInflater)
+        val explicacion=explicaciones()
         binding.textView.typeWrite(this, explicacion, 33L)
         return binding.root
     }
@@ -38,6 +35,53 @@ class ExplicacionFragment : Fragment() {
                 this@typeWrite.text = text.take(it + 1)
             }
         }
+    }
+    fun explicaciones(): String {
+        var testua=""
+        when(Sharedapp.puntopartida.PuntoPartida.toString()){
+            "1"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                   
+                }
+            }
+            "2"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+
+                }
+            }
+            "3"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+
+                }
+            }
+            "4"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+
+                }
+            }
+            "5"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+
+                }
+            }
+            "6"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+
+                }
+            }
+            "7"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+
+                }
+            }
+            "8"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+
+                }
+            }
+            
+        }
+        return testua
     }
 
 }
