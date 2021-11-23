@@ -79,8 +79,8 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
                 replaceExplFragment(ExplicacionFragment())
             }
             "m2" -> {
-                replaceMapFragment(ParrafoFragment())
                 replaceExplFragment(ExplicacionFragment())
+                replaceMapFragment(SLFragemt())
             }
             "m3" -> {
                 replaceMapFragment(PreguntasFragment())
@@ -95,8 +95,8 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
                 replaceMapFragment(VFFragment())
             }
             "m6" -> {
-            replaceExplFragment(ExplicacionFragment())
-
+                replaceExplFragment(ExplicacionFragment())
+                replaceMapFragment(ParrafoFragment())
             }
         }
     }
