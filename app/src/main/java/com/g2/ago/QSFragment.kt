@@ -33,7 +33,6 @@ class QSFragment : Fragment() {
 
         //llamar
         binding.imgllamada.setOnClickListener{
-            print("nononoonono")
             val nTel = Uri.parse("tel:"+binding.txtllamada.text.toString())
             val phone = Intent(Intent.ACTION_DIAL, nTel)
             startActivity(phone)

@@ -110,6 +110,8 @@ class MapsFragment : Fragment() {
             Activityppal!!.onPasarDato(marker.id)
             true
         }
+        /*Autofocus de la cámara al cambiar la ubicación
+        (ahora está comentado por una cuestión de funcionalidad)*/
 //        googleMap.setOnMyLocationChangeListener {
 //            ubicacion= LatLng(it.latitude, it.longitude)
 //            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
