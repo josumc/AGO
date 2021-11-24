@@ -9,36 +9,148 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/txtVF"
-        android:layout_width="311dp"
-        android:layout_height="70dp"
-        android:text="Aqui pondremos la pregunta verdadera o falsa"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.204" />
-
-    <RadioGroup
-        android:layout_width="133dp"
-        android:layout_height="93dp"
+    <ScrollView
+        android:layout_width="410dp"
+        android:layout_height="735dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RadioButton
-            android:id="@+id/rbtnVerdadero"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Verdadero" />
+            android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/rbtnFalso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Falso" />
-    </RadioGroup>
+            <TextView
+                android:id="@+id/txtVF1"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:text="@string/test1" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rbtn1E"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Verdadero" />
+
+                <RadioButton
+                    android:id="@+id/rbtn1G"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Falso" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtVF2"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:text="@string/test2" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbtn2E"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Verdadero" />
+
+                <RadioButton
+                    android:id="@+id/rbtn2G"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Falso" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtVF3"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:text="@string/test3" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbtn3E"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Verdadero" />
+
+                <RadioButton
+                    android:id="@+id/rbtn3G"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Falso" />
+
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtVF4"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:text="@string/test4" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rbtn4E"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Verdadero" />
+
+                <RadioButton
+                    android:id="@+id/rbtn4G"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Falso" />
+
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtVF5"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:text="@string/test5" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbtn5E"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Verdadero" />
+
+                <RadioButton
+                    android:id="@+id/rbtn5G"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Falso" />
+
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnVF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Validar" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

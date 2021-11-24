@@ -39,5 +39,19 @@
     <string name="j8">Garrantzi handirik ematen ez didaten arren, funtsezkoa naiz munduaren historian. Edozein lan egiteko gai naiz, baita sardina-saltzaileak bezalako lan gogorra ere. Nor naiz?</string>
     <string name="j41">Zenbat emakumeen irudiak daude kupularen barrualdean?</string>
     <string name="j42">Zenbat emakumeen irudiak daude kioskoaren oinarrian?</string>
+    <string name="test1">Zein urtetan eraiki zen Santurtziko udaletxea?</string>
+    <string name="test2">Zenbat alkate izan ditu Santurtzik?</string>
+    <string name="test3">Zenbat emakume izan dira alkate?</string>
+    <string name="test4">Nor da egungo alkatea?</string>
+    <string name="test5">Zer gertatzen da udaletxeko teilatuan festak direnean?</string>
+    <string name="test5a">a) Alkatea pregoia eman du.</string>
+    <string name="test5b">b) Mentxu hegan ateratzen da.</string>
+    <string name="test5c">c) Mentxu bere arrautzatik irteten da.</string>
+    <string name="test5d">d) Denak daude ondo.</string>
+    <string name="VF1">"Etxe hauek marinelengan pentsatuak izan ziren. "</string>
+    <string name="VF2">"Sardina-saltzaileak zelatan geratzen ziren arrantzaleak bueltatu arte. "</string>
+    <string name="VF3">Arrantzaleen auzoa Mamarigan dago.</string>
+    <string name="VF4">Etxearen goiko solairuak arrantzarako tresnak gordetzeko erabiltzen ziren.</string>
+    <string name="VF5">Etxearen beheko solairua arrantzarako tresnak gordetzeko erabiltzen zen.</string>
 
 </resources>

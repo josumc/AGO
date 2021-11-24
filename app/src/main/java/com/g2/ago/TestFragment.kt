@@ -1,34 +1,18 @@
 package com.g2.ago
 
+import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_test.*
+import kotlinx.android.synthetic.main.fragment_vf.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [TestFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class TestFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    var check:String = "ok"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,23 +21,39 @@ class TestFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_test, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TestFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            TestFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        btnTest.setOnClickListener{
+            if(!rbtn1D.isChecked){
+                check = "mal"
+                txtTest1.setTextColor(Color.RED)
             }
+            if(!rbtn2B.isChecked){
+                check = "mal"
+                txtTest1.setTextColor(Color.RED)
+            }
+            if(!rbtn3C.isChecked){
+                check = "mal"
+                txtTest3.setTextColor(Color.RED)
+            }
+            if(!rbtn4A.isChecked){
+                check = "mal"
+                txtTest4.setTextColor(Color.RED)
+            }
+            if(!rbtn5C.isChecked){
+                check = "mal"
+                txtTest5.setTextColor(Color.RED)
+            }
+            if(check.equals("ok")){
+                val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
+                Toast.makeText(requireContext(), "Bien echo", Toast.LENGTH_SHORT).show()
+                mp!!.start()
+            }else{
+                val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
+                Toast.makeText(requireContext(), "Alguna respuesta esta mal", Toast.LENGTH_SHORT).show()
+                mp!!.start()
+                check="ok"
+            }
+        }
     }
 }

@@ -36,5 +36,19 @@
     <string name="j41">" ¿Cuántas imágenes de mujeres hay en el interior de la cúpula? "</string>
     <string name="error">Otra vez sera</string>
     <string name="j42">" ¿Cuántas figuras femeninas hay en la base del quiosco? "</string>
+    <string name="test1">" ¿En qué año se construyó el Ayuntamiento de Santurtzi? "</string>
+    <string name="test2">" ¿Cuántos alcaldes ha tenido Santurtzi? "</string>
+    <string name="test3">" ¿Cuántas mujeres han sido alcaldesas? "</string>
+    <string name="test4">" ¿Quién es el actual alcalde? "</string>
+    <string name="test5">" ¿Qué pasa cuando son fiestas en el tejado del Ayuntamiento? "</string>
+    <string name="test5a">a) El alcalde da el pregon</string>
+    <string name="test5b">b) La Mentxu sale volando</string>
+    <string name="test5c">c) La mentxu sale de su huevo</string>
+    <string name="test5d">d) Todas estan bien</string>
+    <string name="VF1">" Estas casas fueron pensadas en los marineros. "</string>
+    <string name="VF2">" Las sardineras vigilaban hasta que los pescadores regresaban. "</string>
+    <string name="VF3">" El barrio de pescadores está en Mamariga. "</string>
+    <string name="VF4">" Los pisos superiores de la casa servían para guardar los útiles de pesca. "</string>
+    <string name="VF5">" La planta baja de la casa servía para guardar los útiles de pesca. "</string>
 
 </resources>

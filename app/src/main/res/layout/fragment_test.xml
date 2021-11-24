@@ -8,42 +8,205 @@
     tools:context=".TestFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/txtTest"
-        android:layout_width="343dp"
-        android:layout_height="53dp"
-        android:text="Esto se sustituira por las preguntas deltest"
+
+    <ScrollView
+        android:layout_width="410dp"
+        android:layout_height="735dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.185" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <RadioGroup
-        android:layout_width="219dp"
-        android:layout_height="136dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-
-        <RadioButton
-            android:id="@+id/rbtnA"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="a)" />
+            android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/rbtnB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="b)" />
+            <TextView
+                android:id="@+id/txtTest1"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:text="@string/test1" />
 
-        <RadioButton
-            android:id="@+id/rbtnC"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="c)" />
-    </RadioGroup>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rbtn1A"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="a) 1806" />
+
+                <RadioButton
+                    android:id="@+id/rbtn1B"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="b) 1606" />
+
+                <RadioButton
+                    android:id="@+id/rbtn1C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="d) 1906" />
+
+                <RadioButton
+                    android:id="@+id/rbtn1D"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="c) 1905" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtTest2"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:text="@string/test2" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbtn2A"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="a) 23" />
+
+                <RadioButton
+                    android:id="@+id/rbtn2B"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="b) 53" />
+
+                <RadioButton
+                    android:id="@+id/rbtn2C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="c) 63" />
+
+                <RadioButton
+                    android:id="@+id/rbtn2D"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="d) 36" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtTest3"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:text="@string/test3" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbtn3A"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="a) 2" />
+
+                <RadioButton
+                    android:id="@+id/rbtn3B"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="b) 3" />
+
+                <RadioButton
+                    android:id="@+id/rbtn3C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="c) 1" />
+
+                <RadioButton
+                    android:id="@+id/rbtn3D"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="d) 0" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtTest4"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:text="@string/test4" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rbtn4A"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="a) Aintzane Urkijo" />
+
+                <RadioButton
+                    android:id="@+id/rbtn4B"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="b) Mireia Etxendia" />
+
+                <RadioButton
+                    android:id="@+id/rbtn4C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="c) Maialen Urkixo" />
+
+                <RadioButton
+                    android:id="@+id/rbtn4D"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="d) Ander Etxebarria" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtTest5"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:text="@string/test5" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbtn5A"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/test5a" />
+
+                <RadioButton
+                    android:id="@+id/rbtn5B"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/test5b" />
+
+                <RadioButton
+                    android:id="@+id/rbtn5C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/test5c" />
+
+                <RadioButton
+                    android:id="@+id/rbtn5D"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/test5d" />
+
+            </RadioGroup>
+            <Button
+                android:id="@+id/btnTest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Validar" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

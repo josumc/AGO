@@ -11,7 +11,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_preguntas.*
 
 class PreguntasFragment : Fragment() {
-
+    var check:String= "ok"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,24 +23,26 @@ class PreguntasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btnValidarPreguntas.setOnClickListener{
-            if (txtRespuesta1.text.toString().equals("3")){
-                if (txtRespuesta2.text.toString().equals("3")){
+            if (!txtRespuesta1.text.toString().equals("3")) {
+                txtPregunta1.setTextColor(Color.RED)
+                txtRespuesta1.text = null
+                txtRespuesta2.text = null
+            }
+            if (!txtRespuesta2.text.toString().equals("3")) {
+                txtPregunta2.setTextColor(Color.RED)
+                txtRespuesta1.text = null
+                txtRespuesta2.text = null
+            }
+            if(check.equals("ok")){
                     val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
                     Toast.makeText(requireContext(), "Bien echo", Toast.LENGTH_SHORT).show()
                     mp!!.start()
                 }else{
-                    txtRespuesta1.text = null
-                   txtRespuesta2.text = null
-                    val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
-                    Toast.makeText(requireContext(), "La segunda respuesta esta mal", Toast.LENGTH_SHORT).show()
-                    mp!!.start()
-                }
-            }else{
-                txtRespuesta1.text = null
-                txtRespuesta2.text = null
+
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
-                Toast.makeText(requireContext(), "Las respuestas estan mal", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Alguna respuesta esta mal", Toast.LENGTH_SHORT).show()
                 mp!!.start()
+                check="ok"
             }
         }
     }
