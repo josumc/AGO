@@ -28,7 +28,7 @@ class Base_de_Datos(context: Context, name: String, factory: SQLiteDatabase.Curs
     fun Cargar ():ArrayList<Partidas> {
         val fila: ArrayList<Partidas> = ArrayList()
         val db = this.readableDatabase
-        val cursor: Cursor = db.rawQuery("select * from Partida", null)
+        val cursor: Cursor = db.rawQuery("select * from Partida Order by player", null)
         while (cursor.moveToNext()) {
             val todo = Partidas(cursor.getString(0),cursor.getString(1))
             fila.add(todo)

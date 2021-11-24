@@ -21,6 +21,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="180dp" />
 
             <TextView
                 android:id="@+id/txtVF1"
@@ -36,12 +40,14 @@
                     android:id="@+id/rbtn1E"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#9C27B0"
                     android:text="@string/Verdadero" />
 
                 <RadioButton
                     android:id="@+id/rbtn1G"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#9C27B0"
                     android:text="@string/Falso" />
 
             </RadioGroup>
@@ -60,12 +66,14 @@
                     android:id="@+id/rbtn2E"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#9C27B0"
                     android:text="@string/Verdadero" />
 
                 <RadioButton
                     android:id="@+id/rbtn2G"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#9C27B0"
                     android:text="@string/Falso" />
 
             </RadioGroup>
@@ -84,12 +92,14 @@
                     android:id="@+id/rbtn3E"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#9C27B0"
                     android:text="@string/Verdadero" />
 
                 <RadioButton
                     android:id="@+id/rbtn3G"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#9C27B0"
                     android:text="@string/Falso" />
 
 
@@ -109,12 +119,14 @@
                     android:id="@+id/rbtn4E"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#9C27B0"
                     android:text="@string/Verdadero" />
 
                 <RadioButton
                     android:id="@+id/rbtn4G"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#9C27B0"
                     android:text="@string/Falso" />
 
 
@@ -134,12 +146,14 @@
                     android:id="@+id/rbtn5E"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#9C27B0"
                     android:text="@string/Verdadero" />
 
                 <RadioButton
                     android:id="@+id/rbtn5G"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#9C27B0"
                     android:text="@string/Falso" />
 
 
@@ -150,6 +164,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Validar" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="107dp" />
         </LinearLayout>
     </ScrollView>
 

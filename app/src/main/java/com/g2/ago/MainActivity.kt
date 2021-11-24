@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock.sleep
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        //sleep(1000)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
