@@ -12,13 +12,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.FragmentMapsBinding
 import com.tomtom.online.sdk.common.location.LatLng
 import com.tomtom.online.sdk.location.LocationUpdateListener
 import com.tomtom.online.sdk.map.*
-import com.tomtom.online.sdk.map.R
 import com.tomtom.online.sdk.map.driving.LatLngTraceMatchingDataProvider
 import com.tomtom.online.sdk.map.driving.MatchResult
 import com.tomtom.online.sdk.map.driving.MatcherFactory
@@ -45,6 +45,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback, LocationUpdateListener {
     private var user: Location? = null
     private var route: Route? = null
     private lateinit var chevron: Chevron
+    private lateinit var chevronIcon: Icon
+    private lateinit var chevronPosition: ChevronPosition
     private val travelMode = TravelMode.PEDESTRIAN
     private var departurePosition: LatLng? = null
     private var destinationPosition: LatLng? = null
@@ -74,9 +76,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback, LocationUpdateListener {
         initTomTomServices()
         initUIViews()
 
-        val drawable = this.resources.getDrawable(R.drawable.ic_baseline_location_on_24_rojo, theme)
+        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_location_on_24_rojo)
         val bitmap = Bitmap.createBitmap(
-            drawable.intrinsicWidth,
+            drawable!!.intrinsicWidth,
             drawable.intrinsicHeight,
             Bitmap.Config.ARGB_8888
         )
@@ -105,6 +107,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback, LocationUpdateListener {
     private fun initUIViews() {
         departureIcon = Icon.Factory.fromResources(requireActivity().applicationContext, R.drawable.ic_map_route_departure)
         destinationIcon = Icon.Factory.fromResources(requireActivity().applicationContext, R.drawable.ic_map_route_destination)
+        chevronIcon = Icon.Factory.fromResources(requireActivity().applicationContext, R.drawable.chevron_shadow)
         waypointG = ResourcesCompat.getDrawable(resources, R.drawable.ic_baseline_location_on_24_gris, null)!!
         waypointR = ResourcesCompat.getDrawable(resources, R.drawable.ic_baseline_location_on_24_rojo, null)!!
         waypointV = ResourcesCompat.getDrawable(resources, R.drawable.ic_baseline_location_on_24_verde, null)!!
@@ -191,13 +194,18 @@ class MapsFragment : Fragment(), OnMapReadyCallback, LocationUpdateListener {
                     }
 
                     override fun onMatched(matchResult: MatchResult) {
-                        val chevronPosition = ChevronPosition.Builder(it.userLocation!!).build()
-                        val chevronBuilder = ChevronBuilder.create(Icon.Factory.fromDrawable("$it",bitmapDrawable!!), Icon.Factory.fromDrawable("$it",bitmapDrawable!!))
+                        chevronPosition = ChevronPosition.Builder(it.userLocation!!).build()
+                        val chevronBuilder = ChevronBuilder.create(chevronIcon, chevronIcon)
                         chevron = tomtomMap.drivingSettings.addChevron(chevronBuilder)
                         chevron.isDimmed = it.is2D
                         chevron.position = chevronPosition
                         chevron.show()
                         tomtomMap.drivingSettings.startTracking(chevron)
+                        val listener = LocationUpdateListener { location ->
+                            chevron.position = ChevronPosition.Builder(location).build()
+                            chevron.show()
+                        }
+                        tomtomMap.addLocationUpdateListener(listener)
                     }
                 })
             }
