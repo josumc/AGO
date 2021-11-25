@@ -1,5 +1,6 @@
 package com.g2.ago
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,53 +44,192 @@ class ExplicacionFragment : Fragment() {
         }
     }
     fun explicaciones(): String {
-        var testua="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat, sapien quis sodales lobortis, dui tellus bibendum dui, at consequat metus nisl ac nunc. Vivamus. "
+        var testua=""
         when(Sharedapp.puntopartida.Partida){
             "0"->{
                 when(Sharedapp.puntojuego.Juego){
-                    "1"-> testua="Kaixo lagun! Ni “Bella Charo” sardina-saltzailea naiz eta gaur elkarrekin emakumeen papera Santurtziko historian ezagutuko dugu."
-                    "2"-> testua="Santurtzi Bizkaiko udalerria da. Gaur egun 46.069 biztanle dituen arrantza portua. Herri honen historian emakumeen papera oso garrantzitsua izan da beti, horregatik aldarrikatu nahi dugu eta emakumeei merezi duten garrantzia eman nahi diegu. Hori lortzeko zure laguntza behar dugu. Istorioan zehar agertzen diren froga guztiak gainditu behar dituzu pistak lortzeko. Pista guztiak lortzen dituzunean, Santurtziko historiaren atzean dagoen misterioa jakingo duzu."
+                    "1"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.hasiera1audioa)
+                        mp!!.start()
+                        testua=getString(R.string.hasiera1)
+                    }
+                    "2"-> {
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.hasiera2audioa)
+                        mp!!.start()
+                        testua=getString(R.string.hasiera2)
+                    }
                 }
             }
             "1"->{
                 when(Sharedapp.puntojuego.PuntoJuego.toString()){
-                    "1"->"Santurtzi izan da baxurako arrantzarako ontzi gehien erabili dituen Bizkaiko portuetako bat. Antzinean, trainerua arrantzarako erabiltzen zen, baina pixkanaka motorrek mugitutako itsasontziak erabiltzen hasi ziren arrain gehiago hartu ahal izateko."
-                    "2"->"Santurtziren izena San Jorge (gizon bat) santutik datorren arren, Karmengo Ama Birjina (emakume bat) da Santurtziko zaindaria. Karmengo Ama Birjina oso garrantzitsua da Santurtzirentzat. Horregatik, zure laguntza behar dugu puzzle hau konpontzeko! Prest zaude?"
-                    "3"->"Primeran! Lehenengo froga bete duzu, hemen daukazu zure saria! Santurtziko jendeak sinesten du Karmengo Amak arrantzale eta herriko biztanle guztiak babesten dituela. Uztailaren 16a Karmengo eguna da eta itsas prozesio bat egiten da. Goazen hurrengo frogara!"
+                    "1"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.portua1audioa)
+                        mp!!.start()
+                        testua=getString(R.string.portua1)
+                    }
+                    "2"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.portua2audioa)
+                        mp!!.start()
+                        testua=getString(R.string.portua2)
+                    }
+                    "3"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.portua3audioa)
+                        mp!!.start()
+                        testua=getString(R.string.portua3)
+                    }
                 }
             }
             "2"->{
                 when(Sharedapp.puntojuego.PuntoJuego.toString()){
-
+                    "1"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kofradia1audioa)
+                        mp!!.start()
+                        testua=getString(R.string.kofradia1)
+                    }
+                    "2"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kofradia2audioa)
+                        mp!!.start()
+                        testua=getString(R.string.kofradia2)
+                    }
+                    "3"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kofradia3audioa)
+                        mp!!.start()
+                        testua=getString(R.string.kofradia3)
+                    }
                 }
             }
             "3"->{
                 when(Sharedapp.puntojuego.PuntoJuego.toString()){
-
+                    "1"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sotera1audioa)
+                        mp!!.start()
+                        testua=getString(R.string.sotera1)
+                    }
+                    "2"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sotera2audioa)
+                        mp!!.start()
+                        testua=getString(R.string.sotera2)
+                    }
+                    "3"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sotera3audioa)
+                        mp!!.start()
+                        testua=getString(R.string.sotera3)
+                    }
+                    "4"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sotera4audioa)
+                        mp!!.start()
+                        testua=getString(R.string.sotera4)
+                    }
                 }
             }
             "4"->{
                 when(Sharedapp.puntojuego.PuntoJuego.toString()){
-
+                    "1"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kioskoa1audioa)
+                        mp!!.start()
+                        testua=getString(R.string.kioskoa1)
+                    }
+                    "2"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kioskoa2audioa)
+                        mp!!.start()
+                        testua=getString(R.string.kioskoa2)
+                    }
+                    "3"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kioskoa3audioa)
+                        mp!!.start()
+                        testua=getString(R.string.kioskoa3)
+                    }
                 }
             }
             "5"->{
                 when(Sharedapp.puntojuego.PuntoJuego.toString()){
-
+                    "1"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.udaletxea1audioa)
+                        mp!!.start()
+                        testua=getString(R.string.udaletxea1)
+                    }
+                    "2"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.udaletxea2audioa)
+                        mp!!.start()
+                        testua=getString(R.string.udaletxea2)
+                    }
+                    "3"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.udaletxea3audioa)
+                        mp!!.start()
+                        testua=getString(R.string.udaletxea3)
+                    }
+                    "4"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.udaletxea4audioa)
+                        mp!!.start()
+                        testua=getString(R.string.udaletxea3)
+                    }
                 }
             }
             "6"->{
                 when(Sharedapp.puntojuego.PuntoJuego.toString()){
-
+                    "1"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.auzoa1audioa)
+                        mp!!.start()
+                        testua=getString(R.string.auzoa1)
+                    }
+                    "2"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.auzoa2audioa)
+                        mp!!.start()
+                        testua=getString(R.string.auzoa2)
+                    }
+                    "3"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.auzoa3audioa)
+                        mp!!.start()
+                        testua=getString(R.string.auzoa3)
+                    }
+                    "4"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.auzoa4audioa)
+                        mp!!.start()
+                        testua=getString(R.string.auzoa4)
+                    }
                 }
             }
             "7"->{
                 when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                    "1"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sardinera1audioa)
+                        mp!!.start()
+                        testua=getString(R.string.sardinera1)
+                    }
+                    "2"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sardinera2audioa)
+                        mp!!.start()
+                        testua=getString(R.string.sardinera2)
+                    }
+                    "3"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sardinera3audioa)
+                        mp!!.start()
+                        testua=getString(R.string.sardinera3)
+                    }
+                    "4"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sardinera4audioa)
+                        mp!!.start()
+                        testua=getString(R.string.sardinera4)
+                    }
 
                 }
             }
             "8"->{
                 when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                    "1"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.asmakizuna1audioa)
+                        mp!!.start()
+                        testua=getString(R.string.asmakizuna1)
+                    }
+                    "3"->{
+                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.asmakizuna2audioa)
+                        mp!!.start()
+                    }
+                   "2"->{
+                       val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.asmakizuna3audioa)
+                       mp!!.start()
+                       testua=getString(R.string.asmakizuna2)
+                    }
 
                 }
             }

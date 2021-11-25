@@ -10,6 +10,8 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.g2.ago.databinding.FragmentMapsBinding
+import com.g2.ago.databinding.FragmentRankingBinding
 import kotlinx.android.synthetic.main.fragment_ranking.*
 import kotlinx.android.synthetic.main.tabla_ranking.view.*
 import java.io.Serializable
@@ -18,6 +20,8 @@ class RankingFragment : Fragment() {
     //Con el siguiente codigo generamos el ranking
     lateinit var adapter: PartidasAdapter
     private var title: String= ""
+    lateinit var binding: FragmentRankingBinding
+    var Activityppal: Comunicador?=null
     private  var partidas=ArrayList<Partidas>()
     private lateinit var db:Base_de_Datos
 
@@ -54,9 +58,9 @@ class RankingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ranking, container, false)
-
-
+        binding = FragmentRankingBinding.inflate(layoutInflater)
+        return binding.root
+//        return inflater.inflate(R.layout.fragment_ranking, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -71,8 +75,11 @@ class RankingFragment : Fragment() {
                 Toast.makeText(requireContext(), "Esta partida ya existe", Toast.LENGTH_SHORT).show()
             }else {
                 Sharedapp.users.user = txtApodo.text.toString()
+                Sharedapp.puntopartida.Partida = "0"
+                Sharedapp.puntojuego.Juego = "1"
                 ContextCompat.startActivity(requireContext(), Intent(requireContext(), JuegoActivity::class.java), null)
                 db.insertar(txtApodo.text.toString(), "0")
+
             }
         }
     }
