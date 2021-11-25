@@ -9,12 +9,17 @@ android {
 
     defaultConfig {
         applicationId "com.g2.ago"
-        minSdk 21
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+        buildConfigField("String", "MAPS_API_KEY", "\"CBGLwGo9IgVptoM3zxy6G9zE4rxjFVAG\"")
+        buildConfigField("String", "ROUTING_API_KEY", "\"CBGLwGo9IgVptoM3zxy6G9zE4rxjFVAG\"")
+        buildConfigField("String", "SEARCH_API_KEY", "\"CBGLwGo9IgVptoM3zxy6G9zE4rxjFVAG\"")
     }
 
     buildTypes {
@@ -47,6 +52,35 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.fragment:fragment:1.3.6'
+    //library required to display map
+    implementation("com.tomtom.online:sdk-maps:2.4807")
+
+//library required for search
+    implementation("com.tomtom.online:sdk-search:2.4807")
+
+//library required for routing
+    implementation("com.tomtom.online:sdk-routing:2.4807")
+
+//library required for traffic
+    implementation("com.tomtom.online:sdk-traffic:2.4807")
+
+//library required for geofencing
+    implementation("com.tomtom.online:sdk-geofencing:2.4807")
+
+//extention library for map custom style and ui support
+    implementation("com.tomtom.online:sdk-maps-ui-extensions:2.4807")
+
+//extention library for rx-java2
+    implementation("com.tomtom.online:sdk-maps-rx-extensions:2.4807")
+
+//extention library for kotlin support
+    implementation("com.tomtom.online:sdk-maps-ktx-extensions:2.4807")
+
+//extention library for displaying static map
+    implementation("com.tomtom.online:sdk-maps-static-image:2.4807")
+
+//extention library for driving features
+    implementation("com.tomtom.online:sdk-maps-driving-extensions:2.4807")
     testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

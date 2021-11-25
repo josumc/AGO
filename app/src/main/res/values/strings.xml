@@ -4,6 +4,8 @@
 
     <string name="Apodo">Ezizen</string>
 
+    <string name="api_response_error">API response error: \'%1$s\'.</string>
+
     <!--Opciones del menú-->
     <string name="Home">Hasiera</string>
     <string name="CerrarSesion">Itxi saioa</string>
