@@ -1,21 +1,20 @@
 package com.g2.ago
 
-import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.ActivityJuegoBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+
 
 class JuegoActivity : AppCompatActivity(), Comunicador,
     NavigationView.OnNavigationItemSelectedListener {
@@ -32,9 +31,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
-
         binding = ActivityJuegoBinding.inflate(layoutInflater)
-
         binding.root.systemUiVisibility = SYSTEM_UI_FLAG_LAYOUT_STABLE or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
         drawerLayout = findViewById(R.id.drawerlayout)
@@ -51,9 +48,14 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         fragmentTop = MapsFragment()
         supportFragmentManager.beginTransaction().replace(R.id.FragmentMapaJuego, fragmentTop).commit()
 
-        fragmentBot = InfoRutaFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragmentBot).commit()
 
+        if (Sharedapp.puntopartida.Partida.equals("0")){
+            replaceExplFragment(ExplicacionFragment())
+        }else{
+//            fragmentBot = InfoRutaFragment()
+//            supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragmentBot).commit()
+            replaceExplFragment(InfoRutaFragment())
+        }
         navigationView.setNavigationItemSelectedListener(this)
 
         menu.findItem(R.id.nav_alumno).isVisible = false
@@ -119,7 +121,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
-        var intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
 
         when(item.itemId){
             R.id.nav_inicio -> {
