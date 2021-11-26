@@ -39,7 +39,17 @@ class LetraFragment : Fragment() {
         }
         //Ejecutamos la animacion de la moneda
         val moneda= view.findViewById<ImageView>(R.id.imgmoneda)
+
         if (moneda != null) {
+            when(Sharedapp.puntopartida.Partida){
+                "2" -> moneda.setImageResource(R.drawable.monedam)
+                "3" -> moneda.setImageResource(R.drawable.monedae)
+                "4" -> moneda.setImageResource(R.drawable.monedak)
+                "5" -> moneda.setImageResource(R.drawable.monedau)
+                "6" -> moneda.setImageResource(R.drawable.monedaa)
+                "7" -> moneda.setImageResource(R.drawable.monedam)
+                "8" -> moneda.setImageResource(R.drawable.monedae)
+            }
             vistaanimada= AnimationUtils.loadAnimation(requireContext(),
                 R.anim.view_animacion)
             moneda.startAnimation(vistaanimada)
