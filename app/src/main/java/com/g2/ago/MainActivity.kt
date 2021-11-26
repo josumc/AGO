@@ -92,7 +92,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_mapa -> {
                 startActivity(Intent(this, JuegoActivity::class.java))
-                finish()
             }
             R.id.nav_ranking -> {
                 if (Sharedapp.tipousu.tipo.equals("profesor")){

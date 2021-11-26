@@ -167,16 +167,43 @@
             app:layout_constraintVertical_bias="0.682" />
 
         <ImageView
-            android:id="@+id/imgstz"
-            android:layout_width="306dp"
-            android:layout_height="253dp"
+            android:id="@+id/imageView6"
+            android:layout_width="138dp"
+            android:layout_height="153dp"
+            android:src="@drawable/upv"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintHorizontal_bias="0.179"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.071"
-            app:srcCompat="@drawable/logostz" />
+            app:layout_constraintVertical_bias="0.209" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="138dp"
+            android:layout_height="153dp"
+            android:src="@drawable/txurdi"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.842"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.209" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="284dp"
+            android:layout_height="49dp"
+            android:text="DidaktikApp"
+            android:textAlignment="center"
+            android:textColor="#9C27B0"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.036" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

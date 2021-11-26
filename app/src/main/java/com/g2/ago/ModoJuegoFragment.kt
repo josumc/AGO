@@ -1,5 +1,6 @@
 package com.g2.ago
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,7 +26,7 @@ class ModoJuegoFragment : Fragment() {
         binding = FragmentModoJuegoBinding.inflate(layoutInflater)
 
         binding.btnGuiado.setOnClickListener(){
-
+            startActivity(Intent(requireContext(), JuegoActivity::class.java))
         }
 
         binding.btnLibre.setOnClickListener(){
