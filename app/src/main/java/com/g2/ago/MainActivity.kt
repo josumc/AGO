@@ -1,11 +1,8 @@
 package com.g2.ago
 
 import android.content.Intent
-import android.content.SharedPreferences
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.SystemClock.sleep
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
