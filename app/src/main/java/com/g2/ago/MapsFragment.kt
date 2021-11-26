@@ -15,14 +15,11 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.g2.ago.databinding.FragmentMapsBinding
 import com.tomtom.online.sdk.common.location.LatLng
 import com.tomtom.online.sdk.location.LocationUpdateListener
 import com.tomtom.online.sdk.map.*
-import com.tomtom.online.sdk.map.driving.LatLngTraceMatchingDataProvider
-import com.tomtom.online.sdk.map.driving.MatchResult
-import com.tomtom.online.sdk.map.driving.MatcherFactory
-import com.tomtom.online.sdk.map.driving.MatcherListener
 import com.tomtom.online.sdk.map.style.layers.Visibility
 import com.tomtom.online.sdk.routing.OnlineRoutingApi
 import com.tomtom.online.sdk.routing.RoutingApi
@@ -33,6 +30,8 @@ import com.tomtom.online.sdk.search.OnlineSearchApi
 import com.tomtom.online.sdk.search.SearchApi
 import com.tomtom.online.sdk.routing.route.information.FullRoute
 import com.tomtom.online.sdk.map.ApiKeyType
+import com.tomtom.online.sdk.map.driving.*
+import com.tomtom.online.sdk.map.route.RouteLayerStyle
 import java.util.*
 
 
@@ -44,9 +43,12 @@ class MapsFragment : Fragment(), OnMapReadyCallback, LocationUpdateListener {
     private lateinit var routingApi: RoutingApi
     private var user: Location? = null
     private var route: Route? = null
-    private lateinit var chevron: Chevron
+    val style = RouteLayerStyle.Builder()
+        .color(R.color.Primary)
+        .build()
+    private lateinit var routeSettings: RouteSettings
     private lateinit var chevronIcon: Icon
-    private lateinit var chevronPosition: ChevronPosition
+    private var chevronPosition: ChevronPosition? = null
     private val travelMode = TravelMode.PEDESTRIAN
     private var departurePosition: LatLng? = null
     private var destinationPosition: LatLng? = null
@@ -88,7 +90,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback, LocationUpdateListener {
         bitmapDrawable = BitmapDrawable(this.resources, bitmap)
 
         binding.UbicacionButton.setOnClickListener {
-
+            this.tomtomMap?.centerOnMyLocation();
         }
         return binding.root
     }
@@ -98,6 +100,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback, LocationUpdateListener {
         departurePosition = null
         destinationPosition = null
         route = null
+        chevronPosition = null
+        tomtomMap.drivingSettings.removeChevrons()
     }
 
     private fun handleApiError(e: Throwable) {
@@ -120,8 +124,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback, LocationUpdateListener {
             .keys(mapKeys)
             .build()
         val mapFragment = MapFragment.newInstance(mapProperties)
-        val j: JuegoActivity? = activity as JuegoActivity?
-        j?.replaceMapFragment(mapFragment)
+        val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
+        transaction.replace(R.id.map, mapFragment).commit()
         mapFragment.getAsyncMap(this)
 
         searchApi = OnlineSearchApi.create(requireActivity().applicationContext, "CBGLwGo9IgVptoM3zxy6G9zE4rxjFVAG")
@@ -136,11 +140,14 @@ class MapsFragment : Fragment(), OnMapReadyCallback, LocationUpdateListener {
         this.tomtomMap = tomtomMap
         this.tomtomMap.let {
             it.isMyLocationEnabled = true
+            it.uiSettings.compassView.hide()
+            it.uiSettings.currentLocationView.hide()
             user = it.userLocation
             val layers = tomtomMap.styleSettings.findLayersById(LAYERS_IN_3D_REGEX)
             layers.forEach {
                 it.visibility = Visibility.VISIBLE
             }
+            routeSettings = tomtomMap.routeSettings
             arrayParadas.forEach {
                 tomtomMap.addMarker(MarkerBuilder(it)
                     .icon(Icon.Factory.fromDrawable("$it",bitmapDrawable!!))
@@ -187,6 +194,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback, LocationUpdateListener {
 //                                .endIcon(destinationIcon)
                                 .tag("OLEOLEOLE LOS CARACOLE"))
                         }
+                        routeSettings.activateProgressAlongRoute(route!!.id, style)
                         val routeMatchingProvider = LatLngTraceMatchingDataProvider.fromPoints(routes.first().getCoordinates())
                         val matcher = MatcherFactory.createMatcher(routeMatchingProvider)
                         matcher.setMatcherListener(this)
@@ -196,14 +204,20 @@ class MapsFragment : Fragment(), OnMapReadyCallback, LocationUpdateListener {
                     override fun onMatched(matchResult: MatchResult) {
                         chevronPosition = ChevronPosition.Builder(it.userLocation!!).build()
                         val chevronBuilder = ChevronBuilder.create(chevronIcon, chevronIcon)
-                        chevron = tomtomMap.drivingSettings.addChevron(chevronBuilder)
+                        val chevron = tomtomMap.drivingSettings.addChevron(chevronBuilder)
                         chevron.isDimmed = it.is2D
                         chevron.position = chevronPosition
                         chevron.show()
                         tomtomMap.drivingSettings.startTracking(chevron)
+                        tomtomMap.overlaySettings.removeOverlays()
                         val listener = LocationUpdateListener { location ->
-                            chevron.position = ChevronPosition.Builder(location).build()
-                            chevron.show()
+                            chevronPosition = ChevronPosition.Builder(location).build()
+                            chevron.position = chevronPosition
+                            if (route != null){
+                                routeSettings.updateProgressAlongRoute(route!!.id, location)
+                            }
+
+
                         }
                         tomtomMap.addLocationUpdateListener(listener)
                     }
@@ -217,6 +231,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback, LocationUpdateListener {
     }
 
     override fun onLocationChanged(location: Location?) {
-        user = tomtomMap.userLocation
+        user = location
     }
 }
