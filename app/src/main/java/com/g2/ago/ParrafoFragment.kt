@@ -23,14 +23,17 @@ class ParrafoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnComprobarParrafo.setOnClickListener{
             if(rbtnOP2.isChecked){
-                val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
-                Toast.makeText(requireContext(), "Bien echo", Toast.LENGTH_SHORT).show()
-                mp!!.start()
+                MediaPlayer.create(requireContext(), R.raw.ondo).start()
+                replaceFragment(LetraFragment())
             }else{
-                val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
+                val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
                 Toast.makeText(requireContext(), "Otra vez sera", Toast.LENGTH_SHORT).show()
                 mp!!.start()
             }
         }
     }
+    fun replaceFragment(fragment: Fragment){
+        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
+    }
+
 }

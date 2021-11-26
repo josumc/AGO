@@ -45,15 +45,17 @@ class TestFragment : Fragment() {
                 txtTest5.setTextColor(Color.RED)
             }
             if(check.equals("ok")){
-                val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
-                Toast.makeText(requireContext(), "Bien echo", Toast.LENGTH_SHORT).show()
-                mp!!.start()
+                MediaPlayer.create(requireContext(), R.raw.ondo).start()
+                replaceFragment(LetraFragment())
             }else{
-                val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
+                var mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
                 Toast.makeText(requireContext(), "Alguna respuesta esta mal", Toast.LENGTH_SHORT).show()
                 mp!!.start()
                 check="ok"
             }
         }
+    }
+    fun replaceFragment(fragment: Fragment){
+        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
     }
 }

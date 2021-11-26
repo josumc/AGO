@@ -33,13 +33,13 @@ class PartidasAdapter (private val partidas: List<Partidas>, context: Context) :
 
         fun bind(partida:Partidas){
             itemView.txtNick.text = partida.Nickname
-            itemView.txtPunto.text = partida.PuntoJuego+"/8"
+            itemView.txtPunto.text = partida.PuntoPartida+"/8"
 
             itemView.setOnClickListener{
                 Sharedapp.users.user = itemView.txtNick.text.toString()
+                Sharedapp.puntopartida.Partida = partida.PuntoPartida
+                Sharedapp.puntojuego.Juego = partida.PuntoPartida
                 startActivity(context1, Intent(context1, JuegoActivity::class.java), null)
-
-
             }
         }
     }
