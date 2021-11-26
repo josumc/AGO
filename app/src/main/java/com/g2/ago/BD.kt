@@ -54,10 +54,10 @@ class Base_de_Datos(context: Context, name: String, factory: SQLiteDatabase.Curs
         return fila
     }
     //Funcion para actualizar los puntos de juego
-    fun actualizar(players: String, play_point: String, old_point: String){
+    fun actualizar(players: String, play_point: String){
         val db=this.writableDatabase
         val fila=ContentValues()
         fila.put("play_point", play_point)
-        db.update("Partida", fila, "player=?", arrayOf(old_point))
+        db.update("Partida", fila, "player=?", arrayOf(players))
     }
 }

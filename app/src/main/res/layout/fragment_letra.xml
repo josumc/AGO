@@ -20,7 +20,6 @@
         android:id="@+id/imgmoneda"
         android:layout_width="59dp"
         android:layout_height="43dp"
-        android:src="@drawable/monedae"
         app:layout_constraintBottom_toBottomOf="@+id/imgcofre"
         app:layout_constraintEnd_toEndOf="@+id/imgcofre"
         app:layout_constraintHorizontal_bias="0.497"

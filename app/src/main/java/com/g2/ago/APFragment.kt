@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.fragment_a_p.*
 
 
 class APFragment : Fragment() {
+    private var bd:Base_de_Datos = Base_de_Datos(requireContext(), "bd", null, 1)
     val respuesta:String="emakume"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +24,9 @@ class APFragment : Fragment() {
         btnValidar.setOnClickListener{
             if(txtEmakume.text.toString().toLowerCase().equals(respuesta)){
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
+                Sharedapp.puntopartida.Partida = "8"
+                Sharedapp.puntojuego.Juego = "1"
+                bd.actualizar(Sharedapp.users.User.toString(), "8")
                 Toast.makeText(requireContext(), "Bien echo", Toast.LENGTH_SHORT).show()
                 mp!!.start()
             }else{

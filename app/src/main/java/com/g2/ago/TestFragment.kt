@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.fragment_test.*
 import kotlinx.android.synthetic.main.fragment_vf.*
 
 class TestFragment : Fragment() {
+
+    private var bd:Base_de_Datos = Base_de_Datos(requireContext(), "bd", null, 1)
     var check:String = "ok"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +48,9 @@ class TestFragment : Fragment() {
             }
             if(check.equals("ok")){
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
+                Sharedapp.puntopartida.Partida = "6"
+                Sharedapp.puntojuego.Juego = "1"
+                bd.actualizar(Sharedapp.users.User.toString(), "8")
                 replaceFragment(LetraFragment())
             }else{
                 var mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
