@@ -36,9 +36,6 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MJFragment"
-            android:exported="false" />
-        <activity
             android:name=".JuegoActivity"
             android:exported="false" />
         <activity
