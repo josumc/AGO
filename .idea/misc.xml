@@ -36,7 +36,7 @@
         <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/drawable/rounded.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/drawable/sombras.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/layout/activity_juego.xml" value="0.264" />
-        <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/layout/fragment_a_p.xml" value="0.25" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/layout/fragment_blank.xml" value="0.25" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/layout/fragment_explicacion.xml" value="0.25" />
@@ -57,6 +57,7 @@
         <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/layout/fragment_vf.xml" value="0.12760416666666666" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/layout/header.xml" value="0.25" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/layout/qsactivity.xml" value="0.25" />
+        <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/layout/screen_splash.xml" value="0.12760416666666666" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/layout/tabla_ranking.xml" value="0.264" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/menu/menu.xml" value="0.1" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/AGO/app/src/main/res/menu/menualumno.xml" value="0.25" />
