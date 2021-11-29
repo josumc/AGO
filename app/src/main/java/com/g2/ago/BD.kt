@@ -5,9 +5,12 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 data class Partida(var Nickname: String, var PuntoJuego: String)
 class Base_de_Datos(context: Context, name: String, factory: SQLiteDatabase.CursorFactory?, version:Int): SQLiteOpenHelper(context,name,factory, version){
+    private val fb = FirebaseFirestore.getInstance()
     override fun onCreate(db: SQLiteDatabase?) {
         db!!.execSQL("create table Partida(player text primary key, play_point text)")
     }
@@ -23,6 +26,7 @@ class Base_de_Datos(context: Context, name: String, factory: SQLiteDatabase.Curs
         registrar.put("player", jugador)
         registrar.put("play_point", punto_partida)
         db?.insert("Partida", null, registrar)
+        fb.collection("Players").document(jugador).set(hashMapOf("Partida" to punto_partida))
     }
     //Funcion para cargar todos los datos
     fun Cargar ():ArrayList<Partidas> {
@@ -59,5 +63,10 @@ class Base_de_Datos(context: Context, name: String, factory: SQLiteDatabase.Curs
         val fila=ContentValues()
         fila.put("play_point", play_point)
         db.update("Partida", fila, "player=?", arrayOf(players))
+        fb.collection("Players").document(players).set(hashMapOf("Partida" to play_point))
+    }
+    fun profes(){
+        val db=this.writableDatabase
+        db.delete("Partida", "", arrayOf(null))
     }
 }

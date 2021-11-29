@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "385355765723",
+    "project_id": "santurtziapp",
+    "storage_bucket": "santurtziapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385355765723:android:2fbe1dd968d1bf55fa79fe",
+        "android_client_info": {
+          "package_name": "com.g2.ago"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385355765723-prc5468i6e9kokq8b7nbsfog0j9vctaf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsXeWUk3bSSa6355AVqOQ8BtUaInCtvbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385355765723-prc5468i6e9kokq8b7nbsfog0j9vctaf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

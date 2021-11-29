@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -92,10 +93,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_ranking -> {
                 if (Sharedapp.tipousu.tipo.equals("profesor")){
-                    fragment = RankingFragment()
+                    fragment = RankingProfesFragment()
                     replaceFragment(fragment)
                 }else if (Sharedapp.tipousu.tipo.equals("alumno")){
                     fragment = LogFragment()
+                    Toast.makeText(this, "Necesitas logearte como profesor para acceder a esta funcion" +
+                            "", Toast.LENGTH_SHORT).show()
                     replaceFragment(fragment)
                 }
             }
