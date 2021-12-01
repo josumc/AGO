@@ -1,59 +1,160 @@
 package com.g2.ago
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.g2.ago.databinding.FragmentFotosBinding
+import kotlinx.android.synthetic.main.fragment_fotos.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FotosFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FotosFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    lateinit var binding: FragmentFotosBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fotos, container, false)
+        binding = FragmentFotosBinding.inflate(layoutInflater)
+        fotos()
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FotosFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FotosFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun fotos() {
+        when(Sharedapp.puntopartida.Partida){
+            "0"->{
+                when(Sharedapp.puntojuego.Juego){
+                    "1"->{
+
+                    }
+                    "2"-> {
+
+                    }
                 }
             }
+            "1"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                    "1"->{
+                        imagen.setImageResource(R.drawable.portua1argazkia)
+                    }
+                    "2"->{
+                        imagen.setImageResource(R.drawable.portua2argazkia)
+                    }
+                    "3"->{
+                        imagen.setImageResource(R.drawable.portua3argazkia)
+                    }
+                }
+            }
+            "2"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                    "1"->{
+                        imagen.setImageResource(R.drawable.kofradia1argazkia)
+                    }
+                    "2"->{
+
+                    }
+                    "3"->{
+
+                    }
+                }
+            }
+            "3"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                    "1"->{
+                        imagen.setImageResource(R.drawable.sotera1argazkia)
+                    }
+                    "2"->{
+                        imagen.setImageResource(R.drawable.sotera2argazkia)
+                    }
+                    "3"->{
+
+                    }
+                    "4"->{
+                        imagen.setImageResource(R.drawable.sotera3izaskunetxaniz)
+                    }
+                }
+            }
+            "4"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                    "1"->{
+                        imagen.setImageResource(R.drawable.kioskoa1argazkia)
+                    }
+                    "2"->{
+
+                    }
+                    "3"->{
+
+                    }
+                }
+            }
+            "5"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                    "1"->{
+                        imagen.setImageResource(R.drawable.udaletxea1argazkia)
+                    }
+                    "2"->{
+                        imagen.setImageResource(R.drawable.udaletxea2argazkia)
+                    }
+                    "3"->{
+
+                    }
+                    "4"->{
+
+                    }
+                }
+            }
+            "6"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                    "1"->{
+                        imagen.setImageResource(R.drawable.auzoa1argazkia)
+                    }
+                    "2"->{
+                        imagen.setImageResource(R.drawable.auzoa2argazkia)
+                    }
+                    "3"->{
+
+                    }
+                    "4"->{
+
+                    }
+                }
+            }
+            "7"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                    "1"->{
+                        imagen.setImageResource(R.drawable.sardinera1argazkia)
+                    }
+                    "2"->{
+                        imagen.setImageResource(R.drawable.sardinera2argazkia)
+                    }
+                    "3"->{
+
+                    }
+                    "4"->{
+
+                    }
+
+                }
+            }
+            "8"->{
+                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                    "1"->{
+
+                    }
+                    "3"->{
+
+                    }
+                    "2"->{
+
+                    }
+
+                }
+            }
+
+        }
+    //
     }
+
 }
