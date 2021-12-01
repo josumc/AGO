@@ -13,6 +13,7 @@ class Base_de_Datos(context: Context, name: String, factory: SQLiteDatabase.Curs
     private val fb = FirebaseFirestore.getInstance()
     override fun onCreate(db: SQLiteDatabase?) {
         db!!.execSQL("create table Partida(player text primary key, play_point text)")
+        db!!.execSQL("create table Ranking(player text primary key, play_point text)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -65,8 +66,32 @@ class Base_de_Datos(context: Context, name: String, factory: SQLiteDatabase.Curs
         db.update("Partida", fila, "player=?", arrayOf(players))
         fb.collection("Players").document(players).set(hashMapOf("Partida" to play_point))
     }
+    /*
+    *
+    * Modo profesor
+    *
+     */
     fun profes(){
         val db=this.writableDatabase
-        db.delete("Partida", "", arrayOf(null))
+        db.delete("Ranking", "", arrayOf(null))
+    }
+    //Funcion para insertar el ranking
+    fun insertar_ranking (jugador: String, punto_partida:String){
+        val db=this.writableDatabase
+        val registrar=ContentValues()
+        registrar.put("player", jugador)
+        registrar.put("play_point", punto_partida)
+        db?.insert("Ranking", null, registrar)
+    }
+    //Funcion para cargar todos los datos por punto de juego
+    fun Cargar_ranking ():ArrayList<Partidas> {
+        val fila: ArrayList<Partidas> = ArrayList()
+        val db = this.readableDatabase
+        val cursor: Cursor = db.rawQuery("select * from Ranking Order by play_point", null)
+        while (cursor.moveToNext()) {
+            val todo = Partidas(cursor.getString(0),cursor.getString(1))
+            fila.add(todo)
+        }
+        return fila
     }
 }

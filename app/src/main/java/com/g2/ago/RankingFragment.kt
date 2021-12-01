@@ -20,10 +20,9 @@ import java.io.Serializable
 class RankingFragment : Fragment() {
     //Con el siguiente codigo generamos el ranking
     lateinit var adapter: PartidasAdapter
-    private var title: String= ""
     lateinit var binding: FragmentRankingBinding
-    var Activityppal: Comunicador?=null
     private lateinit var db:Base_de_Datos
+    private val fb = FirebaseFirestore.getInstance()
 
     override  fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,12 +44,20 @@ class RankingFragment : Fragment() {
             }else if (!db.Cargar_jugadores(txtApodo.text.toString().toLowerCase())){
                 Toast.makeText(requireContext(), "Esta partida ya existe ", Toast.LENGTH_SHORT).show()
             }else {
-                Sharedapp.users.user = txtApodo.text.toString()
-                Sharedapp.puntopartida.Partida = "0"
-                Sharedapp.puntojuego.Juego = "1"
-                ContextCompat.startActivity(requireContext(), Intent(requireContext(), JuegoActivity::class.java), null)
-                db.insertar(txtApodo.text.toString(), "0")
+                fb.collection("Players").document(txtApodo.text.toString())
+                    .get()
+                    .addOnSuccessListener {
+                        if(it.exists()){
+                            Toast.makeText(requireContext(), "Ya hay un jugador con este apodo", Toast.LENGTH_SHORT).show()
 
+                        }else{
+                            Sharedapp.users.user = txtApodo.text.toString()
+                            Sharedapp.puntopartida.Partida = "0"
+                            Sharedapp.puntojuego.Juego = "1"
+                            ContextCompat.startActivity(requireContext(), Intent(requireContext(), JuegoActivity::class.java), null)
+                            db.insertar(txtApodo.text.toString(), "0")
+                        }
+                    }
             }
         }
     }
