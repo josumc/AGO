@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.g2.ago.databinding.FragmentMapsBinding
+import com.google.android.gms.maps.GoogleMap
 import com.tomtom.online.sdk.common.location.LatLng
 import com.tomtom.online.sdk.geofencing.GeofencingApi
 import com.tomtom.online.sdk.geofencing.GeofencingException
@@ -41,6 +42,7 @@ import kotlin.concurrent.schedule
 
 class MapsFragment : Fragment(), OnMapReadyCallback {
 
+    private var Activityppal: Comunicador? = null
     private lateinit var binding: FragmentMapsBinding
     private lateinit var tomtomMap: TomtomMap
     private lateinit var searchApi: SearchApi
@@ -48,7 +50,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private lateinit var geofencingApi: GeofencingApi
     private var user: Location? = null
     private var route: Route? = null
-    val style = RouteLayerStyle.Builder()
+    private val style = RouteLayerStyle.Builder()
         .color(R.color.Primary)
         .build()
     private lateinit var routeSettings: RouteSettings
@@ -60,26 +62,27 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private var destinationPosition: LatLng? = null
     private var departureIcon: Icon? = null
     private var destinationIcon: Icon? = null
-    val parada1 = LatLng(43.330306, -3.029750)
-    val parada2 = LatLng(43.330611, -3.030861)
-    val parada3 = LatLng(43.330778, -3.031583)
-    val parada4 = LatLng(43.328917, -3.031500)
-    val parada5 = LatLng(43.328861, -3.032944)
-    val parada6 = LatLng(43.333750, -3.038722)
-    val parada7 = LatLng(43.334417, -3.039278)
-    private val parada1Id = UUID.fromString("37d037ee-54c0-41d2-8a91-c6c1020f8157")
-    private val parada2Id = UUID.fromString("8456f46b-df8e-489f-86b3-a3b036d67414")
-    private val parada3Id = UUID.fromString("9cb8fbf6-8871-4767-bc5f-fcebafc3943f")
-    private val parada4Id = UUID.fromString("3860b9fb-64de-4f2f-a8d6-91d88e7e16a7")
-    private val parada5Id = UUID.fromString("957aa4a1-a7ef-4654-a3ad-f27724d67412")
-    private val parada6Id = UUID.fromString("6aac243b-efe3-4388-ab13-eac69ca529a9")
-    private val parada7Id = UUID.fromString("3a374021-de04-48ee-bba9-ef7288c17abc")
-    private val projectId = UUID.fromString("32ee11b5-ed68-4f3d-a6dd-912b1ef33a93")
+    private val parada1: LatLng = LatLng(43.330306, -3.029750)
+    private val parada2: LatLng = LatLng(43.330611, -3.030861)
+    private val parada3: LatLng = LatLng(43.330778, -3.031583)
+    private val parada4: LatLng = LatLng(43.328917, -3.031500)
+    private val parada5: LatLng = LatLng(43.328861, -3.032944)
+    private val parada6: LatLng = LatLng(43.333750, -3.038722)
+    private val parada7: LatLng = LatLng(43.334417, -3.039278)
+    private val paradas: List<LatLng> = listOf(parada1, parada2, parada3, parada4, parada5, parada6, parada7)
+    private val parada1Id: UUID = UUID.fromString("37d037ee-54c0-41d2-8a91-c6c1020f8157")
+    private val parada2Id: UUID = UUID.fromString("8456f46b-df8e-489f-86b3-a3b036d67414")
+    private val parada3Id: UUID = UUID.fromString("9cb8fbf6-8871-4767-bc5f-fcebafc3943f")
+    private val parada4Id: UUID = UUID.fromString("3860b9fb-64de-4f2f-a8d6-91d88e7e16a7")
+    private val parada5Id: UUID = UUID.fromString("957aa4a1-a7ef-4654-a3ad-f27724d67412")
+    private val parada6Id: UUID = UUID.fromString("6aac243b-efe3-4388-ab13-eac69ca529a9")
+    private val parada7Id: UUID = UUID.fromString("3a374021-de04-48ee-bba9-ef7288c17abc")
+    private val projectId: UUID = UUID.fromString("32ee11b5-ed68-4f3d-a6dd-912b1ef33a93")
     //val arrayParadas= arrayOf(parada1,parada2,parada3,parada4,parada5,parada6,parada7)
-    val LAYERS_IN_3D_REGEX = listOf("Subway Station 3D", "Place of worship 3D", "Railway Station 3D", "Government Administration Office 3D", "Other building 3D", "School building 3D", "Other town block 3D", "Factory building 3D", "Hospital building 3D", "Hotel building 3D", "Cultural Facility 3D").joinToString(separator = "|")
-    lateinit var waypointG: Icon
-    lateinit var waypointR: Icon
-    lateinit var waypointV: Icon
+    private val LAYERS_IN_3D_REGEX = listOf("Subway Station 3D", "Place of worship 3D", "Railway Station 3D", "Government Administration Office 3D", "Other building 3D", "School building 3D", "Other town block 3D", "Factory building 3D", "Hospital building 3D", "Hotel building 3D", "Cultural Facility 3D").joinToString(separator = "|")
+    private lateinit var waypointG: Icon
+    private lateinit var waypointR: Icon
+    private lateinit var waypointV: Icon
     private var reporte: List<FenceDetails>? = null
 
     override fun onCreateView(
@@ -144,155 +147,197 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(tomtomMap: TomtomMap) {
         this.tomtomMap = tomtomMap
         this.tomtomMap.let {
-            it.isMyLocationEnabled = true
             it.uiSettings.compassView.hide()
             it.uiSettings.currentLocationView.hide()
+            if (!Sharedapp.modolibre.modo) {
 
-            val location = LocationUpdateListener { location ->
-                user = location
-                if (chevronPosition != null){
-                    chevronPosition = ChevronPosition.Builder(location).build()
-                    chevron.position = chevronPosition
-                }
-                if (route != null){
-                    routeSettings.updateProgressAlongRoute(route!!.id, location)
-                }
+                it.isMyLocationEnabled = true
 
-                rango(projectId)
-                if (reporte != null){
-                    if (reporte!!.size == 1){
-                        when(reporte!![0].fence.id){
-                            parada1Id -> {
-                                if (Sharedapp.puntopartida.Partida == "1"){
-                                    Toast.makeText(context, "Has entrado al juego No.1", Toast.LENGTH_SHORT).show()
+                val location = LocationUpdateListener { location ->
+                    user = location
+                    if (chevronPosition != null) {
+                        chevronPosition = ChevronPosition.Builder(location).build()
+                        chevron.position = chevronPosition
+                    }
+                    if (route != null) {
+                        routeSettings.updateProgressAlongRoute(route!!.id, location)
+                    }
+
+                    rango(projectId)
+                    if (reporte != null) {
+                        if (reporte!!.size == 1) {
+                            when (reporte!![0].fence.id) {
+                                parada1Id -> {
+                                    if (Sharedapp.puntopartida.Partida == "1") {
+                                        Toast.makeText(
+                                            context,
+                                            "Has entrado al juego No.1",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
                                 }
-                            }
-                            parada2Id -> {
-                                if (Sharedapp.puntopartida.Partida == "2"){
-                                    Toast.makeText(context, "Has entrado al juego No.2", Toast.LENGTH_SHORT).show()
+                                parada2Id -> {
+                                    if (Sharedapp.puntopartida.Partida == "2") {
+                                        Toast.makeText(
+                                            context,
+                                            "Has entrado al juego No.2",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
                                 }
-                            }
-                            parada3Id -> {
-                                if (Sharedapp.puntopartida.Partida == "3") {
-                                    Toast.makeText(context, "Has entrado al juego No.3", Toast.LENGTH_SHORT).show()
+                                parada3Id -> {
+                                    if (Sharedapp.puntopartida.Partida == "3") {
+                                        Toast.makeText(
+                                            context,
+                                            "Has entrado al juego No.3",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
                                 }
-                            }
-                            parada4Id -> {
-                                if (Sharedapp.puntopartida.Partida == "4"){
-                                    Toast.makeText(context, "Has entrado al juego No.4", Toast.LENGTH_SHORT).show()
+                                parada4Id -> {
+                                    if (Sharedapp.puntopartida.Partida == "4") {
+                                        Toast.makeText(
+                                            context,
+                                            "Has entrado al juego No.4",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
                                 }
-                            }
-                            parada5Id -> {
-                                if (Sharedapp.puntopartida.Partida == "5"){
-                                    Toast.makeText(context, "Has entrado al juego No.5", Toast.LENGTH_SHORT).show()
+                                parada5Id -> {
+                                    if (Sharedapp.puntopartida.Partida == "5") {
+                                        Toast.makeText(
+                                            context,
+                                            "Has entrado al juego No.5",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
                                 }
-                            }
-                            parada6Id -> {
-                                if (Sharedapp.puntopartida.Partida == "6"){
-                                    Toast.makeText(context, "Has entrado al juego No.6", Toast.LENGTH_SHORT).show()
+                                parada6Id -> {
+                                    if (Sharedapp.puntopartida.Partida == "6") {
+                                        Toast.makeText(
+                                            context,
+                                            "Has entrado al juego No.6",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
                                 }
-                            }
-                            parada7Id -> {
-                                if (Sharedapp.puntopartida.Partida == "7"){
-                                    Toast.makeText(context, "Has entrado al juego No.7", Toast.LENGTH_SHORT).show()
+                                parada7Id -> {
+                                    if (Sharedapp.puntopartida.Partida == "7") {
+                                        Toast.makeText(
+                                            context,
+                                            "Has entrado al juego No.7",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
                                 }
                             }
                         }
                     }
+
                 }
 
-            }
+                it.addLocationUpdateListener(location)
 
-            it.addLocationUpdateListener(location)
+                Sharedapp.puntopartida.Partida = "5"
 
-            Sharedapp.puntopartida.Partida = "5"
-
-            Timer().schedule(2000) {
-                when(Sharedapp.puntopartida.Partida){
-                    "1" -> {
-                        clearMap()
-                        drawRute(parada1)
-                        drawWaypoints(parada1, waypointR)
-                        drawWaypoints(parada2, waypointG)
-                        drawWaypoints(parada3, waypointG)
-                        drawWaypoints(parada4, waypointG)
-                        drawWaypoints(parada5, waypointG)
-                        drawWaypoints(parada6, waypointG)
-                        drawWaypoints(parada7, waypointG)
-                    }
-                    "2" -> {
-                        clearMap()
-                        drawRute(parada2)
-                        drawWaypoints(parada1, waypointV)
-                        drawWaypoints(parada2, waypointR)
-                        drawWaypoints(parada3, waypointG)
-                        drawWaypoints(parada4, waypointG)
-                        drawWaypoints(parada5, waypointG)
-                        drawWaypoints(parada6, waypointG)
-                        drawWaypoints(parada7, waypointG)
-                    }
-                    "3" -> {
-                        clearMap()
-                        drawRute(parada3)
-                        drawWaypoints(parada1, waypointV)
-                        drawWaypoints(parada2, waypointV)
-                        drawWaypoints(parada3, waypointR)
-                        drawWaypoints(parada4, waypointG)
-                        drawWaypoints(parada5, waypointG)
-                        drawWaypoints(parada6, waypointG)
-                        drawWaypoints(parada7, waypointG)
-                    }
-                    "4" -> {
-                        clearMap()
-                        drawRute(parada4)
-                        drawWaypoints(parada1, waypointV)
-                        drawWaypoints(parada2, waypointV)
-                        drawWaypoints(parada3, waypointV)
-                        drawWaypoints(parada4, waypointR)
-                        drawWaypoints(parada5, waypointG)
-                        drawWaypoints(parada6, waypointG)
-                        drawWaypoints(parada7, waypointG)
-                    }
-                    "5" -> {
-                        clearMap()
-                        drawRute(parada5)
-                        drawWaypoints(parada1, waypointV)
-                        drawWaypoints(parada2, waypointV)
-                        drawWaypoints(parada3, waypointV)
-                        drawWaypoints(parada4, waypointV)
-                        drawWaypoints(parada5, waypointR)
-                        drawWaypoints(parada6, waypointG)
-                        drawWaypoints(parada7, waypointG)
-                    }
-                    "6" -> {
-                        clearMap()
-                        drawRute(parada6)
-                        drawWaypoints(parada1, waypointV)
-                        drawWaypoints(parada2, waypointV)
-                        drawWaypoints(parada3, waypointV)
-                        drawWaypoints(parada4, waypointV)
-                        drawWaypoints(parada5, waypointV)
-                        drawWaypoints(parada6, waypointR)
-                        drawWaypoints(parada7, waypointG)
-                    }
-                    "7" -> {
-                        clearMap()
-                        drawRute(parada7)
-                        drawWaypoints(parada1, waypointV)
-                        drawWaypoints(parada2, waypointV)
-                        drawWaypoints(parada3, waypointV)
-                        drawWaypoints(parada4, waypointV)
-                        drawWaypoints(parada5, waypointV)
-                        drawWaypoints(parada6, waypointV)
-                        drawWaypoints(parada7, waypointR)
+                Timer().schedule(2000) {
+                    when (Sharedapp.puntopartida.Partida) {
+                        "1" -> {
+                            clearMap()
+                            drawRute(parada1)
+                            drawWaypoints(parada1, waypointR)
+                            drawWaypoints(parada2, waypointG)
+                            drawWaypoints(parada3, waypointG)
+                            drawWaypoints(parada4, waypointG)
+                            drawWaypoints(parada5, waypointG)
+                            drawWaypoints(parada6, waypointG)
+                            drawWaypoints(parada7, waypointG)
+                        }
+                        "2" -> {
+                            clearMap()
+                            drawRute(parada2)
+                            drawWaypoints(parada1, waypointV)
+                            drawWaypoints(parada2, waypointR)
+                            drawWaypoints(parada3, waypointG)
+                            drawWaypoints(parada4, waypointG)
+                            drawWaypoints(parada5, waypointG)
+                            drawWaypoints(parada6, waypointG)
+                            drawWaypoints(parada7, waypointG)
+                        }
+                        "3" -> {
+                            clearMap()
+                            drawRute(parada3)
+                            drawWaypoints(parada1, waypointV)
+                            drawWaypoints(parada2, waypointV)
+                            drawWaypoints(parada3, waypointR)
+                            drawWaypoints(parada4, waypointG)
+                            drawWaypoints(parada5, waypointG)
+                            drawWaypoints(parada6, waypointG)
+                            drawWaypoints(parada7, waypointG)
+                        }
+                        "4" -> {
+                            clearMap()
+                            drawRute(parada4)
+                            drawWaypoints(parada1, waypointV)
+                            drawWaypoints(parada2, waypointV)
+                            drawWaypoints(parada3, waypointV)
+                            drawWaypoints(parada4, waypointR)
+                            drawWaypoints(parada5, waypointG)
+                            drawWaypoints(parada6, waypointG)
+                            drawWaypoints(parada7, waypointG)
+                        }
+                        "5" -> {
+                            clearMap()
+                            drawRute(parada5)
+                            drawWaypoints(parada1, waypointV)
+                            drawWaypoints(parada2, waypointV)
+                            drawWaypoints(parada3, waypointV)
+                            drawWaypoints(parada4, waypointV)
+                            drawWaypoints(parada5, waypointR)
+                            drawWaypoints(parada6, waypointG)
+                            drawWaypoints(parada7, waypointG)
+                        }
+                        "6" -> {
+                            clearMap()
+                            drawRute(parada6)
+                            drawWaypoints(parada1, waypointV)
+                            drawWaypoints(parada2, waypointV)
+                            drawWaypoints(parada3, waypointV)
+                            drawWaypoints(parada4, waypointV)
+                            drawWaypoints(parada5, waypointV)
+                            drawWaypoints(parada6, waypointR)
+                            drawWaypoints(parada7, waypointG)
+                        }
+                        "7" -> {
+                            clearMap()
+                            drawRute(parada7)
+                            drawWaypoints(parada1, waypointV)
+                            drawWaypoints(parada2, waypointV)
+                            drawWaypoints(parada3, waypointV)
+                            drawWaypoints(parada4, waypointV)
+                            drawWaypoints(parada5, waypointV)
+                            drawWaypoints(parada6, waypointV)
+                            drawWaypoints(parada7, waypointR)
+                        }
                     }
                 }
+                val layers = tomtomMap.styleSettings.findLayersById(LAYERS_IN_3D_REGEX)
+                layers.forEach {
+                    it.visibility = Visibility.VISIBLE
+                }
+                routeSettings = it.routeSettings
+            }else {
+                clearMap()
+                paradas.forEach{ marker ->
+                    drawWaypoints(marker, waypointR)
+                }
+                val markerListener = TomtomMapCallback.OnMarkerClickListener { marker ->
+                    Activityppal=requireContext() as Comunicador
+                    Activityppal!!.onPasarDato(marker.id.toString())
+                }
+
+                it.addOnMarkerClickListener(markerListener)
             }
-            val layers = tomtomMap.styleSettings.findLayersById(LAYERS_IN_3D_REGEX)
-            layers.forEach {
-                it.visibility = Visibility.VISIBLE
-            }
-            routeSettings = it.routeSettings
         }
     }
 

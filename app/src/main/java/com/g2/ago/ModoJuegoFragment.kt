@@ -26,11 +26,13 @@ class ModoJuegoFragment : Fragment() {
         binding = FragmentModoJuegoBinding.inflate(layoutInflater)
 
         binding.btnGuiado.setOnClickListener(){
+            Sharedapp.modolibre.modo = false
             startActivity(Intent(requireContext(), JuegoActivity::class.java))
         }
 
         binding.btnLibre.setOnClickListener(){
-
+            Sharedapp.modolibre.modo = true
+            startActivity(Intent(requireContext(), JuegoActivity::class.java))
         }
 
         return binding.root

@@ -72,31 +72,31 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
 
     override fun onPasarDato(dato: String) {
         when(dato){
-            "m0" -> {
+            "0" -> {
                 replaceExplFragment(ExplicacionFragment())
                 replaceMapFragment(PuzzleFragment())
             }
-            "m1" -> {
+            "1" -> {
                 replaceMapFragment(MemoryFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
-            "m2" -> {
+            "2" -> {
                 replaceExplFragment(ExplicacionFragment())
                 replaceMapFragment(SLFragemt())
             }
-            "m3" -> {
+            "3" -> {
                 replaceMapFragment(PreguntasFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
-            "m4" -> {
+            "4" -> {
                 replaceMapFragment(TestFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
-            "m5" ->{
+            "5" ->{
                 replaceExplFragment(ExplicacionFragment())
                 replaceMapFragment(VFFragment())
             }
-            "m6" -> {
+            "6" -> {
                 replaceExplFragment(ExplicacionFragment())
                 replaceMapFragment(ParrafoFragment())
             }

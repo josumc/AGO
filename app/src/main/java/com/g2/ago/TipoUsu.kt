@@ -9,7 +9,7 @@ class TipoUsu (context: Context) {
         val name: SharedPreferences = context.getSharedPreferences(PREFS_NAME, 0)
         var tipo: String
             //comprobamos el archivo de shared preferences
-            get() = name.getString(SHARED_NAME, "").toString()
+            get() = name.getString(SHARED_NAME, "alumno").toString()
             //modificamos el valor de shared preferences
             set(value) = name.edit().putString(SHARED_NAME, value).apply()
 }
