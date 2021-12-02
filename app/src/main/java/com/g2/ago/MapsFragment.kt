@@ -238,11 +238,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
                 it.addLocationUpdateListener(location)
 
-                Sharedapp.puntopartida.Partida = "5"
-
                 Timer().schedule(2000) {
                     when (Sharedapp.puntopartida.Partida) {
-                        "1" -> {
+                        "0" -> {
                             clearMap()
                             drawRute(parada1)
                             drawWaypoints(parada1, waypointR)
@@ -253,7 +251,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             drawWaypoints(parada6, waypointG)
                             drawWaypoints(parada7, waypointG)
                         }
-                        "2" -> {
+                        "1" -> {
                             clearMap()
                             drawRute(parada2)
                             drawWaypoints(parada1, waypointV)
@@ -264,7 +262,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             drawWaypoints(parada6, waypointG)
                             drawWaypoints(parada7, waypointG)
                         }
-                        "3" -> {
+                        "2" -> {
                             clearMap()
                             drawRute(parada3)
                             drawWaypoints(parada1, waypointV)
@@ -275,7 +273,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             drawWaypoints(parada6, waypointG)
                             drawWaypoints(parada7, waypointG)
                         }
-                        "4" -> {
+                        "3" -> {
                             clearMap()
                             drawRute(parada4)
                             drawWaypoints(parada1, waypointV)
@@ -286,7 +284,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             drawWaypoints(parada6, waypointG)
                             drawWaypoints(parada7, waypointG)
                         }
-                        "5" -> {
+                        "4" -> {
                             clearMap()
                             drawRute(parada5)
                             drawWaypoints(parada1, waypointV)
@@ -297,7 +295,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             drawWaypoints(parada6, waypointG)
                             drawWaypoints(parada7, waypointG)
                         }
-                        "6" -> {
+                        "5" -> {
                             clearMap()
                             drawRute(parada6)
                             drawWaypoints(parada1, waypointV)
@@ -308,7 +306,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             drawWaypoints(parada6, waypointR)
                             drawWaypoints(parada7, waypointG)
                         }
-                        "7" -> {
+                        "6" -> {
                             clearMap()
                             drawRute(parada7)
                             drawWaypoints(parada1, waypointV)
