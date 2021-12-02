@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 
 class ExplicacionFragment : Fragment() {
     lateinit var binding: FragmentExplicacionBinding
+    var testua:String=""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +27,6 @@ class ExplicacionFragment : Fragment() {
         binding= FragmentExplicacionBinding.inflate(layoutInflater)
         val explicacion=explicaciones()
         binding.textView.typeWrite(this, explicacion, 33L)
-
         return binding.root
     }
     //Esta funcion se utiliza para cargar las letas del texto a utilizar de una en una
@@ -44,7 +44,6 @@ class ExplicacionFragment : Fragment() {
         }
     }
     fun explicaciones(): String {
-        var testua=""
         when(Sharedapp.puntopartida.Partida){
             "0"->{
                 when(Sharedapp.puntojuego.Juego){

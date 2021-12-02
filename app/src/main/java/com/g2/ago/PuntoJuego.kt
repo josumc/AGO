@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class PuntoJuego (context: Context) {
-    val PREFS_NAME = "com.g2.ago.sharedpreferences.PuntoJuegp"
+    val PREFS_NAME = "com.g2.ago.sharedpreferences.PuntoJuego"
     val SHARED_NAME = "Juego"
     val PuntoJuego: SharedPreferences = context.getSharedPreferences(PREFS_NAME, 0)
     var Juego: String

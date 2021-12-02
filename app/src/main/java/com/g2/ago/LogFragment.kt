@@ -17,7 +17,6 @@ class LogFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         binding = FragmentLogBinding.inflate(layoutInflater)
 //Hacemos que al pulsar el boton la contrseña sea 123456Aa y si es correcta le cambia a tipo profesor y recarga la main con este modo
         binding.btnLog.setOnClickListener() {
@@ -31,7 +30,7 @@ class LogFragment : Fragment() {
                     m.replaceFragment(fragment)
                 }
             }else{
-                Toast.makeText(null, "La contraseña introducida no es correcta", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "La contraseña introducida no es correcta", Toast.LENGTH_SHORT).show()
             }
         }
         return binding.root
