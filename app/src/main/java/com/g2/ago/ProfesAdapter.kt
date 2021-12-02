@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_ranking.view.*
 import kotlinx.android.synthetic.main.tabla_ranking.view.*
 
 class ProfesAdapter (private val partidas: List<Partidas>, context: Context) : RecyclerView.Adapter<ProfesAdapter.ViewHolder>() {
-    private  var context1: Context=context
+    //private  var context1: Context=context
     lateinit var db: FirebaseFirestore
     private var bd:Base_de_Datos = Base_de_Datos(context, "bd", null, 1)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfesAdapter.ViewHolder {
@@ -23,21 +23,10 @@ class ProfesAdapter (private val partidas: List<Partidas>, context: Context) : R
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var nombre = ""
-        var Punto = ""
-        db = FirebaseFirestore.getInstance()
-        db.collection("Players")
-            .get()
-            .addOnSuccessListener { resultado ->
-                for (array in resultado){
-                    nombre = array.id
-                    Punto = array.data["Partida"].toString()
-                    bd.insertar_ranking(nombre, Punto)
-                }
+        //Cargar eso en un metodo y hacerlo al cargar la clase
+
                 val item = bd.Cargar_ranking().get(position)
                 holder.bind(item)
-            }
-
     }
 
     override fun getItemCount(): Int {
@@ -51,5 +40,11 @@ class ProfesAdapter (private val partidas: List<Partidas>, context: Context) : R
             val puntopartida = "${partida.PuntoPartida}/8"
             itemView.txtPunto.text = puntopartida
         }
+    }
+
+    override fun onViewDetachedFromWindow(holder: ViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        println("aaaaaaaaaaaaaaaaaaaaa")
+        bd.profes()
     }
 }

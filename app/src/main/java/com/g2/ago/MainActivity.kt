@@ -13,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, Comunicador {
 
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var button: FloatingActionButton
     lateinit var fragment: Fragment
     lateinit var binding: ActivityMainBinding
+    private lateinit var db:Base_de_Datos
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //sleep(1000)
@@ -93,9 +95,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_ranking -> {
                 if (Sharedapp.tipousu.tipo.equals("profesor")){
-                    fragment = RankingProfesFragment()
+                    var fragment = AnimacionCargaFragment()
                     replaceFragment(fragment)
-                }else if (Sharedapp.tipousu.tipo.equals("alumno")){
+
+                }else{
                     fragment = LogFragment()
                     Toast.makeText(this, "Necesitas logearte como profesor para acceder a esta funcion" +
                             "", Toast.LENGTH_SHORT).show()
@@ -119,6 +122,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_cerrar_sesion -> {
                 Sharedapp.users.user = ""
                 Sharedapp.tipousu.tipo = "alumno"
+                db = Base_de_Datos(this, "bd", null, 1)
+                db.profes()
+                menu.findItem(R.id.nav_profe).isVisible = true
+                menu.findItem(R.id.nav_cerrar_sesion).isVisible = false
                 fragment = RankingFragment()
                 replaceFragment(fragment)
             }
