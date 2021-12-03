@@ -10,15 +10,160 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:id="@+id/txtParrafo"
-        android:layout_width="299dp"
-        android:layout_height="77dp"
-        android:text="Desde _______ (Santurce) a Bilbao Vengo por toda la orilla, Con mi _____ (salla) remangada Luciendo la pantorrilla, "
+        android:id="@+id/txtParraf1"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="Desde _______  a Bilbao"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.206" />
+        app:layout_constraintVertical_bias="0.07" />
+
+    <TextView
+        android:id="@+id/txtParrafo2"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="Vengo por toda la orilla,"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.158" />
+
+    <TextView
+        android:id="@+id/txtParrafo3"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="Con mi _____  remangada"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.202" />
+
+    <TextView
+        android:id="@+id/txtParrafo4"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="Luciendo la pantorrilla,"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.114" />
+
+    <TextView
+        android:id="@+id/txtParrafo5"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="Vengo deprisa y _____"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.245" />
+
+    <TextView
+        android:id="@+id/txtParrafo6"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="Porque me oprime el corsé"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.29" />
+
+    <TextView
+        android:id="@+id/txtParrafo7"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="Voy _______ por las calles"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.334" />
+
+    <TextView
+        android:id="@+id/txtParrafo8"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="¡Quién compra! "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.378" />
+
+    <TextView
+        android:id="@+id/txtParrafo9"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="Sardinas frescué"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.422" />
+
+    <TextView
+        android:id="@+id/txtParrafo10"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="Mis _______"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.467" />
+
+    <TextView
+        android:id="@+id/txtParrafo11"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="Que ricas son"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.511" />
+
+    <TextView
+        android:id="@+id/txtParrafo12"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="Son de ________"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.555" />
+
+    <TextView
+        android:id="@+id/txtParrafo13"
+        android:layout_width="218dp"
+        android:layout_height="31dp"
+        android:text="Las traigo ____ "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -63,25 +208,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.953" />
 
-    <TextView
-        android:id="@+id/txtParrafo3"
-        android:layout_width="299dp"
-        android:layout_height="77dp"
-        android:text="Sardinas frescué Mis _______ (sardinitas) Que ricas son Son de ________ (Santurce) Las traigo ____ (yo) "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtParrafo2"
-        android:layout_width="299dp"
-        android:layout_height="77dp"
-        android:text="Vengo deprisa y _______ (corriendo) Porque me oprime el corsé Voy _______ (gritando) por las calles ¡Quién compra! "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.324" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

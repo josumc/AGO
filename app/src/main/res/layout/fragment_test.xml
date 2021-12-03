@@ -30,7 +30,7 @@
             <TextView
                 android:id="@+id/txtTest1"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="31dp"
                 android:text="@string/test1" />
 
             <RadioGroup
@@ -66,11 +66,14 @@
                     android:text="c) 1905" />
 
             </RadioGroup>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="39dp" />
 
             <TextView
                 android:id="@+id/txtTest2"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="21dp"
                 android:text="@string/test2" />
 
             <RadioGroup
@@ -106,11 +109,14 @@
                     android:text="d) 36" />
 
             </RadioGroup>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="39dp" />
 
             <TextView
                 android:id="@+id/txtTest3"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="21dp"
                 android:text="@string/test3" />
 
             <RadioGroup
@@ -146,11 +152,14 @@
                     android:text="d) 0" />
 
             </RadioGroup>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="39dp" />
 
             <TextView
                 android:id="@+id/txtTest4"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="21dp"
                 android:text="@string/test4" />
 
             <RadioGroup
@@ -186,11 +195,14 @@
                     android:text="d) Ander Etxebarria" />
 
             </RadioGroup>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="39dp" />
 
             <TextView
                 android:id="@+id/txtTest5"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="21dp"
                 android:text="@string/test5" />
 
             <RadioGroup
