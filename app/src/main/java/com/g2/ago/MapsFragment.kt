@@ -42,7 +42,7 @@ import kotlin.concurrent.schedule
 
 class MapsFragment : Fragment(), OnMapReadyCallback {
 
-    private var Activityppal: Comunicador? = null
+    private var Activityppal: JuegoActivity? = null
     private lateinit var binding: FragmentMapsBinding
     private lateinit var tomtomMap: TomtomMap
     private lateinit var searchApi: SearchApi
@@ -165,69 +165,83 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
                     rango(projectId)
                     if (reporte != null) {
-                        if (reporte!!.size == 1) {
+                        if (reporte!!.size > 0) {
                             when (reporte!![0].fence.id) {
                                 parada1Id -> {
-                                    if (Sharedapp.puntopartida.Partida == "1") {
-                                        Toast.makeText(
-                                            context,
-                                            "Has entrado al juego No.1",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                    if (Sharedapp.puntopartida.Partida == "0") {
+//                                        Toast.makeText(
+//                                            context,
+//                                            "Has entrado al juego No.1",
+//                                            Toast.LENGTH_SHORT
+//                                        ).show()
+                                        Activityppal = activity as JuegoActivity?
+                                        Activityppal?.onPasarDato("0")
                                     }
                                 }
                                 parada2Id -> {
-                                    if (Sharedapp.puntopartida.Partida == "2") {
+                                    if (Sharedapp.puntopartida.Partida == "1") {
                                         Toast.makeText(
                                             context,
                                             "Has entrado al juego No.2",
                                             Toast.LENGTH_SHORT
                                         ).show()
+                                        Activityppal = activity as JuegoActivity?
+                                        Activityppal?.onPasarDato("1")
                                     }
                                 }
                                 parada3Id -> {
-                                    if (Sharedapp.puntopartida.Partida == "3") {
+                                    if (Sharedapp.puntopartida.Partida == "2") {
                                         Toast.makeText(
                                             context,
                                             "Has entrado al juego No.3",
                                             Toast.LENGTH_SHORT
                                         ).show()
+                                        Activityppal = activity as JuegoActivity?
+                                        Activityppal?.onPasarDato("2")
                                     }
                                 }
                                 parada4Id -> {
-                                    if (Sharedapp.puntopartida.Partida == "4") {
+                                    if (Sharedapp.puntopartida.Partida == "3") {
                                         Toast.makeText(
                                             context,
                                             "Has entrado al juego No.4",
                                             Toast.LENGTH_SHORT
                                         ).show()
+                                        Activityppal = activity as JuegoActivity?
+                                        Activityppal?.onPasarDato("3")
                                     }
                                 }
                                 parada5Id -> {
-                                    if (Sharedapp.puntopartida.Partida == "5") {
+                                    if (Sharedapp.puntopartida.Partida == "4") {
                                         Toast.makeText(
                                             context,
                                             "Has entrado al juego No.5",
                                             Toast.LENGTH_SHORT
                                         ).show()
+                                        Activityppal = activity as JuegoActivity?
+                                        Activityppal?.onPasarDato("4")
                                     }
                                 }
                                 parada6Id -> {
-                                    if (Sharedapp.puntopartida.Partida == "6") {
+                                    if (Sharedapp.puntopartida.Partida == "5") {
                                         Toast.makeText(
                                             context,
                                             "Has entrado al juego No.6",
                                             Toast.LENGTH_SHORT
                                         ).show()
+                                        Activityppal = activity as JuegoActivity?
+                                        Activityppal!!.onPasarDato("5")
                                     }
                                 }
                                 parada7Id -> {
-                                    if (Sharedapp.puntopartida.Partida == "7") {
+                                    if (Sharedapp.puntopartida.Partida == "6") {
                                         Toast.makeText(
                                             context,
                                             "Has entrado al juego No.7",
                                             Toast.LENGTH_SHORT
                                         ).show()
+                                        Activityppal = activity as JuegoActivity?
+                                        Activityppal?.onPasarDato("6")
                                     }
                                 }
                             }
@@ -330,8 +344,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                     drawWaypoints(marker, waypointR)
                 }
                 val markerListener = TomtomMapCallback.OnMarkerClickListener { marker ->
-                    Activityppal=requireContext() as Comunicador
-                    Activityppal!!.onPasarDato(marker.id.toString())
+                    Activityppal = activity as JuegoActivity?
+                    Activityppal?.onPasarDato(marker.id.toString())
                 }
 
                 it.addOnMarkerClickListener(markerListener)
