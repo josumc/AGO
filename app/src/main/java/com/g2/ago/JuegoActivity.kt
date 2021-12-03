@@ -133,7 +133,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
             }
             R.id.nav_ranking -> {
                 if (Sharedapp.tipousu.tipo.equals("profesor")){
-                    intent.putExtra("fragment", "RankingFragment()")
+                    intent.putExtra("fragment", "AnimacionCargaFragment()")
                     startActivity(intent)
                     finish()
 

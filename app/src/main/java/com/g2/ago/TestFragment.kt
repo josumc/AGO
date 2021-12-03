@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_test.*
 
 class TestFragment : Fragment() {
 
-//    private var bd:Base_de_Datos = Base_de_Datos(requireContext(), "bd", null, 1)
+    private lateinit var bd:Base_de_Datos
     var check:String = "ok"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,14 +46,16 @@ class TestFragment : Fragment() {
                 txtTest5.setTextColor(Color.RED)
             }
             if(check.equals("ok")){
+                Toast.makeText(requireContext(), getString(R.string.acierto), Toast.LENGTH_SHORT).show()
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
                 Sharedapp.puntopartida.Partida = "6"
                 Sharedapp.puntojuego.Juego = "1"
-//                bd.actualizar(Sharedapp.users.User.toString(), "8")
+                bd = Base_de_Datos(requireContext(), "bd", null, 1)
+                bd.actualizar(Sharedapp.users.User.toString(), "5")
                 replaceFragment(LetraFragment())
             }else{
                 val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
-                Toast.makeText(requireContext(), "Alguna respuesta esta mal", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.preguntamal), Toast.LENGTH_SHORT).show()
                 mp!!.start()
                 check="ok"
             }

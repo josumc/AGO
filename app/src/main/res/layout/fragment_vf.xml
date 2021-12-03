@@ -30,7 +30,7 @@
                 android:id="@+id/txtVF1"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
-                android:text="@string/test1" />
+                android:text="@string/VF1" />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                 android:id="@+id/txtVF2"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
-                android:text="@string/test2" />
+                android:text="@string/VF2" />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                 android:id="@+id/txtVF3"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
-                android:text="@string/test3" />
+                android:text="@string/VF3" />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -109,7 +109,7 @@
                 android:id="@+id/txtVF4"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
-                android:text="@string/test4" />
+                android:text="@string/VF4" />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -136,7 +136,7 @@
                 android:id="@+id/txtVF5"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
-                android:text="@string/test5" />
+                android:text="@string/VF5" />
 
             <RadioGroup
                 android:layout_width="match_parent"

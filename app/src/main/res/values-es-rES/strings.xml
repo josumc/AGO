@@ -34,7 +34,7 @@
     <string name="Ranking">Ranking</string>
     <string name="Partida_nueva">Partida nueva</string>
     <string name="j8">" Aunque no me dan mucha importancia, soy fundamental en la historia del mundo. Soy capaz de hacer cualquier trabajo, incluso un trabajo duro como las sardineras. ¿Quién soy? "</string>
-    <string name="j1">a</string>
+    <string name="preguntamal">Alguna pregunta esta mal</string>
     <string name="j41">" ¿Cuántas imágenes de mujeres hay en el interior de la cúpula? "</string>
     <string name="error">Otra vez sera</string>
     <string name="j42">" ¿Cuántas figuras femeninas hay en la base del quiosco? "</string>
@@ -83,4 +83,6 @@
     <string name="sardinera4">¡Estupendo! ¡Muy bonito homenaje a nuestros queridos sardineras! ¡Toma, aquí tienes tu último premio!</string>
     <string name="asmakizuna1">Nuestra aventura está a punto de terminar, pero para terminar tendrás que superar el último invento. Para responder a ese acertijo tendrás que crear una palabra con todas las letras que hayas conseguido. ¡Concéntrate y vamos a hacer el último ejercicio!</string>
     <string name="asmakizuna2">¡Muy bien! ¡Lo lograste! La palabra es EMAKUME. Porque las mujeres son capaces de cualquier trabajo y así lo han demostrado a lo largo de la historia. Por eso hay que empezar a darles la importancia que merecen, ¡y espero que a partir de ahora les ayudes a conseguirlo! ¡Gracias por participar en esta historia! ¡Hasta la próxima vez!</string>
+    <string name="finish">FINALIZADO</string>
+    <string name="acierto">Bien hecho</string>
 </resources>

@@ -11,7 +11,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_preguntas.*
 
 class PreguntasFragment : Fragment() {
-    private var bd:Base_de_Datos = Base_de_Datos(requireContext(), "bd", null, 1)
+    private lateinit var bd:Base_de_Datos
     var check:String= "ok"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +38,7 @@ class PreguntasFragment : Fragment() {
                     MediaPlayer.create(requireContext(), R.raw.ondo).start()
                     Sharedapp.puntopartida.Partida = "5"
                     Sharedapp.puntojuego.Juego = "4"
+                    bd = Base_de_Datos(requireContext(), "bd", null, 1)
                     bd.actualizar(Sharedapp.users.User.toString(), "8")
                     replaceFragment(LetraFragment())
                 }else{

@@ -35,8 +35,10 @@
     <string name="Validar">Egiaztatu</string>
     <string name="Ranking">Sailkapena</string>
     <!--JUEGOS-->
+    <string name ="finish">AMAITUTA</string>>
     <string name="enhorabuena">ZORIONAK!!</string>
-    <string name="j1">a</string>
+    <string name="preguntamal">" Galderaren bat gaizki dago "</string>
+    <string name="acierto">Oso ondo</string>
     <string name="error">Berriro izango da</string>
     <string name="j8">Garrantzi handirik ematen ez didaten arren, funtsezkoa naiz munduaren historian. Edozein lan egiteko gai naiz, baita sardina-saltzaileak bezalako lan gogorra ere. Nor naiz?</string>
     <string name="j41">Zenbat emakumeen irudiak daude kupularen barrualdean?</string>
@@ -97,5 +99,4 @@
 
     <string name="sotera3">Hona hemen letra-zopa bat. Hemen hurrengo hitzak bilatu behar dituzu: trainerua, arraunak, arrantza, kirola, taldea, sotera eta emakumea. Zorte on!</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
