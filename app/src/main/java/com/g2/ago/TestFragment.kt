@@ -3,17 +3,16 @@ package com.g2.ago
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_test.*
-import kotlinx.android.synthetic.main.fragment_vf.*
 
 class TestFragment : Fragment() {
 
-    private var bd:Base_de_Datos = Base_de_Datos(requireContext(), "bd", null, 1)
+//    private var bd:Base_de_Datos = Base_de_Datos(requireContext(), "bd", null, 1)
     var check:String = "ok"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,10 +49,10 @@ class TestFragment : Fragment() {
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
                 Sharedapp.puntopartida.Partida = "6"
                 Sharedapp.puntojuego.Juego = "1"
-                bd.actualizar(Sharedapp.users.User.toString(), "8")
+//                bd.actualizar(Sharedapp.users.User.toString(), "8")
                 replaceFragment(LetraFragment())
             }else{
-                var mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
+                val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
                 Toast.makeText(requireContext(), "Alguna respuesta esta mal", Toast.LENGTH_SHORT).show()
                 mp!!.start()
                 check="ok"

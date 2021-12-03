@@ -10,7 +10,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_parrafo.*
 
 class ParrafoFragment : Fragment() {
-    private var bd:Base_de_Datos = Base_de_Datos(requireContext(), "bd", null, 1)
+//    private var bd:Base_de_Datos = Base_de_Datos(requireContext(), "bd", null, 1)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +27,7 @@ class ParrafoFragment : Fragment() {
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
                 Sharedapp.puntopartida.Partida = "8"
                 Sharedapp.puntojuego.Juego = "4"
-                bd.actualizar(Sharedapp.users.User.toString(), "8")
+//                bd.actualizar(Sharedapp.users.User.toString(), "8")
                 replaceFragment(LetraFragment())
             }else{
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)

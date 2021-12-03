@@ -104,7 +104,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     }
 
     fun replaceMapFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.FragmentMapaJuego, fragment).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.FragmentMapaJuego, fragment).addToBackStack("MapsFragment").commit()
     }
 
     private fun replaceExplFragment(fragment: Fragment) {
