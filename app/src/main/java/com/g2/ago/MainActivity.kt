@@ -141,6 +141,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
+    override fun activarBoton(dato: Boolean) {
+
+    }
+
     fun replaceFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
     }
