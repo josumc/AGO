@@ -56,14 +56,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:buttonTint="#9C27B0"
-                    android:text="d) 1906" />
+                    android:text="c) 1906" />
 
                 <RadioButton
                     android:id="@+id/rbtn1D"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:buttonTint="#9C27B0"
-                    android:text="c) 1905" />
+                    android:text="d) 1905" />
 
             </RadioGroup>
             <TextView

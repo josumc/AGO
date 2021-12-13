@@ -16,6 +16,10 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.screen_splash)
         Handler().postDelayed(Runnable { // This method will be executed once the timer is over
+            Sharedapp.users.user = ""
+            Sharedapp.puntopartida.Partida = ""
+            Sharedapp.puntojuego.Juego = ""
+            Sharedapp.modolibre.modo = false
             startActivity(Intent(this, MainActivity::class.java))
 
             // Cerramos las activity

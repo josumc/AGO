@@ -38,8 +38,12 @@ class ParrafoFragment : Fragment() {
             }
         }
     }
-    fun replaceFragment(fragment: Fragment){
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
+    private fun replaceFragment(fragment: Fragment) {
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        if (transaction != null) {
+            transaction.replace(R.id.FragmentMapaJuego, fragment)
+            transaction.disallowAddToBackStack()
+            transaction.commit()
+        }
     }
-
 }

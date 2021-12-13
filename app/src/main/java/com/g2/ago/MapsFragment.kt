@@ -102,6 +102,14 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         return binding.root
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        Sharedapp.users.user = ""
+        Sharedapp.puntopartida.Partida = ""
+        Sharedapp.puntojuego.Juego = ""
+        Sharedapp.modolibre.modo = false
+    }
+
     private fun clearMap() {
         tomtomMap.clear()
         departurePosition = null

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_test.*
 import kotlinx.android.synthetic.main.fragment_vf.*
 
 class VFFragment : Fragment() {
@@ -27,22 +28,32 @@ class VFFragment : Fragment() {
             if(!rbtn1G.isChecked){
                 check = "mal"
                 txtVF1.setTextColor(Color.RED)
+            }else{
+                txtVF1.setTextColor(Color.GREEN)
             }
             if(!rbtn2E.isChecked){
                 check = "mal"
                 txtVF2.setTextColor(Color.RED)
+            }else{
+                txtVF2.setTextColor(Color.GREEN)
             }
             if(!rbtn3E.isChecked){
                 check = "mal"
                 txtVF3.setTextColor(Color.RED)
+            }else{
+                txtVF3.setTextColor(Color.GREEN)
             }
             if(!rbtn4G.isChecked){
                 check = "mal"
                 txtVF4.setTextColor(Color.RED)
+            }else{
+                txtVF4.setTextColor(Color.GREEN)
             }
             if(!rbtn5E.isChecked){
                 check = "mal"
                 txtVF5.setTextColor(Color.RED)
+            }else{
+                txtVF5.setTextColor(Color.GREEN)
             }
             if(check.equals("ok")){
                 Toast.makeText(requireContext(), getString(R.string.acierto), Toast.LENGTH_SHORT).show()
@@ -60,7 +71,12 @@ class VFFragment : Fragment() {
             }
         }
     }
-    fun replaceFragment(fragment: Fragment){
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
+    private fun replaceFragment(fragment: Fragment) {
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        if (transaction != null) {
+            transaction.replace(R.id.FragmentMapaJuego, fragment)
+            transaction.disallowAddToBackStack()
+            transaction.commit()
+        }
     }
 }

@@ -28,6 +28,7 @@ class PreguntasFragment : Fragment() {
                 txtPregunta1.setTextColor(Color.RED)
                 txtRespuesta1.text = null
                 txtRespuesta2.text = null
+                check = "mal"
             }
             if (!txtRespuesta2.text.toString().equals("3")) {
                 txtPregunta2.setTextColor(Color.RED)
@@ -50,7 +51,12 @@ class PreguntasFragment : Fragment() {
             }
         }
     }
-    fun replaceFragment(fragment: Fragment){
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
+    private fun replaceFragment(fragment: Fragment) {
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        if (transaction != null) {
+            transaction.replace(R.id.FragmentMapaJuego, fragment)
+            transaction.disallowAddToBackStack()
+            transaction.commit()
+        }
     }
 }

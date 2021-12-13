@@ -13,7 +13,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, Comunicador {
 
@@ -79,6 +78,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        if (Sharedapp.tipousu.tipo.equals("profesor")){
+            menu.findItem(R.id.nav_ranking).isVisible = true
+        }else if (Sharedapp.tipousu.tipo.equals("alumno") || Sharedapp.tipousu.tipo.equals("")){
+            menu.findItem(R.id.nav_ranking).isVisible = false
+        }
 
         when(item.itemId){
             R.id.nav_inicio -> {
@@ -89,9 +93,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     fragment = RankingFragment()
                     replaceFragment(fragment)
                 }
-            }
-            R.id.nav_mapa -> {
-                startActivity(Intent(this, JuegoActivity::class.java))
             }
             R.id.nav_ranking -> {
                 if (Sharedapp.tipousu.tipo.equals("profesor")){
@@ -126,11 +127,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 db.profes()
                 menu.findItem(R.id.nav_profe).isVisible = true
                 menu.findItem(R.id.nav_cerrar_sesion).isVisible = false
-                fragment = RankingFragment()
-                replaceFragment(fragment)
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }
             R.id.nav_salir -> {
-                finishAndRemoveTask()
+                val fragment: Fragment = LetraFragment()
+                replaceFragment(fragment)
+                //finishAndRemoveTask()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
