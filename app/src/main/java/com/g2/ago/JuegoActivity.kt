@@ -25,8 +25,8 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     lateinit var menu: Menu
     lateinit var binding : ActivityJuegoBinding
     lateinit var fragmentTop: Fragment
-    lateinit var fragment: Fragment
     lateinit var fragmentBot: Fragment
+    var bundle:Bundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,14 +48,15 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         fragmentTop = MapsFragment()
         supportFragmentManager.beginTransaction().replace(R.id.FragmentMapaJuego, fragmentTop).commit()
 
+        fragmentBot = InfoRutaFragment()
+        supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragmentBot).commit()
 
-        if (Sharedapp.puntopartida.Partida.equals("0")){
-            replaceExplFragment(ExplicacionFragment())
-        }else{
-//            fragmentBot = InfoRutaFragment()
-//            supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragmentBot).commit()
-            replaceExplFragment(InfoRutaFragment())
-        }
+//Para pruebas
+//        if (Sharedapp.puntopartida.Partida.equals("0")){
+//            replaceExplFragment(ExplicacionFragment())
+//        }else{
+//            replaceExplFragment(InfoRutaFragment())
+//        }
         navigationView.setNavigationItemSelectedListener(this)
 
         menu.findItem(R.id.nav_alumno).isVisible = false
@@ -73,16 +74,16 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     override fun onPasarDato(dato: String) {
         when(dato){
             "0" -> {
-                replaceExplFragment(ExplicacionFragment())
                 replaceMapFragment(PuzzleFragment())
+                replaceExplFragment(ExplicacionFragment())
             }
             "1" -> {
                 replaceMapFragment(MemoryFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
             "2" -> {
-                replaceExplFragment(ExplicacionFragment())
                 replaceMapFragment(SLFragemt())
+                replaceExplFragment(ExplicacionFragment())
             }
             "3" -> {
                 replaceMapFragment(PreguntasFragment())
@@ -93,14 +94,20 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
                 replaceExplFragment(ExplicacionFragment())
             }
             "5" ->{
-                replaceExplFragment(ExplicacionFragment())
                 replaceMapFragment(VFFragment())
+                replaceExplFragment(ExplicacionFragment())
             }
             "6" -> {
-                replaceExplFragment(ExplicacionFragment())
                 replaceMapFragment(ParrafoFragment())
+                replaceExplFragment(ExplicacionFragment())
             }
         }
+    }
+
+    override fun activarBoton(dato: Boolean) {
+        bundle.putBoolean("activar", dato)
+        var fragment:Fragment=InfoRutaFragment()
+        fragment.arguments=bundle
     }
 
     fun replaceMapFragment(fragment: Fragment) {
@@ -170,7 +177,6 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
-
 }
 
 

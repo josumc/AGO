@@ -1,6 +1,7 @@
 package com.g2.ago
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.os.Bundle
@@ -23,6 +24,7 @@ class MapsFragment2 : Fragment() {
     lateinit var googleMap: GoogleMap
     lateinit var ubicacion:LatLng
     var marcadores:ArrayList<Marker> = arrayListOf()
+    @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { GoogleMap ->
         googleMap=GoogleMap
         /**
@@ -118,6 +120,7 @@ class MapsFragment2 : Fragment() {
 //        }
     }
 
+    @SuppressLint("MissingPermission")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -151,13 +154,16 @@ class MapsFragment2 : Fragment() {
     }
     fun cambiarMarcador(posicion:Int){
         marcadores.forEach {
-            if (marcadores.indexOf(it)<(posicion-1)){
-                it.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-            }else if (marcadores.indexOf(it)==(posicion-1)){
-                it.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
-            }
-            else if (marcadores.indexOf(it)>(posicion-1)){
-                it.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+            when {
+                marcadores.indexOf(it)<(posicion-1) -> {
+                    it.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                }
+                marcadores.indexOf(it)==(posicion-1) -> {
+                    it.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+                }
+                marcadores.indexOf(it)>(posicion-1) -> {
+                    it.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+                }
             }
         }
 
