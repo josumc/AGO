@@ -42,9 +42,8 @@ class ProfesAdapter (private val partidas: List<Partidas>, context: Context) : R
         }
     }
 
-    override fun onViewDetachedFromWindow(holder: ViewHolder) {
+   /* override fun onViewDetachedFromWindow(holder: ViewHolder) {
         super.onViewDetachedFromWindow(holder)
-        println("aaaaaaaaaaaaaaaaaaaaa")
         bd.profes()
-    }
+    }*/
 }

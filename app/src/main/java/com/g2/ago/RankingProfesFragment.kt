@@ -4,12 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.g2.ago.databinding.FragmentRankingBinding
 import com.g2.ago.databinding.FragmentRankingProfesBinding
-import kotlinx.android.synthetic.main.fragment_ranking.*
 import kotlinx.android.synthetic.main.fragment_ranking_profes.*
 
 class RankingProfesFragment : Fragment() {
@@ -43,9 +40,4 @@ class RankingProfesFragment : Fragment() {
         ProfesLyout.adapter=adapter
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-       // db.profes()
-        db.close()
-    }
 }

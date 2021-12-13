@@ -67,6 +67,7 @@ class TestFragment : Fragment() {
                 Sharedapp.puntojuego.Juego = "1"
                 bd = Base_de_Datos(requireContext(), "bd", null, 1)
                 bd.actualizar(Sharedapp.users.User.toString(), "5")
+                //fragment por el que lo reemplazamos
                 val fragment: Fragment = LetraFragment()
                 replaceFragment(fragment)
             }else{
@@ -78,9 +79,11 @@ class TestFragment : Fragment() {
         }
 
     }
+    //metodo para llamar a un fragment desde otro
     private fun replaceFragment(fragment: Fragment){
         val transaction = activity?.supportFragmentManager?.beginTransaction()
         if (transaction != null) {
+            //El primer valor es el contenedor y el segundo la variable que indicabamos antes
             transaction.replace(R.id.FragmentMapaJuego, fragment)
             transaction.disallowAddToBackStack()
             transaction.commit()

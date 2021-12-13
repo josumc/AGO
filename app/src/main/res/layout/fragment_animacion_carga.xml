@@ -5,4 +5,14 @@
     android:id="@+id/imgCarga"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AnimacionCargaFragment"/>
+    tools:context=".AnimacionCargaFragment">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:lottie_rawRes="@raw/timoncarga"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>
