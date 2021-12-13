@@ -131,9 +131,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 finish()
             }
             R.id.nav_salir -> {
-                val fragment: Fragment = LetraFragment()
-                replaceFragment(fragment)
-                //finishAndRemoveTask()
+                finishAndRemoveTask()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
