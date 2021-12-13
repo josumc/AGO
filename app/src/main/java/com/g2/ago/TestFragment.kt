@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import kotlinx.android.synthetic.main.fragment_test.*
-import androidx.fragment.app.FragmentTransaction
 
 
 class TestFragment : Fragment() {
@@ -68,7 +66,7 @@ class TestFragment : Fragment() {
                 bd = Base_de_Datos(requireContext(), "bd", null, 1)
                 bd.actualizar(Sharedapp.users.User.toString(), "5")
                 //fragment por el que lo reemplazamos
-                val fragment: Fragment = LetraFragment()
+                val fragment: Fragment = AnimacionFinalFragment()
                 replaceFragment(fragment)
             }else{
                 val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
