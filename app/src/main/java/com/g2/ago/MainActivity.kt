@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             replaceFragment(fragment)
             menu.findItem(R.id.nav_profe).isVisible = false
             menu.findItem(R.id.nav_cerrar_sesion).isVisible = true
+            menu.findItem(R.id.nav_ranking).isVisible = true
         }else{
             fragment = RankingFragment()
             replaceFragment(fragment)

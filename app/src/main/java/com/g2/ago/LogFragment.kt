@@ -27,6 +27,7 @@ class LogFragment : Fragment() {
                 if (m != null) {
                     m.menu.findItem(R.id.nav_profe).isVisible = false
                     m.menu.findItem(R.id.nav_cerrar_sesion).isVisible = true
+                    m.menu.findItem(R.id.nav_ranking).isVisible = true
                     m.replaceFragment(fragment)
                 }
             }else{

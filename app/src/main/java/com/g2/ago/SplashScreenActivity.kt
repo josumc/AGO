@@ -30,13 +30,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
             }
         }, SPLASH_TIME_OUT)
-        /*startActivity(Intent(this, MainActivity::class.java))
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1)
-            */return
-        //}
+        return
     }
     override fun onStop() {
         super.onStop()
