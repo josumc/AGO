@@ -10,13 +10,14 @@
 
         <item
             android:id="@+id/nav_ranking"
+            android:icon="@drawable/ic_baseline_star_outline_24"
             android:title="@string/Ranking"
-            android:icon="@drawable/ic_baseline_star_outline_24" />
+            android:visible="false" />
 
         <item
             android:id="@+id/nav_quienes"
-            android:title="@string/QuienSomos"
-            android:icon="@drawable/ic_outline_groups_24" />
+            android:icon="@drawable/ic_outline_groups_24"
+            android:title="@string/QuienSomos" />
 
     </group>
 
