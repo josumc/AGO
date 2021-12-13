@@ -72,42 +72,50 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     }
 
     override fun onPasarDato(dato: String) {
+        if(Sharedapp.modolibre.modo){
+            println("Información a encontrar: ")
+             var dato_act=(dato.toInt()+1).toString()
+            Sharedapp.puntopartida.Partida=dato_act
+            println(Sharedapp.puntopartida.Partida)
+            Sharedapp.puntojuego.Juego="1"
+            println(Sharedapp.puntojuego.Juego)
+        }
         when(dato){
             "0" -> {
-                replaceMapFragment(PuzzleFragment())
+                replaceMapFragment(FotosFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
             "1" -> {
-                replaceMapFragment(MemoryFragment())
+                replaceMapFragment(FotosFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
             "2" -> {
-                replaceMapFragment(SLFragemt())
+                replaceMapFragment(FotosFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
             "3" -> {
-                replaceMapFragment(PreguntasFragment())
+                replaceMapFragment(FotosFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
             "4" -> {
-                replaceMapFragment(TestFragment())
+                replaceMapFragment(FotosFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
             "5" ->{
-                replaceMapFragment(VFFragment())
+                replaceMapFragment(FotosFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
             "6" -> {
-                replaceMapFragment(ParrafoFragment())
+                replaceMapFragment(FotosFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
         }
     }
 
     override fun activarBoton(dato: Boolean) {
-        bundle.putBoolean("activar", dato)
-        var fragment:Fragment=InfoRutaFragment()
-        fragment.arguments=bundle
+//        bundle.putBoolean("activar", dato)
+//        var fragment:Fragment=InfoRutaFragment()
+//        fragment.arguments=bundle
     }
 
     fun replaceMapFragment(fragment: Fragment) {

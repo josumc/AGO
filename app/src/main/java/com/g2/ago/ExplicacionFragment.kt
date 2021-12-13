@@ -60,7 +60,7 @@ class ExplicacionFragment : Fragment() {
                 }
             }
             "1"->{
-                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                when(Sharedapp.puntojuego.Juego){
                     "1"->{
                         val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.portua1audioa)
                         mp!!.start()
@@ -79,7 +79,7 @@ class ExplicacionFragment : Fragment() {
                 }
             }
             "2"->{
-                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                when(Sharedapp.puntojuego.Juego){
                     "1"->{
                         val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kofradia1audioa)
                         mp!!.start()
@@ -98,7 +98,7 @@ class ExplicacionFragment : Fragment() {
                 }
             }
             "3"->{
-                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                when(Sharedapp.puntojuego.Juego){
                     "1"->{
                         val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sotera1audioa)
                         mp!!.start()
@@ -122,7 +122,7 @@ class ExplicacionFragment : Fragment() {
                 }
             }
             "4"->{
-                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                when(Sharedapp.puntojuego.Juego){
                     "1"->{
                         val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kioskoa1audioa)
                         mp!!.start()
@@ -141,7 +141,7 @@ class ExplicacionFragment : Fragment() {
                 }
             }
             "5"->{
-                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                when(Sharedapp.puntojuego.Juego){
                     "1"->{
                         val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.udaletxea1audioa)
                         mp!!.start()
@@ -165,7 +165,7 @@ class ExplicacionFragment : Fragment() {
                 }
             }
             "6"->{
-                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                when(Sharedapp.puntojuego.Juego){
                     "1"->{
                         val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.auzoa1audioa)
                         mp!!.start()
@@ -189,7 +189,8 @@ class ExplicacionFragment : Fragment() {
                 }
             }
             "7"->{
-                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                println("ha llegado aquí")
+                when(Sharedapp.puntojuego.Juego){
                     "1"->{
                         val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sardinera1audioa)
                         mp!!.start()
@@ -214,7 +215,7 @@ class ExplicacionFragment : Fragment() {
                 }
             }
             "8"->{
-                when(Sharedapp.puntojuego.PuntoJuego.toString()){
+                when(Sharedapp.puntojuego.Juego){
                     "1"->{
                         val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.asmakizuna1audioa)
                         mp!!.start()

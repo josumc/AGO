@@ -354,6 +354,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 val markerListener = TomtomMapCallback.OnMarkerClickListener { marker ->
                     Activityppal = activity as JuegoActivity?
                     Activityppal?.onPasarDato(marker.id.toString())
+                    //La línea de debajo es una prueba
+//                    Activityppal?.onPasarDato((marker.id+1).toString())
+
                 }
 
                 it.addOnMarkerClickListener(markerListener)
