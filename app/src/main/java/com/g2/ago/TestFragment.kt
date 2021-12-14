@@ -84,7 +84,7 @@ class TestFragment : Fragment() {
         val transaction = activity?.supportFragmentManager?.beginTransaction()
         if (transaction != null) {
             //El primer valor es el contenedor y el segundo la variable que indicabamos antes
-            transaction.replace(R.id.FragmentMapaJuego, fragment)
+            transaction.replace(R.id.fragment1Juego, fragment)
             transaction.disallowAddToBackStack()
             transaction.commit()
         }

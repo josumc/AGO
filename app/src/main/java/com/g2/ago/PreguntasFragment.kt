@@ -56,7 +56,7 @@ class PreguntasFragment : Fragment() {
     private fun replaceFragment(fragment: Fragment) {
         val transaction = activity?.supportFragmentManager?.beginTransaction()
         if (transaction != null) {
-            transaction.replace(R.id.FragmentMapaJuego, fragment)
+            transaction.replace(R.id.fragment1Juego, fragment)
             transaction.disallowAddToBackStack()
             transaction.commit()
         }
