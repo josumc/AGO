@@ -39,43 +39,42 @@ class JuegoActivity : DrawerActivity(), Comunicador,
 
     override fun onPasarDato(dato: String) {
         if(Sharedapp.modolibre.modo){
-            println("Información a encontrar: ")
-             var dato_act=(dato.toInt()+1).toString()
-            Sharedapp.puntopartida.Partida=dato_act
-            println(Sharedapp.puntopartida.Partida)
+             val datoact=(dato.toInt()+1).toString()
+            Sharedapp.puntopartida.Partida=datoact
             Sharedapp.puntojuego.Juego="1"
-            println(Sharedapp.puntojuego.Juego)
         }
-        when(dato){
-            "0" -> {
-                replaceMapFragment(FotosFragment())
-                replaceExplFragment(ExplicacionFragment())
-            }
-            "1" -> {
-                replaceMapFragment(FotosFragment())
-                replaceExplFragment(ExplicacionFragment())
-            }
-            "2" -> {
-                replaceMapFragment(FotosFragment())
-                replaceExplFragment(ExplicacionFragment())
-            }
-            "3" -> {
-                replaceMapFragment(FotosFragment())
-                replaceExplFragment(ExplicacionFragment())
-            }
-            "4" -> {
-                replaceMapFragment(FotosFragment())
-                replaceExplFragment(ExplicacionFragment())
-            }
-            "5" ->{
-                replaceMapFragment(FotosFragment())
-                replaceExplFragment(ExplicacionFragment())
-            }
-            "6" -> {
-                replaceMapFragment(FotosFragment())
-                replaceExplFragment(ExplicacionFragment())
-            }
-        }
+        replaceMapFragment(FotosFragment())
+        replaceExplFragment(ExplicacionFragment())
+//        when(dato){
+//            "0" -> {
+//                replaceMapFragment(FotosFragment())
+//                replaceExplFragment(ExplicacionFragment())
+//            }
+//            "1" -> {
+//                replaceMapFragment(FotosFragment())
+//                replaceExplFragment(ExplicacionFragment())
+//            }
+//            "2" -> {
+//                replaceMapFragment(FotosFragment())
+//                replaceExplFragment(ExplicacionFragment())
+//            }
+//            "3" -> {
+//                replaceMapFragment(FotosFragment())
+//                replaceExplFragment(ExplicacionFragment())
+//            }
+//            "4" -> {
+//                replaceMapFragment(FotosFragment())
+//                replaceExplFragment(ExplicacionFragment())
+//            }
+//            "5" ->{
+//                replaceMapFragment(FotosFragment())
+//                replaceExplFragment(ExplicacionFragment())
+//            }
+//            "6" -> {
+//                replaceMapFragment(FotosFragment())
+//                replaceExplFragment(ExplicacionFragment())
+//            }
+//        }
     }
 
     override fun activarBoton(dato: Boolean) {
