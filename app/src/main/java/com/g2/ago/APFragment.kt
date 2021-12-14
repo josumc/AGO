@@ -26,6 +26,10 @@ class APFragment : Fragment() {
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
                 Sharedapp.puntopartida.Partida = "8"
                 Sharedapp.puntojuego.Juego = "1"
+                if (Sharedapp.tipousu.tipo != "profesor"){
+                    bd = Base_de_Datos(requireContext(), "bd", null, 1)
+                    bd.actualizar(Sharedapp.users.User.toString(), getString(R.string.finish))
+                }
                 bd = Base_de_Datos(requireContext(), "bd", null, 1)
                 bd.actualizar(Sharedapp.users.User.toString(), getString(R.string.finish))
                 val fragment: Fragment = AnimacionFinalFragment()

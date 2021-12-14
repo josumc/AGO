@@ -28,8 +28,10 @@ class ParrafoFragment : Fragment() {
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
                 Sharedapp.puntopartida.Partida = "8"
                 Sharedapp.puntojuego.Juego = "4"
-                bd = Base_de_Datos(requireContext(), "bd", null, 1)
-                bd.actualizar(Sharedapp.users.User.toString(), "7")
+                if (Sharedapp.tipousu.tipo != "profesor"){
+                    bd = Base_de_Datos(requireContext(), "bd", null, 1)
+                    bd.actualizar(Sharedapp.users.User.toString(), "7")
+                }
                 replaceFragment(LetraFragment())
             }else{
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)

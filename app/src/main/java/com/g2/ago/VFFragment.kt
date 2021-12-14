@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import kotlinx.android.synthetic.main.fragment_test.*
 import kotlinx.android.synthetic.main.fragment_vf.*
 
 class VFFragment : Fragment() {
@@ -60,8 +59,10 @@ class VFFragment : Fragment() {
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
                 Sharedapp.puntopartida.Partida = "7"
                 Sharedapp.puntojuego.Juego = "4"
-                bd = Base_de_Datos(requireContext(), "bd", null, 1)
-                bd.actualizar(Sharedapp.users.User.toString(), "6")
+                if (Sharedapp.tipousu.tipo != "profesor"){
+                    bd = Base_de_Datos(requireContext(), "bd", null, 1)
+                    bd.actualizar(Sharedapp.users.User.toString(), "6")
+                }
                 replaceFragment(LetraFragment())
             }else{
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)

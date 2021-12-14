@@ -64,6 +64,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         if (Sharedapp.tipousu.tipo.equals("profesor")){
             menu.findItem(R.id.nav_profe).isVisible = false
             menu.findItem(R.id.nav_cerrar_sesion).isVisible = true
+            menu.findItem(R.id.nav_ranking).isVisible = true
 
         }else{
             menu.findItem(R.id.nav_profe).isVisible = true

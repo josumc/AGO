@@ -39,11 +39,13 @@ class PreguntasFragment : Fragment() {
                     MediaPlayer.create(requireContext(), R.raw.ondo).start()
                     Sharedapp.puntopartida.Partida = "5"
                     Sharedapp.puntojuego.Juego = "4"
+                if (Sharedapp.tipousu.tipo != "profesor"){
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
                     bd.actualizar(Sharedapp.users.User.toString(), "8")
-                    replaceFragment(LetraFragment())
-                }else{
+                }
 
+                    replaceFragment(LetraFragment())
+            }else{
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
                 Toast.makeText(requireContext(), "Alguna respuesta esta mal", Toast.LENGTH_SHORT).show()
                 mp!!.start()

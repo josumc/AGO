@@ -63,8 +63,10 @@ class TestFragment : Fragment() {
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
                 Sharedapp.puntopartida.Partida = "6"
                 Sharedapp.puntojuego.Juego = "1"
-                bd = Base_de_Datos(requireContext(), "bd", null, 1)
-                bd.actualizar(Sharedapp.users.User.toString(), "5")
+                if (Sharedapp.tipousu.tipo != "profesor"){
+                    bd = Base_de_Datos(requireContext(), "bd", null, 1)
+                    bd.actualizar(Sharedapp.users.User.toString(), "5")
+                }
                 //fragment por el que lo reemplazamos
                 val fragment: Fragment = AnimacionFinalFragment()
                 replaceFragment(fragment)
