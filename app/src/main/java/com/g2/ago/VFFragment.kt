@@ -1,5 +1,6 @@
 package com.g2.ago
 
+import android.app.Activity
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -63,7 +64,8 @@ class VFFragment : Fragment() {
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
                     bd.actualizar(Sharedapp.users.User.toString(), "6")
                 }
-                replaceFragment(LetraFragment())
+                Generica(requireContext()).replaceFragment(LetraFragment())
+
             }else{
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
                 Toast.makeText(requireContext(), getString(R.string.preguntamal), Toast.LENGTH_SHORT).show()
@@ -72,8 +74,8 @@ class VFFragment : Fragment() {
             }
         }
     }
-    private fun replaceFragment(fragment: Fragment) {
-        val transaction = activity?.supportFragmentManager?.beginTransaction()
+    private fun replaceFragment(fragment: Fragment, activity: JuegoActivity) {
+        val transaction = activity.supportFragmentManager?.beginTransaction()
         if (transaction != null) {
             transaction.replace(R.id.fragment1Juego, fragment)
             transaction.disallowAddToBackStack()
