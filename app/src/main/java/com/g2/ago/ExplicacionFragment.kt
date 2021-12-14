@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 class ExplicacionFragment : Fragment() {
     lateinit var binding: FragmentExplicacionBinding
     var testua:String=""
+    lateinit var mp: MediaPlayer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,9 +26,21 @@ class ExplicacionFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding= FragmentExplicacionBinding.inflate(layoutInflater)
+        cargarTexto()
+
+        binding.pasarFase.setOnClickListener{
+            if (binding.textView.text==explicaciones()){
+                val sharedappAct=(Sharedapp.puntojuego.Juego.toInt()+1).toString()
+                Sharedapp.puntojuego.Juego=sharedappAct
+                cargarTexto()
+                Generica(requireContext()).replaceFragment(FotosFragment())
+            }
+        }
+        return binding.root
+    }
+    fun cargarTexto(){
         val explicacion=explicaciones()
         binding.textView.typeWrite(this, explicacion, 33L)
-        return binding.root
     }
     //Esta funcion se utiliza para cargar las letas del texto a utilizar de una en una
     fun TextView.typeWrite(lifecycleOwner: LifecycleOwner, text: String, intervalMs: Long) {
@@ -48,13 +61,14 @@ class ExplicacionFragment : Fragment() {
             "0"->{
                 when(Sharedapp.puntojuego.Juego){
                     "1"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.hasiera1audioa)
-                        mp!!.start()
+                        mp = MediaPlayer.create(requireContext(), R.raw.hasiera1audioa)
+                        mp.start()
                         testua=getString(R.string.hasiera1)
                     }
                     "2"-> {
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.hasiera2audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.hasiera2audioa)
+                        mp.start()
                         testua=getString(R.string.hasiera2)
                     }
                 }
@@ -62,18 +76,20 @@ class ExplicacionFragment : Fragment() {
             "1"->{
                 when(Sharedapp.puntojuego.Juego){
                     "1"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.portua1audioa)
-                        mp!!.start()
+                        mp = MediaPlayer.create(requireContext(), R.raw.portua1audioa)
+                        mp.start()
                         testua=getString(R.string.portua1)
                     }
                     "2"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.portua2audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.portua2audioa)
+                        mp.start()
                         testua=getString(R.string.portua2)
                     }
                     "3"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.portua3audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.portua3audioa)
+                        mp.start()
                         testua=getString(R.string.portua3)
                     }
                 }
@@ -81,18 +97,20 @@ class ExplicacionFragment : Fragment() {
             "2"->{
                 when(Sharedapp.puntojuego.Juego){
                     "1"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kofradia1audioa)
-                        mp!!.start()
+                        mp = MediaPlayer.create(requireContext(), R.raw.kofradia1audioa)
+                        mp.start()
                         testua=getString(R.string.kofradia1)
                     }
                     "2"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kofradia2audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.kofradia2audioa)
+                        mp.start()
                         testua=getString(R.string.kofradia2)
                     }
                     "3"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kofradia3audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.kofradia3audioa)
+                        mp.start()
                         testua=getString(R.string.kofradia3)
                     }
                 }
@@ -100,23 +118,26 @@ class ExplicacionFragment : Fragment() {
             "3"->{
                 when(Sharedapp.puntojuego.Juego){
                     "1"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sotera1audioa)
-                        mp!!.start()
+                        mp = MediaPlayer.create(requireContext(), R.raw.sotera1audioa)
+                        mp.start()
                         testua=getString(R.string.sotera1)
                     }
                     "2"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sotera2audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.sotera2audioa)
+                        mp.start()
                         testua=getString(R.string.sotera2)
                     }
                     "3"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sotera3audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.sotera3audioa)
+                        mp.start()
                         testua=getString(R.string.sotera3)
                     }
                     "4"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sotera4audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.sotera4audioa)
+                        mp.start()
                         testua=getString(R.string.sotera4)
                     }
                 }
@@ -124,18 +145,20 @@ class ExplicacionFragment : Fragment() {
             "4"->{
                 when(Sharedapp.puntojuego.Juego){
                     "1"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kioskoa1audioa)
-                        mp!!.start()
+                        mp = MediaPlayer.create(requireContext(), R.raw.kioskoa1audioa)
+                        mp.start()
                         testua=getString(R.string.kioskoa1)
                     }
                     "2"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kioskoa2audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.kioskoa2audioa)
+                        mp.start()
                         testua=getString(R.string.kioskoa2)
                     }
                     "3"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.kioskoa3audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.kioskoa3audioa)
+                        mp.start()
                         testua=getString(R.string.kioskoa3)
                     }
                 }
@@ -143,23 +166,26 @@ class ExplicacionFragment : Fragment() {
             "5"->{
                 when(Sharedapp.puntojuego.Juego){
                     "1"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.udaletxea1audioa)
-                        mp!!.start()
+                        mp = MediaPlayer.create(requireContext(), R.raw.udaletxea1audioa)
+                        mp.start()
                         testua=getString(R.string.udaletxea1)
                     }
                     "2"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.udaletxea2audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.udaletxea2audioa)
+                        mp.start()
                         testua=getString(R.string.udaletxea2)
                     }
                     "3"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.udaletxea3audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.udaletxea3audioa)
+                        mp.start()
                         testua=getString(R.string.udaletxea3)
                     }
                     "4"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.udaletxea4audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.udaletxea4audioa)
+                        mp.start()
                         testua=getString(R.string.udaletxea3)
                     }
                 }
@@ -167,48 +193,53 @@ class ExplicacionFragment : Fragment() {
             "6"->{
                 when(Sharedapp.puntojuego.Juego){
                     "1"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.auzoa1audioa)
-                        mp!!.start()
+                        mp = MediaPlayer.create(requireContext(), R.raw.auzoa1audioa)
+                        mp.start()
                         testua=getString(R.string.auzoa1)
                     }
                     "2"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.auzoa2audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.auzoa2audioa)
+                        mp.start()
                         testua=getString(R.string.auzoa2)
                     }
                     "3"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.auzoa3audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.auzoa3audioa)
+                        mp.start()
                         testua=getString(R.string.auzoa3)
                     }
                     "4"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.auzoa4audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.auzoa4audioa)
+                        mp.start()
                         testua=getString(R.string.auzoa4)
                     }
                 }
             }
             "7"->{
-                println("ha llegado aquí")
                 when(Sharedapp.puntojuego.Juego){
                     "1"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sardinera1audioa)
-                        mp!!.start()
+                        mp = MediaPlayer.create(requireContext(), R.raw.sardinera1audioa)
+                        mp.start()
                         testua=getString(R.string.sardinera1)
                     }
                     "2"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sardinera2audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.sardinera2audioa)
+                        mp.start()
                         testua=getString(R.string.sardinera2)
                     }
                     "3"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sardinera3audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.sardinera3audioa)
+                        mp.start()
                         testua=getString(R.string.sardinera3)
                     }
                     "4"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.sardinera4audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.sardinera4audioa)
+                        mp.start()
                         testua=getString(R.string.sardinera4)
                     }
 
@@ -217,17 +248,19 @@ class ExplicacionFragment : Fragment() {
             "8"->{
                 when(Sharedapp.puntojuego.Juego){
                     "1"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.asmakizuna1audioa)
-                        mp!!.start()
+                        mp = MediaPlayer.create(requireContext(), R.raw.asmakizuna1audioa)
+                        mp.start()
                         testua=getString(R.string.asmakizuna1)
                     }
                     "3"->{
-                        val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.asmakizuna2audioa)
-                        mp!!.start()
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.asmakizuna2audioa)
+                        mp.start()
                     }
                    "2"->{
-                       val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.asmakizuna3audioa)
-                       mp!!.start()
+                       mp.stop()
+                       mp = MediaPlayer.create(requireContext(), R.raw.asmakizuna3audioa)
+                       mp.start()
                        testua=getString(R.string.asmakizuna2)
                     }
 

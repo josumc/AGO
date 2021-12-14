@@ -32,8 +32,7 @@ class APFragment : Fragment() {
                 }
                 bd = Base_de_Datos(requireContext(), "bd", null, 1)
                 bd.actualizar(Sharedapp.users.User.toString(), getString(R.string.finish))
-                val fragment: Fragment = AnimacionFinalFragment()
-                replaceFragment(fragment)
+                Generica(requireContext()).replaceFragment(AnimacionFinalFragment())
                 Toast.makeText(requireContext(), getString(R.string.acierto), Toast.LENGTH_SHORT).show()
                 mp!!.start()
             }else{
@@ -42,16 +41,5 @@ class APFragment : Fragment() {
                 mp!!.start()
             }
         }
-    }
-    //metodo para llamar a un fragment desde otro
-    private fun replaceFragment(fragment: Fragment){
-        val transaction = activity?.supportFragmentManager?.beginTransaction()
-        if (transaction != null) {
-            //El primer valor es el contenedor y el segundo la variable que indicabamos antes
-            transaction.replace(R.id.FragmentMapaJuego, fragment)
-            transaction.disallowAddToBackStack()
-            transaction.commit()
-        }
-
     }
 }

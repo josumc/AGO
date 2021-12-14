@@ -69,7 +69,7 @@ class TestFragment : Fragment() {
                 }
                 //fragment por el que lo reemplazamos
                 val fragment: Fragment = AnimacionFinalFragment()
-                replaceFragment(fragment)
+                Generica(requireContext()).replaceFragment(LetraFragment())
             }else{
                 val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
                 Toast.makeText(requireContext(), getString(R.string.preguntamal), Toast.LENGTH_SHORT).show()
@@ -79,16 +79,4 @@ class TestFragment : Fragment() {
         }
 
     }
-    //metodo para llamar a un fragment desde otro
-    private fun replaceFragment(fragment: Fragment){
-        val transaction = activity?.supportFragmentManager?.beginTransaction()
-        if (transaction != null) {
-            //El primer valor es el contenedor y el segundo la variable que indicabamos antes
-            transaction.replace(R.id.FragmentMapaJuego, fragment)
-            transaction.disallowAddToBackStack()
-            transaction.commit()
-        }
-
-    }
-
 }
