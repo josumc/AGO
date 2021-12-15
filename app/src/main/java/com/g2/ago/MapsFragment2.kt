@@ -47,11 +47,12 @@ class MapsFragment2 : Fragment() {
         Error 1
         *
          */
-        googleMap.isMyLocationEnabled=true
-        googleMap.uiSettings.isMyLocationButtonEnabled = false
-        //googleMap.uiSettings.isZoomControlsEnabled=true
-        googleMap.uiSettings.isCompassEnabled=false
-
+        if (!Sharedapp.modolibre.modo){
+            googleMap.isMyLocationEnabled=true
+            googleMap.uiSettings.isMyLocationButtonEnabled = false
+            //googleMap.uiSettings.isZoomControlsEnabled=true
+            googleMap.uiSettings.isCompassEnabled=false
+        }
         //Código para introducir os puntos/marcadores
         //Coordenadas de las diferentes ubicaciones
         val parada1 = LatLng(43.330306, -3.029750)
@@ -72,7 +73,7 @@ class MapsFragment2 : Fragment() {
                 marcadores.add(marcador)
             }
         }
-        if (!Sharedapp.modolibre.modo){
+        if (!Sharedapp.modolibre.modo&&Sharedapp.tipousu.tipo=="alumno"){
             cambiarMarcador(Sharedapp.puntopartida.Partida.toInt())
         }
 
@@ -108,6 +109,9 @@ class MapsFragment2 : Fragment() {
                     println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
                 }
             }
+        }else{
+            ubicacion = LatLng(43.3351509,-3.0331127)
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
         }
 
         //Se activa el botón de juego al seleccionar un punto
