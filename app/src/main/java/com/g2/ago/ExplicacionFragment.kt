@@ -94,7 +94,6 @@ class ExplicacionFragment : Fragment() {
                     }
                     "4"->{
                         binding.pasarFase.isVisible = true
-                        mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.portua3audioa)
                         mp.start()
                         testua=getString(R.string.portua3)
@@ -123,7 +122,6 @@ class ExplicacionFragment : Fragment() {
                     }
                     "4"->{
                         binding.pasarFase.isVisible = true
-                        mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.kofradia3audioa)
                         mp.start()
                         testua=getString(R.string.kofradia3)
@@ -164,7 +162,6 @@ class ExplicacionFragment : Fragment() {
                     }
                     "5"->{
                         binding.pasarFase.isVisible = true
-                        mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.sotera4audioa)
                         mp.start()
                         testua=getString(R.string.sotera4)
@@ -193,7 +190,6 @@ class ExplicacionFragment : Fragment() {
                     }
                     "4"->{
                         binding.pasarFase.isVisible = true
-                        mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.kioskoa3audioa)
                         mp.start()
                         testua=getString(R.string.kioskoa3)
@@ -228,7 +224,6 @@ class ExplicacionFragment : Fragment() {
                     }
                     "4"->{
                         binding.pasarFase.isVisible = true
-                        mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.udaletxea4audioa)
                         mp.start()
                         testua=getString(R.string.udaletxea4)
@@ -263,7 +258,6 @@ class ExplicacionFragment : Fragment() {
                     }
                     "4"->{
                         binding.pasarFase.isVisible = true
-                        mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.auzoa4audioa)
                         mp.start()
                         testua=getString(R.string.auzoa4)
@@ -304,7 +298,6 @@ class ExplicacionFragment : Fragment() {
                     }
                     "5"->{
                         binding.pasarFase.isVisible = true
-                        mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.sardinera4audioa)
                         mp.start()
                         testua=getString(R.string.sardinera4)
@@ -349,7 +342,6 @@ class ExplicacionFragment : Fragment() {
                                 replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
                                 replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
                             }
-                            mp.stop()
                             mp = MediaPlayer.create(requireContext(), R.raw.desdesanturceabilbao)
                             testua=""
                             mp.start()
