@@ -45,7 +45,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
 
         navigationView.bringToFront()
 
-        fragmentTop = MapsFragment()
+        fragmentTop = MapsFragment2()
         supportFragmentManager.beginTransaction().replace(R.id.FragmentMapaJuego, fragmentTop).commit()
 
         fragmentBot = InfoRutaFragment()

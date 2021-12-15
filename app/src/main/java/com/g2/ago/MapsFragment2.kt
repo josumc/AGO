@@ -149,8 +149,8 @@ class MapsFragment2 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
+        val mapsFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        mapsFragment?.getMapAsync(callback)
     }
     fun cambiarMarcador(posicion:Int){
         marcadores.forEach {
