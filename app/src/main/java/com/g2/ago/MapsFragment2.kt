@@ -72,7 +72,10 @@ class MapsFragment2 : Fragment() {
                 marcadores.add(marcador)
             }
         }
-        cambiarMarcador(3)
+        if (!Sharedapp.modolibre.modo){
+            cambiarMarcador(Sharedapp.puntopartida.Partida.toInt())
+        }
+
         when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
             Configuration.UI_MODE_NIGHT_NO -> {
                 googleMap.setMapStyle(
@@ -97,21 +100,28 @@ class MapsFragment2 : Fragment() {
         Error 2
         *
          */
-        fusedLocation.lastLocation.addOnSuccessListener {
-            if (it != null) {
-                ubicacion = LatLng(it.latitude, it.longitude)
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
-                println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
+        if(!Sharedapp.modolibre.modo){
+            fusedLocation.lastLocation.addOnSuccessListener {
+                if (it != null) {
+                    ubicacion = LatLng(it.latitude, it.longitude)
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+                    println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
+                }
             }
         }
+
         //Se activa el botón de juego al seleccionar un punto
-        googleMap.setOnMarkerClickListener { marker ->
-            //Genera un mensaje "Prueba: "+mX .Donde X es la id del marcador
-            println("Prueba: "+marker.id)
-            Activityppal=requireContext() as Comunicador
-            Activityppal!!.onPasarDato(marker.id)
-            true
+        if(Sharedapp.modolibre.modo){
+            googleMap.setOnMarkerClickListener { marker ->
+                //Genera un mensaje "Prueba: "+mX .Donde X es la id del marcador
+                println("Prueba: "+marker.id)
+
+                Activityppal=requireContext() as Comunicador
+                Activityppal!!.onPasarDato(marker.id.substring(1,2))
+                true
+            }
         }
+
         /*Autofocus de la cámara al cambiar la ubicación
         (ahora está comentado por una cuestión de funcionalidad)*/
 //        googleMap.setOnMyLocationChangeListener {
@@ -134,14 +144,15 @@ class MapsFragment2 : Fragment() {
             Error 3
             *
             */
-            fusedLocation.lastLocation.addOnSuccessListener {
-                if (it != null) {
-                    ubicacion = LatLng(it.latitude, it.longitude)
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
-                    println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
+            if(!Sharedapp.modolibre.modo) {
+                fusedLocation.lastLocation.addOnSuccessListener {
+                    if (it != null) {
+                        ubicacion = LatLng(it.latitude, it.longitude)
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+                        println("Ubicación actual. Latitud: " + it.latitude + ". Longitud: " + it.longitude)
+                    }
                 }
             }
-
         }
         fusedLocation = LocationServices.getFusedLocationProviderClient(requireActivity())
         return binding.root
