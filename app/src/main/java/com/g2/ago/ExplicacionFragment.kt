@@ -1,11 +1,14 @@
 package com.g2.ago
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
@@ -13,10 +16,12 @@ import com.g2.ago.databinding.FragmentExplicacionBinding
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 class ExplicacionFragment : Fragment() {
     lateinit var binding: FragmentExplicacionBinding
+    var Activityppal:Comunicador?=null
     var testua:String=""
     lateinit var mp: MediaPlayer
 
@@ -27,14 +32,12 @@ class ExplicacionFragment : Fragment() {
         // Inflate the layout for this fragment
         binding= FragmentExplicacionBinding.inflate(layoutInflater)
         cargarTexto()
-
         binding.pasarFase.setOnClickListener{
-            if (binding.textView.text==explicaciones()){
                 val sharedappAct=(Sharedapp.puntojuego.Juego.toInt()+1).toString()
+                mp.stop()
                 Sharedapp.puntojuego.Juego=sharedappAct
                 cargarTexto()
-                Generica(requireContext()).replaceFragment(FotosFragment())
-            }
+               replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
         }
         return binding.root
     }
@@ -49,14 +52,16 @@ class ExplicacionFragment : Fragment() {
             repeat(text.length) {
                 delay(intervalMs)
                 this@typeWrite.text = text.take(it + 1)
-                binding.textView.setOnClickListener {
-                    lifecycleOwner.lifecycleScope.cancel()
-                    binding.textView.text=explicaciones()
-                }
+//                binding.textView.setOnClickListener {
+//                    lifecycleOwner.lifecycleScope.cancel()
+//                    binding.textView.text=explicaciones()
+//                }
             }
+            binding.pasarFase.isEnabled = true
         }
     }
     fun explicaciones(): String {
+        binding.pasarFase.isEnabled = false
         when(Sharedapp.puntopartida.Partida){
             "0"->{
                 when(Sharedapp.puntojuego.Juego){
@@ -85,12 +90,20 @@ class ExplicacionFragment : Fragment() {
                         mp = MediaPlayer.create(requireContext(), R.raw.portua2audioa)
                         mp.start()
                         testua=getString(R.string.portua2)
+                        binding.pasarFase.isVisible = false
                     }
-                    "3"->{
+                    "4"->{
+                        binding.pasarFase.isVisible = true
                         mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.portua3audioa)
                         mp.start()
                         testua=getString(R.string.portua3)
+                    }
+                    "5"->{
+                        mp.stop()
+                        Sharedapp.puntopartida.Partida = "2"
+                        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
+                        replaceFragment(R.id.FragmentExplicacionJuego, InfoRutaFragment())
                     }
                 }
             }
@@ -106,12 +119,20 @@ class ExplicacionFragment : Fragment() {
                         mp = MediaPlayer.create(requireContext(), R.raw.kofradia2audioa)
                         mp.start()
                         testua=getString(R.string.kofradia2)
+                        binding.pasarFase.isVisible = false
                     }
-                    "3"->{
+                    "4"->{
+                        binding.pasarFase.isVisible = true
                         mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.kofradia3audioa)
                         mp.start()
                         testua=getString(R.string.kofradia3)
+                    }
+                    "5"->{
+                        mp.stop()
+                        Sharedapp.puntopartida.Partida = "3"
+                        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
+                        replaceFragment(R.id.FragmentExplicacionJuego, InfoRutaFragment())
                     }
                 }
             }
@@ -124,21 +145,35 @@ class ExplicacionFragment : Fragment() {
                     }
                     "2"->{
                         mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.soteraabestia)
+                        testua=""
+                        mp.start()
+                    }
+                    "3"->{
+                        mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.sotera2audioa)
                         mp.start()
                         testua=getString(R.string.sotera2)
                     }
-                    "3"->{
+                    "4"->{
                         mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.sotera3audioa)
                         mp.start()
                         testua=getString(R.string.sotera3)
+                        binding.pasarFase.isVisible = false
                     }
-                    "4"->{
+                    "5"->{
+                        binding.pasarFase.isVisible = true
                         mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.sotera4audioa)
                         mp.start()
                         testua=getString(R.string.sotera4)
+                    }
+                    "7"->{
+                        mp.stop()
+                        Sharedapp.puntopartida.Partida = "4"
+                        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
+                        replaceFragment(R.id.FragmentExplicacionJuego, InfoRutaFragment())
                     }
                 }
             }
@@ -154,12 +189,20 @@ class ExplicacionFragment : Fragment() {
                         mp = MediaPlayer.create(requireContext(), R.raw.kioskoa2audioa)
                         mp.start()
                         testua=getString(R.string.kioskoa2)
+                        binding.pasarFase.isVisible = false
                     }
-                    "3"->{
+                    "4"->{
+                        binding.pasarFase.isVisible = true
                         mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.kioskoa3audioa)
                         mp.start()
                         testua=getString(R.string.kioskoa3)
+                    }
+                    "5"->{
+                        mp.stop()
+                        Sharedapp.puntopartida.Partida = "5"
+                        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
+                        replaceFragment(R.id.FragmentExplicacionJuego, InfoRutaFragment())
                     }
                 }
             }
@@ -181,12 +224,20 @@ class ExplicacionFragment : Fragment() {
                         mp = MediaPlayer.create(requireContext(), R.raw.udaletxea3audioa)
                         mp.start()
                         testua=getString(R.string.udaletxea3)
+                        binding.pasarFase.isVisible = false
                     }
                     "4"->{
+                        binding.pasarFase.isVisible = true
                         mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.udaletxea4audioa)
                         mp.start()
-                        testua=getString(R.string.udaletxea3)
+                        testua=getString(R.string.udaletxea4)
+                    }
+                    "5"->{
+                        mp.stop()
+                        Sharedapp.puntopartida.Partida = "6"
+                        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
+                        replaceFragment(R.id.FragmentExplicacionJuego, InfoRutaFragment())
                     }
                 }
             }
@@ -208,12 +259,20 @@ class ExplicacionFragment : Fragment() {
                         mp = MediaPlayer.create(requireContext(), R.raw.auzoa3audioa)
                         mp.start()
                         testua=getString(R.string.auzoa3)
+                        binding.pasarFase.isVisible = false
                     }
                     "4"->{
+                        binding.pasarFase.isVisible = true
                         mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.auzoa4audioa)
                         mp.start()
                         testua=getString(R.string.auzoa4)
+                    }
+                    "5"->{
+                        mp.stop()
+                        Sharedapp.puntopartida.Partida = "7"
+                        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
+                        replaceFragment(R.id.FragmentExplicacionJuego, InfoRutaFragment())
                     }
                 }
             }
@@ -232,17 +291,31 @@ class ExplicacionFragment : Fragment() {
                     }
                     "3"->{
                         mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.desdesanturceabilbao)
+                        mp.start()
+                        testua=""
+                    }
+                    "4"->{
+                        mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.sardinera3audioa)
                         mp.start()
                         testua=getString(R.string.sardinera3)
+                        binding.pasarFase.isVisible = false
                     }
-                    "4"->{
+                    "5"->{
+                        binding.pasarFase.isVisible = true
                         mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.sardinera4audioa)
                         mp.start()
                         testua=getString(R.string.sardinera4)
                     }
-
+                    "6"->{
+                        mp.stop()
+                        Sharedapp.puntopartida.Partida = "8"
+                        Sharedapp.puntojuego.Juego = "0"
+                        replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
+                        replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
+                    }
                 }
             }
             "8"->{
@@ -252,23 +325,52 @@ class ExplicacionFragment : Fragment() {
                         mp.start()
                         testua=getString(R.string.asmakizuna1)
                     }
-                    "3"->{
-                        mp.stop()
-                        mp = MediaPlayer.create(requireContext(), R.raw.asmakizuna2audioa)
-                        mp.start()
-                    }
                    "2"->{
+
                        mp.stop()
                        mp = MediaPlayer.create(requireContext(), R.raw.asmakizuna3audioa)
                        mp.start()
                        testua=getString(R.string.asmakizuna2)
                     }
+                    "3"->{
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.asmakizuna3audioa)
+                        mp.start()
+                        testua=getString(R.string.asmakizuna2)
 
+                    }
+                    "4"->{
+                        runBlocking {
+                            launch {
+                                delay(50000L)
+                                mp.stop()
+                                Activityppal=requireContext() as Comunicador
+                                Activityppal!!.onPasarDato("acaba")
+                                replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
+                                replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
+                            }
+                            mp.stop()
+                            mp = MediaPlayer.create(requireContext(), R.raw.desdesanturceabilbao)
+                            testua=""
+                            mp.start()
+                        }
+                    }
                 }
             }
             
         }
         return testua
     }
-
+    fun replaceFragment(Contenedor:Int, fragment: Fragment) {
+        // val activity = JuegoActivity()
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        if(transaction != null) {
+            transaction.replace(Contenedor, fragment)
+            transaction.disallowAddToBackStack()
+            transaction.commit()
+        }
+    }
+    fun replaceFragment(fragment: Fragment){
+        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentPrincipal, fragment)?.commit()
+    }
 }

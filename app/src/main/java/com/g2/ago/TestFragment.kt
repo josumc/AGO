@@ -61,15 +61,15 @@ class TestFragment : Fragment() {
             if(check.equals("ok")){
                 Toast.makeText(requireContext(), getString(R.string.acierto), Toast.LENGTH_SHORT).show()
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
-                Sharedapp.puntopartida.Partida = "6"
-                Sharedapp.puntojuego.Juego = "1"
+                Sharedapp.puntojuego.Juego = "4"
                 if (Sharedapp.tipousu.tipo != "profesor"){
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
                     bd.actualizar(Sharedapp.users.User.toString(), "5")
                 }
                 //fragment por el que lo reemplazamos
                 val fragment: Fragment = AnimacionFinalFragment()
-                Generica(requireContext()).replaceFragment(LetraFragment())
+                replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
+                replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
             }else{
                 val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
                 Toast.makeText(requireContext(), getString(R.string.preguntamal), Toast.LENGTH_SHORT).show()
@@ -78,5 +78,14 @@ class TestFragment : Fragment() {
             }
         }
 
+    }
+    fun replaceFragment(Contenedor:Int, fragment: Fragment) {
+        // val activity = JuegoActivity()
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        if(transaction != null) {
+            transaction.replace(Contenedor, fragment)
+            transaction.disallowAddToBackStack()
+            transaction.commit()
+        }
     }
 }

@@ -110,6 +110,9 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
                 replaceMapFragment(FotosFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
+            "acaba" ->{
+                startActivity(Intent(this, MainActivity::class.java))
+            }
         }
     }
 

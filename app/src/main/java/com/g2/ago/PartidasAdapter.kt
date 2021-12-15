@@ -37,7 +37,7 @@ class PartidasAdapter (private val partidas: List<Partidas>, context: Context) :
 
             itemView.setOnClickListener{
                 Sharedapp.users.user = itemView.txtNick.text.toString()
-                Sharedapp.puntopartida.Partida = partida.PuntoPartida
+                Sharedapp.puntopartida.Partida = (partida.PuntoPartida.toInt()+1).toString()
                 Sharedapp.puntojuego.Juego = "1"
                 startActivity(context1, Intent(context1, JuegoActivity::class.java), null)
             }

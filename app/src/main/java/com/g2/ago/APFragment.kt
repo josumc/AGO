@@ -32,7 +32,8 @@ class APFragment : Fragment() {
                 }
                 bd = Base_de_Datos(requireContext(), "bd", null, 1)
                 bd.actualizar(Sharedapp.users.User.toString(), getString(R.string.finish))
-                Generica(requireContext()).replaceFragment(AnimacionFinalFragment())
+                replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
+                replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
                 Toast.makeText(requireContext(), getString(R.string.acierto), Toast.LENGTH_SHORT).show()
                 mp!!.start()
             }else{
@@ -40,6 +41,15 @@ class APFragment : Fragment() {
                 Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_SHORT).show()
                 mp!!.start()
             }
+        }
+    }
+    fun replaceFragment(Contenedor:Int, fragment: Fragment) {
+        // val activity = JuegoActivity()
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        if(transaction != null) {
+            transaction.replace(Contenedor, fragment)
+            transaction.disallowAddToBackStack()
+            transaction.commit()
         }
     }
 }

@@ -26,18 +26,27 @@ class ParrafoFragment : Fragment() {
             if(rbtnOP2.isChecked){
                 Toast.makeText(requireContext(), getString(R.string.acierto), Toast.LENGTH_SHORT).show()
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
-                Sharedapp.puntopartida.Partida = "8"
-                Sharedapp.puntojuego.Juego = "4"
+                Sharedapp.puntojuego.Juego = "5"
                 if (Sharedapp.tipousu.tipo != "profesor"){
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
                     bd.actualizar(Sharedapp.users.User.toString(), "7")
                 }
-                Generica(requireContext()).replaceFragment(LetraFragment())
+                replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
+                replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
             }else{
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
                 Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_SHORT).show()
                 mp!!.start()
             }
+        }
+    }
+    fun replaceFragment(Contenedor:Int, fragment: Fragment) {
+        // val activity = JuegoActivity()
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        if(transaction != null) {
+            transaction.replace(Contenedor, fragment)
+            transaction.disallowAddToBackStack()
+            transaction.commit()
         }
     }
 }
