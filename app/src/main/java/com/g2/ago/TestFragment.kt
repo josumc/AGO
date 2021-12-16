@@ -80,7 +80,6 @@ class TestFragment : Fragment() {
 
     }
     fun replaceFragment(Contenedor:Int, fragment: Fragment) {
-        // val activity = JuegoActivity()
         val transaction = activity?.supportFragmentManager?.beginTransaction()
         if(transaction != null) {
             transaction.replace(Contenedor, fragment)

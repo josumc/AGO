@@ -3,11 +3,11 @@ package com.g2.ago
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_preguntas.*
 
 class PreguntasFragment : Fragment() {
@@ -37,7 +37,7 @@ class PreguntasFragment : Fragment() {
             }
             if(check.equals("ok")){
                     MediaPlayer.create(requireContext(), R.raw.ondo).start()
-                    Sharedapp.puntojuego.Juego = "4"
+                Sharedapp.puntojuego.Juego = "3"
                 if (Sharedapp.tipousu.tipo != "profesor"){
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
                     bd.actualizar(Sharedapp.users.User.toString(), "8")
@@ -53,7 +53,6 @@ class PreguntasFragment : Fragment() {
         }
     }
     fun replaceFragment(Contenedor:Int, fragment: Fragment) {
-        // val activity = JuegoActivity()
         val transaction = activity?.supportFragmentManager?.beginTransaction()
         if(transaction != null) {
             transaction.replace(Contenedor, fragment)

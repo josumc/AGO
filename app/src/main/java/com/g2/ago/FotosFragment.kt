@@ -1,14 +1,11 @@
 package com.g2.ago
 
-import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.FragmentFotosBinding
-import kotlinx.android.synthetic.main.fragment_fotos.*
 
 
 class FotosFragment : Fragment() {
@@ -86,9 +83,6 @@ class FotosFragment : Fragment() {
 
                     }
                     "2"->{
-                        binding.imagen.setImageResource(R.drawable.kioskoa1argazkia)
-                    }
-                    "3"->{
                         replaceFragment(PreguntasFragment())
                     }
                 }
@@ -103,7 +97,6 @@ class FotosFragment : Fragment() {
                     }
                     "3"->{
                         replaceFragment(TestFragment())
-
                     }
                 }
             }

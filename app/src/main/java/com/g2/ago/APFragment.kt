@@ -2,12 +2,13 @@ package com.g2.ago
 
 import android.media.MediaPlayer
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_a_p.*
+import java.util.*
 
 
 class APFragment : Fragment() {
@@ -22,11 +23,11 @@ class APFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         btnValidar.setOnClickListener{
-            if(txtEmakume.text.toString().toLowerCase().equals(respuesta)){
-                val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
+            if (txtEmakume.text.toString().lowercase(Locale.getDefault()).equals(respuesta)) {
+                val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
                 Sharedapp.puntopartida.Partida = "8"
                 Sharedapp.puntojuego.Juego = "1"
-                if (Sharedapp.tipousu.tipo != "profesor"){
+                if (Sharedapp.tipousu.tipo != "profesor") {
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
                     bd.actualizar(Sharedapp.users.User.toString(), getString(R.string.finish))
                 }
@@ -44,7 +45,6 @@ class APFragment : Fragment() {
         }
     }
     fun replaceFragment(Contenedor:Int, fragment: Fragment) {
-        // val activity = JuegoActivity()
         val transaction = activity?.supportFragmentManager?.beginTransaction()
         if(transaction != null) {
             transaction.replace(Contenedor, fragment)
