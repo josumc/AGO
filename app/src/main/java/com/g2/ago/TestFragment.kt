@@ -55,7 +55,6 @@ class TestFragment : Fragment() {
                 acierto(txtTest5)
             }
             if(check.equals("ok")){
-                Toast.makeText(requireContext(), getString(R.string.acierto), Toast.LENGTH_SHORT).show()
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
                 Sharedapp.puntojuego.Juego = "4"
                 if (Sharedapp.tipousu.tipo != "profesor"){

@@ -35,7 +35,6 @@ class APFragment : Fragment() {
                 bd.actualizar(Sharedapp.users.User.toString(), getString(R.string.finish))
                 replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
                 replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
-                Toast.makeText(requireContext(), getString(R.string.acierto), Toast.LENGTH_SHORT).show()
                 mp!!.start()
             }else{
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)

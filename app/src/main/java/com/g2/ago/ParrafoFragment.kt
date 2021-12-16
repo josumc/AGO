@@ -24,7 +24,6 @@ class ParrafoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnComprobarParrafo.setOnClickListener{
             if(rbtnOP2.isChecked){
-                Toast.makeText(requireContext(), getString(R.string.acierto), Toast.LENGTH_SHORT).show()
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
                 Sharedapp.puntojuego.Juego = "5"
                 if (Sharedapp.tipousu.tipo != "profesor"){

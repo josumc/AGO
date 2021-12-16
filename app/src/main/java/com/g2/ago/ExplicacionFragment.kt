@@ -368,6 +368,6 @@ class ExplicacionFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         mp.stop()
-        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
+        //replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
     }
 }

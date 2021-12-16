@@ -78,9 +78,6 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
             if(!dato.equals("superado")){
                 var dato_act=(dato.toInt()+1).toString()
                 Sharedapp.puntopartida.Partida=dato_act
-            }else if(!dato.equals("acaba")){
-                var dato_act=(dato.toInt()+1).toString()
-                Sharedapp.puntopartida.Partida=dato_act
             }
             Sharedapp.puntojuego.Juego="1"
         }
@@ -142,6 +139,8 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         }else{
             super.onBackPressed()
         }
+        replaceMapFragment(MapsFragment2())
+        replaceExplFragment(InfoRutaFragment())
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -197,6 +196,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
 }
 
 
