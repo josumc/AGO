@@ -23,6 +23,7 @@ class MapsFragment2 : Fragment() {
     var Activityppal: Comunicador?=null
     lateinit var googleMap: GoogleMap
     lateinit var ubicacion:LatLng
+    lateinit var circle: Circle
     var marcadores:ArrayList<Marker> = arrayListOf()
     @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { GoogleMap ->
@@ -107,6 +108,11 @@ class MapsFragment2 : Fragment() {
                     ubicacion = LatLng(it.latitude, it.longitude)
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
                     println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
+                    val circleOptions = CircleOptions()
+                        .center(ubicacion)
+                        .radius(50.0)
+                    circle = googleMap.addCircle(circleOptions)
+                    println("El círculo: "+circle)
                 }
             }
         }else{
@@ -129,8 +135,15 @@ class MapsFragment2 : Fragment() {
         /*Autofocus de la cámara al cambiar la ubicación
         (ahora está comentado por una cuestión de funcionalidad)*/
 //        googleMap.setOnMyLocationChangeListener {
+//            circle.remove()
 //            ubicacion= LatLng(it.latitude, it.longitude)
 //            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+//            circle.remove()
+//            val circleOptions = CircleOptions()
+//                .center(ubicacion)
+//                .radius(50.0)
+//            circle = googleMap.addCircle(circleOptions)
+//            println("El círculo: "+circle)
 //        }
     }
 
@@ -154,6 +167,11 @@ class MapsFragment2 : Fragment() {
                         ubicacion = LatLng(it.latitude, it.longitude)
                         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
                         println("Ubicación actual. Latitud: " + it.latitude + ". Longitud: " + it.longitude)
+                        val circleOptions = CircleOptions()
+                            .center(ubicacion)
+                            .radius(50.0)
+                        circle = googleMap.addCircle(circleOptions)
+                        println("El círculo: "+circle)
                     }
                 }
             }
