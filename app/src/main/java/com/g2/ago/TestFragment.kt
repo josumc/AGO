@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_test.*
@@ -29,34 +30,29 @@ class TestFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnTest.setOnClickListener{
             if(!rbtn1D.isChecked){
-                check = "mal"
-                txtTest1.setTextColor(Color.RED)
+                error(txtTest1)
             }else{
-                txtTest1.setTextColor(Color.GREEN)
+                acierto(txtTest1)
             }
             if(!rbtn2B.isChecked){
-                check = "mal"
-                txtTest2.setTextColor(Color.RED)
+                error(txtTest2)
             }else{
-                txtTest2.setTextColor(Color.GREEN)
+                acierto(txtTest2)
             }
             if(!rbtn3C.isChecked){
-                check = "mal"
-                txtTest3.setTextColor(Color.RED)
+                error(txtTest3)
             } else{
-                txtTest3.setTextColor(Color.GREEN)
+                acierto(txtTest3)
             }
             if(!rbtn4A.isChecked){
-                check = "mal"
-                txtTest4.setTextColor(Color.RED)
+                error(txtTest4)
             }else{
-                txtTest4.setTextColor(Color.GREEN)
+                acierto(txtTest4)
             }
             if(!rbtn5C.isChecked){
-                check = "mal"
-                txtTest5.setTextColor(Color.RED)
+                error(txtTest5)
             }else{
-                txtTest5.setTextColor(Color.GREEN)
+                acierto(txtTest5)
             }
             if(check.equals("ok")){
                 Toast.makeText(requireContext(), getString(R.string.acierto), Toast.LENGTH_SHORT).show()
@@ -86,5 +82,12 @@ class TestFragment : Fragment() {
             transaction.disallowAddToBackStack()
             transaction.commit()
         }
+    }
+    fun error(Texto: TextView){
+        check = "mal"
+        Texto.setTextColor(Color.RED)
+    }
+    fun acierto(Texto: TextView){
+        Texto.setTextColor(Color.GREEN)
     }
 }

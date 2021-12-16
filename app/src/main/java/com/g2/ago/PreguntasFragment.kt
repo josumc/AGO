@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_preguntas.*
@@ -25,15 +26,10 @@ class PreguntasFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnValidarPreguntas.setOnClickListener{
             if (!txtRespuesta1.text.toString().equals("3")) {
-                txtPregunta1.setTextColor(Color.RED)
-                txtRespuesta1.text = null
-                txtRespuesta2.text = null
-                check = "mal"
+                error(txtPregunta1)
             }
             if (!txtRespuesta2.text.toString().equals("3")) {
-                txtPregunta2.setTextColor(Color.RED)
-                txtRespuesta1.text = null
-                txtRespuesta2.text = null
+                error(txtPregunta2)
             }
             if(check.equals("ok")){
                     MediaPlayer.create(requireContext(), R.raw.ondo).start()
@@ -59,5 +55,11 @@ class PreguntasFragment : Fragment() {
             transaction.disallowAddToBackStack()
             transaction.commit()
         }
+    }
+    fun error(Pregunta:TextView){
+        Pregunta.setTextColor(Color.RED)
+        txtRespuesta1.text = null
+        txtRespuesta2.text = null
+        check = "mal"
     }
 }

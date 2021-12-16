@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.FragmentFotosBinding
+import kotlinx.android.synthetic.main.fragment_letra.*
 
 
 class FotosFragment : Fragment() {

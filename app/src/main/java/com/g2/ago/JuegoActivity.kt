@@ -74,12 +74,15 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
 
     override fun onPasarDato(dato: String) {
         if(Sharedapp.modolibre.modo){
-            println("Información a encontrar: ")
-             var dato_act=(dato.toInt()+1).toString()
-            Sharedapp.puntopartida.Partida=dato_act
-            println(Sharedapp.puntopartida.Partida)
+            println(dato.equals("superado"))
+            if(!dato.equals("superado")){
+                var dato_act=(dato.toInt()+1).toString()
+                Sharedapp.puntopartida.Partida=dato_act
+            }else if(!dato.equals("acaba")){
+                var dato_act=(dato.toInt()+1).toString()
+                Sharedapp.puntopartida.Partida=dato_act
+            }
             Sharedapp.puntojuego.Juego="1"
-            println(Sharedapp.puntojuego.Juego)
         }
         when(dato){
             "0" -> {
@@ -110,6 +113,9 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
                 replaceMapFragment(FotosFragment())
                 replaceExplFragment(ExplicacionFragment())
             }
+            "superado" ->{
+                startActivity(Intent(this, JuegoActivity::class.java))
+            }
             "acaba" ->{
                 startActivity(Intent(this, MainActivity::class.java))
             }
@@ -127,7 +133,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     }
 
     private fun replaceExplFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragment).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragment).addToBackStack("RutaFragment").commit()
     }
 
     override fun onBackPressed() {

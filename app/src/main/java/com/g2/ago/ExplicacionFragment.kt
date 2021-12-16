@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.g2.ago.databinding.FragmentExplicacionBinding
+import kotlinx.android.synthetic.main.activity_juego.*
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -101,8 +102,7 @@ class ExplicacionFragment : Fragment() {
                     "5"->{
                         mp.stop()
                         Sharedapp.puntopartida.Partida = "2"
-                        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
-                        replaceFragment(R.id.FragmentExplicacionJuego, InfoRutaFragment())
+                        superado()
                     }
                 }
             }
@@ -129,8 +129,8 @@ class ExplicacionFragment : Fragment() {
                     "5"->{
                         mp.stop()
                         Sharedapp.puntopartida.Partida = "3"
-                        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
-                        replaceFragment(R.id.FragmentExplicacionJuego, InfoRutaFragment())
+                        superado()
+
                     }
                 }
             }
@@ -169,8 +169,7 @@ class ExplicacionFragment : Fragment() {
                     "7"->{
                         mp.stop()
                         Sharedapp.puntopartida.Partida = "4"
-                        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
-                        replaceFragment(R.id.FragmentExplicacionJuego, InfoRutaFragment())
+                        superado()
                     }
                 }
             }
@@ -188,17 +187,16 @@ class ExplicacionFragment : Fragment() {
                         testua=getString(R.string.kioskoa2)
                         binding.pasarFase.isVisible = false
                     }
-                    "4"->{
+                    "3"->{
                         binding.pasarFase.isVisible = true
                         mp = MediaPlayer.create(requireContext(), R.raw.kioskoa3audioa)
                         mp.start()
                         testua=getString(R.string.kioskoa3)
                     }
-                    "5"->{
+                    "4"->{
                         mp.stop()
                         Sharedapp.puntopartida.Partida = "5"
-                        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
-                        replaceFragment(R.id.FragmentExplicacionJuego, InfoRutaFragment())
+                        superado()
                     }
                 }
             }
@@ -231,8 +229,7 @@ class ExplicacionFragment : Fragment() {
                     "5"->{
                         mp.stop()
                         Sharedapp.puntopartida.Partida = "6"
-                        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
-                        replaceFragment(R.id.FragmentExplicacionJuego, InfoRutaFragment())
+                        superado()
                     }
                 }
             }
@@ -265,8 +262,7 @@ class ExplicacionFragment : Fragment() {
                     "5"->{
                         mp.stop()
                         Sharedapp.puntopartida.Partida = "7"
-                        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
-                        replaceFragment(R.id.FragmentExplicacionJuego, InfoRutaFragment())
+                        superado()
                     }
                 }
             }
@@ -306,8 +302,12 @@ class ExplicacionFragment : Fragment() {
                         mp.stop()
                         Sharedapp.puntopartida.Partida = "8"
                         Sharedapp.puntojuego.Juego = "0"
-                        replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
-                        replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
+                        if(Sharedapp.modolibre.modo){
+                            replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
+                            replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
+                        }else{
+                            superado()
+                        }
                     }
                 }
             }
@@ -339,8 +339,6 @@ class ExplicacionFragment : Fragment() {
                                 mp.stop()
                                 Activityppal=requireContext() as Comunicador
                                 Activityppal!!.onPasarDato("acaba")
-                                replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
-                                replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
                             }
                             mp = MediaPlayer.create(requireContext(), R.raw.desdesanturceabilbao)
                             testua=""
@@ -354,7 +352,6 @@ class ExplicacionFragment : Fragment() {
         return testua
     }
     fun replaceFragment(Contenedor:Int, fragment: Fragment) {
-        // val activity = JuegoActivity()
         val transaction = activity?.supportFragmentManager?.beginTransaction()
         if(transaction != null) {
             transaction.replace(Contenedor, fragment)
@@ -362,7 +359,15 @@ class ExplicacionFragment : Fragment() {
             transaction.commit()
         }
     }
-    fun replaceFragment(fragment: Fragment){
-        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentPrincipal, fragment)?.commit()
+    fun superado(){
+        Activityppal=requireContext() as Comunicador
+        Activityppal!!.onPasarDato("superado")
+        }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mp.stop()
+        replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
     }
 }
