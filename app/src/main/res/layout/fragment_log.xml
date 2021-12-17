@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".LogFragment">
 
+
     <Button
         android:id="@+id/btnLog"
         android:layout_width="188dp"
@@ -17,9 +18,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.697"
+        app:layout_constraintVertical_bias="0.627"
         tools:ignore="TextContrastCheck" />
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -29,8 +29,10 @@
         app:endIconMode="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.37">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtpsw"
