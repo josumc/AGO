@@ -27,7 +27,7 @@ class VFFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnVF.setOnClickListener{
             if(!rbtn1G.isChecked){
-                error(txtVF2)
+                error(txtVF1)
             }else{
                 acierto(txtVF1)
             }
@@ -58,7 +58,7 @@ class VFFragment : Fragment() {
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
                     bd.actualizar(Sharedapp.users.User.toString(), "6")
                 }
-                replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
+                replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
                 replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
 
             }else{

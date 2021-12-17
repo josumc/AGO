@@ -54,6 +54,7 @@ class RankingFragment : Fragment() {
                             Sharedapp.users.user = txtApodo.text.toString()
                             Sharedapp.puntopartida.Partida = "0"
                             Sharedapp.puntojuego.Juego = "1"
+                            Sharedapp.modolibre.modo=false
                             ContextCompat.startActivity(requireContext(), Intent(requireContext(), JuegoActivity::class.java), null)
                             db.insertar(txtApodo.text.toString(), "0")
                         }

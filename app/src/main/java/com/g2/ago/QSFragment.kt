@@ -1,12 +1,14 @@
 package com.g2.ago
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import com.g2.ago.databinding.FragmentQSBinding
 
 class QSFragment : Fragment() {
@@ -28,6 +30,9 @@ class QSFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        if (AppCompatDelegate.MODE_NIGHT_NO==0){
+            binding.imageView6.setColorFilter(Color.WHITE)
+        }
 
         binding = FragmentQSBinding.inflate(layoutInflater)
 

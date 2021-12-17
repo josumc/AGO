@@ -29,7 +29,7 @@
             <TextView
                 android:id="@+id/txtVF1"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="30dp"
                 android:text="@string/VF1" />
 
             <RadioGroup
@@ -50,12 +50,17 @@
                     android:buttonTint="#9C27B0"
                     android:text="@string/Falso" />
 
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </RadioGroup>
 
             <TextView
                 android:id="@+id/txtVF2"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="wrap_content"
                 android:text="@string/VF2" />
 
             <RadioGroup
@@ -76,12 +81,17 @@
                     android:buttonTint="#9C27B0"
                     android:text="@string/Falso" />
 
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </RadioGroup>
 
             <TextView
                 android:id="@+id/txtVF3"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="wrap_content"
                 android:text="@string/VF3" />
 
             <RadioGroup
@@ -102,13 +112,18 @@
                     android:buttonTint="#9C27B0"
                     android:text="@string/Falso" />
 
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
 
             </RadioGroup>
 
             <TextView
                 android:id="@+id/txtVF4"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="38dp"
                 android:text="@string/VF4" />
 
             <RadioGroup
@@ -129,13 +144,18 @@
                     android:buttonTint="#9C27B0"
                     android:text="@string/Falso" />
 
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
 
             </RadioGroup>
 
             <TextView
                 android:id="@+id/txtVF5"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="38dp"
                 android:text="@string/VF5" />
 
             <RadioGroup

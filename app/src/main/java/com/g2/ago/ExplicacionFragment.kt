@@ -228,8 +228,8 @@ class ExplicacionFragment : Fragment() {
                     }
                     "5"->{
                         mp.stop()
-                        Sharedapp.puntopartida.Partida = "6"
                         superado()
+                        Sharedapp.puntopartida.Partida = "6"
                     }
                 }
             }
@@ -301,12 +301,12 @@ class ExplicacionFragment : Fragment() {
                     "6"->{
                         mp.stop()
                         Sharedapp.puntopartida.Partida = "8"
-                        Sharedapp.puntojuego.Juego = "0"
                         if(Sharedapp.modolibre.modo){
-                            replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
-                            replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
-                        }else{
                             superado()
+                        }else{
+                            Sharedapp.puntojuego.Juego = "1"
+                            replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
+                            replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
                         }
                     }
                 }
