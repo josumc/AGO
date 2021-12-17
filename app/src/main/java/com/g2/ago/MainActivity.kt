@@ -79,11 +79,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        if (Sharedapp.tipousu.tipo.equals("profesor")){
-            menu.findItem(R.id.nav_ranking).isVisible = true
-        }else if (Sharedapp.tipousu.tipo.equals("alumno") || Sharedapp.tipousu.tipo.equals("")){
-            menu.findItem(R.id.nav_ranking).isVisible = false
-        }
 
         when(item.itemId){
             R.id.nav_inicio -> {

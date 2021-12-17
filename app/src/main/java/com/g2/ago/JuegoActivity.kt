@@ -64,12 +64,12 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         if (Sharedapp.tipousu.tipo.equals("profesor")){
             menu.findItem(R.id.nav_profe).isVisible = false
             menu.findItem(R.id.nav_cerrar_sesion).isVisible = true
-            menu.findItem(R.id.nav_ranking).isVisible = true
 
         }else{
             menu.findItem(R.id.nav_profe).isVisible = true
             menu.findItem(R.id.nav_cerrar_sesion).isVisible = false
         }
+        menu.findItem(R.id.nav_ranking).isVisible = false
     }
 
     override fun onPasarDato(dato: String) {
@@ -146,7 +146,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         val intent = Intent(this, MainActivity::class.java)
-            menu.findItem(R.id.nav_ranking).isVisible = false
+
 
         when(item.itemId){
             R.id.nav_inicio -> {
