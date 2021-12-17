@@ -146,28 +146,12 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         val intent = Intent(this, MainActivity::class.java)
-        if (Sharedapp.tipousu.tipo.equals("profesor")){
-            menu.findItem(R.id.nav_ranking).isVisible = true
-        }else if (Sharedapp.tipousu.tipo.equals("alumno") || Sharedapp.tipousu.tipo.equals("")){
             menu.findItem(R.id.nav_ranking).isVisible = false
-        }
 
         when(item.itemId){
             R.id.nav_inicio -> {
                 startActivity(intent)
                 finish()
-            }
-            R.id.nav_ranking -> {
-                if (Sharedapp.tipousu.tipo.equals("profesor")){
-                    intent.putExtra("fragment", "AnimacionCargaFragment()")
-                    startActivity(intent)
-                    finish()
-
-                }else if (Sharedapp.tipousu.tipo.equals("alumno")){
-                    intent.putExtra("fragment", "LogFragment()")
-                    startActivity(intent)
-                    finish()
-                }
             }
             R.id.nav_quienes -> {
                 intent.putExtra("fragment", "QSFragment()")
