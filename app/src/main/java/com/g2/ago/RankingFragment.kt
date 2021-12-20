@@ -44,7 +44,7 @@ class RankingFragment : Fragment() {
             }else if (!db.Cargar_jugadores(txtApodo.text.toString().toLowerCase())){
                 Toast.makeText(requireContext(), "Esta partida ya existe ", Toast.LENGTH_SHORT).show()
             }else {
-                fb.collection("Players").document(txtApodo.text.toString())
+                fb.collection("Players").document(txtApodo.text.toString().toLowerCase())
                     .get()
                     .addOnSuccessListener {
                         if(it.exists()){
