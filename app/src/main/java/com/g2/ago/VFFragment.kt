@@ -1,5 +1,6 @@
 package com.g2.ago
 
+import android.app.Activity
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle

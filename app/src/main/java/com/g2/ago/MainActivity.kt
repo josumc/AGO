@@ -14,13 +14,8 @@ import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, Comunicador {
+class MainActivity : DrawerActivity(), NavigationView.OnNavigationItemSelectedListener, Comunicador {
 
-    lateinit var drawerLayout: DrawerLayout
-    lateinit var navigationView: NavigationView
-    lateinit var menu: Menu
-    lateinit var button: FloatingActionButton
-    lateinit var fragment: Fragment
     lateinit var binding: ActivityMainBinding
     private lateinit var db:Base_de_Datos
 
@@ -32,17 +27,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         binding.root.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-
-        drawerLayout = findViewById(R.id.drawerlayout)
-        navigationView = findViewById(R.id.nav_view)
-        button = findViewById(R.id.MenuButton)
-        menu = navigationView.menu
-
-        button.setOnClickListener(){
-            drawerLayout.openDrawer(GravityCompat.START);
-        }
-
-        navigationView.bringToFront()
 
         var fr = intent.extras
 
@@ -130,8 +114,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 finishAndRemoveTask()
             }
         }
-        drawerLayout.closeDrawer(GravityCompat.START)
-        return true
     }
 
     override fun onPasarDato(dato: String) {
@@ -143,7 +125,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     fun replaceFragment(fragment: Fragment){
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentMain, fragment).commit()
     }
 
 }
