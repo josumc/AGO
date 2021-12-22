@@ -5,9 +5,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/map"-->
+<!--        android:name="com.tomtom.online.sdk.map.MapFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/size_none"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:context=".MapsFragment" />-->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
-        android:name="com.tomtom.online.sdk.map.MapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_none"
         app:layout_constraintBottom_toBottomOf="parent"

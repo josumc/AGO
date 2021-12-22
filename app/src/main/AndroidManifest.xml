@@ -19,9 +19,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AGO">
-        <activity
-            android:name=".DrawerActivity"
-            android:exported="false" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -36,9 +33,12 @@
 
         <activity
             android:name=".JuegoActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SplashScreenActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             android:exported="true">
 
             <!-- android:theme="@style/SplashTheme" > -->
@@ -50,7 +50,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

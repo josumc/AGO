@@ -1,14 +1,12 @@
 package com.g2.ago
 
-import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.FragmentFotosBinding
-import kotlinx.android.synthetic.main.fragment_fotos.*
+import kotlinx.android.synthetic.main.fragment_letra.*
 
 
 class FotosFragment : Fragment() {
@@ -55,9 +53,7 @@ class FotosFragment : Fragment() {
                         binding.imagen.setImageResource(R.drawable.kofradia1argazkia)
                     }
                     "2"->{
-
-                    }
-                    "3"->{
+                        replaceFragment(MemoryFragment())
 
                     }
                 }
@@ -71,9 +67,12 @@ class FotosFragment : Fragment() {
                         binding.imagen.setImageResource(R.drawable.sotera2argazkia)
                     }
                     "3"->{
-
+                        binding.imagen.setImageResource(R.drawable.sotera2argazkia)
                     }
                     "4"->{
+                        replaceFragment(MemoryFragment())
+                    }
+                    "6"->{
                         binding.imagen.setImageResource(R.drawable.sotera3izaskunetxaniz)
                     }
                 }
@@ -85,10 +84,7 @@ class FotosFragment : Fragment() {
 
                     }
                     "2"->{
-
-                    }
-                    "3"->{
-
+                        replaceFragment(PreguntasFragment())
                     }
                 }
             }
@@ -101,10 +97,7 @@ class FotosFragment : Fragment() {
                         binding.imagen.setImageResource(R.drawable.udaletxea2argazkia)
                     }
                     "3"->{
-
-                    }
-                    "4"->{
-
+                        replaceFragment(TestFragment())
                     }
                 }
             }
@@ -117,10 +110,7 @@ class FotosFragment : Fragment() {
                         binding.imagen.setImageResource(R.drawable.auzoa2argazkia)
                     }
                     "3"->{
-
-                    }
-                    "4"->{
-
+                        replaceFragment(VFFragment())
                     }
                 }
             }
@@ -133,10 +123,10 @@ class FotosFragment : Fragment() {
                         binding.imagen.setImageResource(R.drawable.sardinera2argazkia)
                     }
                     "3"->{
-
+                        binding.imagen.setImageResource(R.drawable.sardinera2argazkia)
                     }
                     "4"->{
-
+                        replaceFragment(ParrafoFragment())
                     }
 
                 }
@@ -144,20 +134,25 @@ class FotosFragment : Fragment() {
             "8"->{
                 when(Sharedapp.puntojuego.Juego){
                     "1"->{
-
-                    }
-                    "3"->{
-
+                        binding.imagen.setImageResource(R.drawable.hasierakoargazkia)
                     }
                     "2"->{
-
+                        replaceFragment(APFragment())
                     }
-
+                    "3"->{
+                        replaceFragment(AnimacionFinalFragment())
+                    }
                 }
             }
-
         }
-    //
+    }
+    fun replaceFragment(fragment: Fragment) {
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        if(transaction != null) {
+            transaction.replace(R.id.FragmentMapaJuego, fragment)
+            transaction.disallowAddToBackStack()
+            transaction.commit()
+        }
     }
 
 }

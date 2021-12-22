@@ -23,6 +23,7 @@ class MapsFragment2 : Fragment() {
     var Activityppal: Comunicador?=null
     lateinit var googleMap: GoogleMap
     lateinit var ubicacion:LatLng
+    lateinit var circle: Circle
     var marcadores:ArrayList<Marker> = arrayListOf()
     @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { GoogleMap ->
@@ -47,11 +48,12 @@ class MapsFragment2 : Fragment() {
         Error 1
         *
          */
-        googleMap.isMyLocationEnabled=true
-        googleMap.uiSettings.isMyLocationButtonEnabled = false
-        //googleMap.uiSettings.isZoomControlsEnabled=true
-        googleMap.uiSettings.isCompassEnabled=false
-
+        if (!Sharedapp.modolibre.modo){
+            googleMap.isMyLocationEnabled=true
+            googleMap.uiSettings.isMyLocationButtonEnabled = false
+            //googleMap.uiSettings.isZoomControlsEnabled=true
+            googleMap.uiSettings.isCompassEnabled=false
+        }
         //Código para introducir os puntos/marcadores
         //Coordenadas de las diferentes ubicaciones
         val parada1 = LatLng(43.330306, -3.029750)
@@ -72,7 +74,10 @@ class MapsFragment2 : Fragment() {
                 marcadores.add(marcador)
             }
         }
-        cambiarMarcador(3)
+        if (!Sharedapp.modolibre.modo&&Sharedapp.tipousu.tipo=="alumno"){
+            cambiarMarcador(Sharedapp.puntopartida.Partida.toInt())
+        }
+
         when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
             Configuration.UI_MODE_NIGHT_NO -> {
                 googleMap.setMapStyle(
@@ -97,26 +102,48 @@ class MapsFragment2 : Fragment() {
         Error 2
         *
          */
-        fusedLocation.lastLocation.addOnSuccessListener {
-            if (it != null) {
-                ubicacion = LatLng(it.latitude, it.longitude)
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
-                println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
+        if(!Sharedapp.modolibre.modo){
+            fusedLocation.lastLocation.addOnSuccessListener {
+                if (it != null) {
+                    ubicacion = LatLng(it.latitude, it.longitude)
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+                    println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
+                    val circleOptions = CircleOptions()
+                        .center(ubicacion)
+                        .radius(50.0)
+                    circle = googleMap.addCircle(circleOptions)
+                    println("El círculo: "+circle)
+                }
+            }
+        }else{
+            ubicacion = LatLng(43.3351509,-3.0331127)
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+        }
+
+        //Se activa el botón de juego al seleccionar un punto
+        if(Sharedapp.modolibre.modo){
+            googleMap.setOnMarkerClickListener { marker ->
+                //Genera un mensaje "Prueba: "+mX .Donde X es la id del marcador
+                println("Prueba: "+marker.id)
+
+                Activityppal=requireContext() as Comunicador
+                Activityppal!!.onPasarDato(marker.id.substring(1,2))
+                true
             }
         }
-        //Se activa el botón de juego al seleccionar un punto
-        googleMap.setOnMarkerClickListener { marker ->
-            //Genera un mensaje "Prueba: "+mX .Donde X es la id del marcador
-            println("Prueba: "+marker.id)
-            Activityppal=requireContext() as Comunicador
-            Activityppal!!.onPasarDato(marker.id)
-            true
-        }
+
         /*Autofocus de la cámara al cambiar la ubicación
         (ahora está comentado por una cuestión de funcionalidad)*/
 //        googleMap.setOnMyLocationChangeListener {
+//            circle.remove()
 //            ubicacion= LatLng(it.latitude, it.longitude)
 //            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+//            circle.remove()
+//            val circleOptions = CircleOptions()
+//                .center(ubicacion)
+//                .radius(50.0)
+//            circle = googleMap.addCircle(circleOptions)
+//            println("El círculo: "+circle)
 //        }
     }
 
@@ -134,14 +161,20 @@ class MapsFragment2 : Fragment() {
             Error 3
             *
             */
-            fusedLocation.lastLocation.addOnSuccessListener {
-                if (it != null) {
-                    ubicacion = LatLng(it.latitude, it.longitude)
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
-                    println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
+            if(!Sharedapp.modolibre.modo) {
+                fusedLocation.lastLocation.addOnSuccessListener {
+                    if (it != null) {
+                        ubicacion = LatLng(it.latitude, it.longitude)
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+                        println("Ubicación actual. Latitud: " + it.latitude + ". Longitud: " + it.longitude)
+                        val circleOptions = CircleOptions()
+                            .center(ubicacion)
+                            .radius(50.0)
+                        circle = googleMap.addCircle(circleOptions)
+                        println("El círculo: "+circle)
+                    }
                 }
             }
-
         }
         fusedLocation = LocationServices.getFusedLocationProviderClient(requireActivity())
         return binding.root
@@ -149,8 +182,8 @@ class MapsFragment2 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
+        val mapsFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        mapsFragment?.getMapAsync(callback)
     }
     fun cambiarMarcador(posicion:Int){
         marcadores.forEach {

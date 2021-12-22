@@ -2,11 +2,11 @@ package com.g2.ago
 
 import android.media.MediaPlayer
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_parrafo.*
 
 class ParrafoFragment : Fragment() {
@@ -24,15 +24,14 @@ class ParrafoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnComprobarParrafo.setOnClickListener{
             if(rbtnOP2.isChecked){
-                Toast.makeText(requireContext(), getString(R.string.acierto), Toast.LENGTH_SHORT).show()
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
-                Sharedapp.puntopartida.Partida = "8"
-                Sharedapp.puntojuego.Juego = "4"
+                Sharedapp.puntojuego.Juego = "5"
                 if (Sharedapp.tipousu.tipo != "profesor"){
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
                     bd.actualizar(Sharedapp.users.User.toString(), "7")
                 }
-                replaceFragment(LetraFragment())
+                replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
+                replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
             }else{
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
                 Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_SHORT).show()
@@ -40,10 +39,10 @@ class ParrafoFragment : Fragment() {
             }
         }
     }
-    private fun replaceFragment(fragment: Fragment) {
+    fun replaceFragment(Contenedor:Int, fragment: Fragment) {
         val transaction = activity?.supportFragmentManager?.beginTransaction()
-        if (transaction != null) {
-            transaction.replace(R.id.fragment1Juego, fragment)
+        if(transaction != null) {
+            transaction.replace(Contenedor, fragment)
             transaction.disallowAddToBackStack()
             transaction.commit()
         }

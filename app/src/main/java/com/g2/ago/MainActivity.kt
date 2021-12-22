@@ -36,6 +36,83 @@ class MainActivity : DrawerActivity(), NavigationView.OnNavigationItemSelectedLi
                 "QSFragment()" -> replaceFragment(QSFragment())
                 "RankingFragment()" -> replaceFragment(RankingFragment())
             }
+        }else if (Sharedapp.tipousu.tipo.equals("profesor")){
+            fragment = ModoJuegoFragment()
+            replaceFragment(fragment)
+            menu.findItem(R.id.nav_profe).isVisible = false
+            menu.findItem(R.id.nav_cerrar_sesion).isVisible = true
+            menu.findItem(R.id.nav_ranking).isVisible = true
+        }else{
+            fragment = RankingFragment()
+            replaceFragment(fragment)
+            menu.findItem(R.id.nav_profe).isVisible = true
+            menu.findItem(R.id.nav_cerrar_sesion).isVisible = false
+        }
+
+        navigationView.setNavigationItemSelectedListener(this)
+
+        menu.findItem(R.id.nav_alumno).isVisible = false
+    }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }else{
+            super.onBackPressed()
+        }
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            R.id.nav_inicio -> {
+                if (Sharedapp.tipousu.tipo.equals("profesor")){
+                    fragment = ModoJuegoFragment()
+                    replaceFragment(fragment)
+                }else if (Sharedapp.tipousu.tipo.equals("alumno")){
+                    fragment = RankingFragment()
+                    replaceFragment(fragment)
+                }
+            }
+            R.id.nav_ranking -> {
+                if (Sharedapp.tipousu.tipo.equals("profesor")){
+                    var fragment = AnimacionCargaFragment()
+                    replaceFragment(fragment)
+
+                }else{
+                    fragment = LogFragment()
+                    Toast.makeText(this, "Necesitas logearte como profesor para acceder a esta funcion" +
+                            "", Toast.LENGTH_SHORT).show()
+                    replaceFragment(fragment)
+                }
+            }
+            R.id.nav_quienes -> {
+                fragment = QSFragment()
+                replaceFragment(fragment)
+            }
+            R.id.nav_alumno -> {
+                Sharedapp.users.user = ""
+                Sharedapp.tipousu.tipo = "alumno"
+                fragment = LogFragment()
+                replaceFragment(fragment)
+            }
+            R.id.nav_profe -> {
+                fragment = LogFragment()
+                replaceFragment(fragment)
+            }
+            R.id.nav_cerrar_sesion -> {
+                Sharedapp.users.user = ""
+                Sharedapp.tipousu.tipo = "alumno"
+                db = Base_de_Datos(this, "bd", null, 1)
+                db.profes()
+                menu.findItem(R.id.nav_profe).isVisible = true
+                menu.findItem(R.id.nav_cerrar_sesion).isVisible = false
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+            R.id.nav_salir -> {
+                finishAndRemoveTask()
+            }
         }
     }
 

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_test.*
@@ -29,47 +30,41 @@ class TestFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnTest.setOnClickListener{
             if(!rbtn1D.isChecked){
-                check = "mal"
-                txtTest1.setTextColor(Color.RED)
+                error(txtTest1)
             }else{
-                txtTest1.setTextColor(Color.GREEN)
+                acierto(txtTest1)
             }
             if(!rbtn2B.isChecked){
-                check = "mal"
-                txtTest2.setTextColor(Color.RED)
+                error(txtTest2)
             }else{
-                txtTest2.setTextColor(Color.GREEN)
+                acierto(txtTest2)
             }
             if(!rbtn3C.isChecked){
-                check = "mal"
-                txtTest3.setTextColor(Color.RED)
+                error(txtTest3)
             } else{
-                txtTest3.setTextColor(Color.GREEN)
+                acierto(txtTest3)
             }
             if(!rbtn4A.isChecked){
-                check = "mal"
-                txtTest4.setTextColor(Color.RED)
+                error(txtTest4)
             }else{
-                txtTest4.setTextColor(Color.GREEN)
+                acierto(txtTest4)
             }
             if(!rbtn5C.isChecked){
-                check = "mal"
-                txtTest5.setTextColor(Color.RED)
+                error(txtTest5)
             }else{
-                txtTest5.setTextColor(Color.GREEN)
+                acierto(txtTest5)
             }
             if(check.equals("ok")){
-                Toast.makeText(requireContext(), getString(R.string.acierto), Toast.LENGTH_SHORT).show()
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
-                Sharedapp.puntopartida.Partida = "6"
-                Sharedapp.puntojuego.Juego = "1"
+                Sharedapp.puntojuego.Juego = "4"
                 if (Sharedapp.tipousu.tipo != "profesor"){
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
                     bd.actualizar(Sharedapp.users.User.toString(), "5")
                 }
                 //fragment por el que lo reemplazamos
                 val fragment: Fragment = AnimacionFinalFragment()
-                replaceFragment(fragment)
+                replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
+                replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
             }else{
                 val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
                 Toast.makeText(requireContext(), getString(R.string.preguntamal), Toast.LENGTH_SHORT).show()
@@ -79,16 +74,19 @@ class TestFragment : Fragment() {
         }
 
     }
-    //metodo para llamar a un fragment desde otro
-    private fun replaceFragment(fragment: Fragment){
+    fun replaceFragment(Contenedor:Int, fragment: Fragment) {
         val transaction = activity?.supportFragmentManager?.beginTransaction()
-        if (transaction != null) {
-            //El primer valor es el contenedor y el segundo la variable que indicabamos antes
-            transaction.replace(R.id.fragment1Juego, fragment)
+        if(transaction != null) {
+            transaction.replace(Contenedor, fragment)
             transaction.disallowAddToBackStack()
             transaction.commit()
         }
-
     }
-
+    fun error(Texto: TextView){
+        check = "mal"
+        Texto.setTextColor(Color.RED)
+    }
+    fun acierto(Texto: TextView){
+        Texto.setTextColor(Color.GREEN)
+    }
 }

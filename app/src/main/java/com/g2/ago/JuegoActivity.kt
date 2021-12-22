@@ -23,8 +23,8 @@ class JuegoActivity : DrawerActivity(), Comunicador,
         binding.root.systemUiVisibility = SYSTEM_UI_FLAG_LAYOUT_STABLE or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
 
-        fragmentTop = MapsFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.fragment1Juego, fragmentTop).commit()
+        fragmentTop = MapsFragment2()
+        supportFragmentManager.beginTransaction().replace(R.id.FragmentMapaJuego, fragmentTop).commit()
 
         fragmentBot = InfoRutaFragment()
         supportFragmentManager.beginTransaction().replace(R.id.fragment2Juego, fragmentBot).commit()
@@ -35,46 +35,29 @@ class JuegoActivity : DrawerActivity(), Comunicador,
 //        }else{
 //            replaceExplFragment(InfoRutaFragment())
 //        }
+        navigationView.setNavigationItemSelectedListener(this)
+
+        menu.findItem(R.id.nav_alumno).isVisible = false
+
+        if (Sharedapp.tipousu.tipo.equals("profesor")){
+            menu.findItem(R.id.nav_profe).isVisible = false
+            menu.findItem(R.id.nav_cerrar_sesion).isVisible = true
+
+        }else{
+            menu.findItem(R.id.nav_profe).isVisible = true
+            menu.findItem(R.id.nav_cerrar_sesion).isVisible = false
+        }
+        menu.findItem(R.id.nav_ranking).isVisible = false
     }
 
     override fun onPasarDato(dato: String) {
         if(Sharedapp.modolibre.modo){
-             val datoact=(dato.toInt()+1).toString()
+            val datoact=(dato.toInt()+1).toString()
             Sharedapp.puntopartida.Partida=datoact
             Sharedapp.puntojuego.Juego="1"
         }
         replaceMapFragment(FotosFragment())
         replaceExplFragment(ExplicacionFragment())
-//        when(dato){
-//            "0" -> {
-//                replaceMapFragment(FotosFragment())
-//                replaceExplFragment(ExplicacionFragment())
-//            }
-//            "1" -> {
-//                replaceMapFragment(FotosFragment())
-//                replaceExplFragment(ExplicacionFragment())
-//            }
-//            "2" -> {
-//                replaceMapFragment(FotosFragment())
-//                replaceExplFragment(ExplicacionFragment())
-//            }
-//            "3" -> {
-//                replaceMapFragment(FotosFragment())
-//                replaceExplFragment(ExplicacionFragment())
-//            }
-//            "4" -> {
-//                replaceMapFragment(FotosFragment())
-//                replaceExplFragment(ExplicacionFragment())
-//            }
-//            "5" ->{
-//                replaceMapFragment(FotosFragment())
-//                replaceExplFragment(ExplicacionFragment())
-//            }
-//            "6" -> {
-//                replaceMapFragment(FotosFragment())
-//                replaceExplFragment(ExplicacionFragment())
-//            }
-//        }
     }
 
     override fun activarBoton(dato: Boolean) {
@@ -88,8 +71,56 @@ class JuegoActivity : DrawerActivity(), Comunicador,
     }
 
     private fun replaceExplFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.fragment2Juego, fragment).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragment).addToBackStack("RutaFragment").commit()
     }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }else{
+            super.onBackPressed()
+        }
+        replaceMapFragment(MapsFragment2())
+        replaceExplFragment(InfoRutaFragment())
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        val intent = Intent(this, MainActivity::class.java)
+
+        when(item.itemId){
+            R.id.nav_inicio -> {
+                startActivity(intent)
+                finish()
+            }
+            R.id.nav_quienes -> {
+                intent.putExtra("fragment", "QSFragment()")
+                startActivity(intent)
+                finish()
+            }
+            R.id.nav_alumno -> {
+                Sharedapp.users.user = ""
+                Sharedapp.tipousu.tipo = "alumno"
+            }
+            R.id.nav_profe -> {
+                intent.putExtra("fragment", "LogFragment()")
+                startActivity(intent)
+                finish()
+            }
+            R.id.nav_cerrar_sesion -> {
+                Sharedapp.users.user = ""
+                Sharedapp.tipousu.tipo = "alumno"
+                startActivity(intent)
+                finish()
+            }
+            R.id.nav_salir -> {
+                finishAndRemoveTask()
+            }
+        }
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true
+    }
+
 }
 
 
