@@ -21,8 +21,8 @@
     <string name="Menu">Menu</string>
     <string name="Mapa">Mapa</string>
     <!--Modo profesor-->
-    <string name="ModoGuiado">Modu guidatuan</string>
-    <string name="ModoLibre">Modu askean</string>
+    <string name="ModoGuiado">Modu gidatua</string>
+    <string name="ModoLibre">Modu askea</string>
     <string name="Jugar">Jokatu</string>
     <!--Login profesor-->
     <string name="Bootonlog">Sartu</string>
@@ -58,6 +58,7 @@
     <string name="VF4">Etxearen goiko solairuak arrantzarako tresnak gordetzeko erabiltzen ziren.</string>
     <string name="VF5">Etxearen beheko solairua arrantzarako tresnak gordetzeko erabiltzen zen.</string>
 
+    <string name="continuar">Jarraitu</string>
     <!--Textos de paradas-->
     <!--Hasiera(parada 0)-->
     <string name="hasiera1">Kaixo lagun! Ni “Bella Charo” sardina-saltzailea naiz eta gaur elkarrekin emakumeen papera Santurtziko historian ezagutuko dugu.</string>
@@ -73,6 +74,7 @@
     <!--Sotera(parada 3)-->
     <string name="sotera1">Geraleku honetan arraunari buruz hitz egingo dugu. Arrauna, gaur egun, kirol bat bezala ezagutzen da. Baina antzina, Santurtziko arrantzaleek arrantzara joateko tresna bezala erabiltzen zuten. Arraun egiteko trainerua eta bi arraunak behar dira.</string>
     <string name="sotera2">Antzina Santurtzi arrantza-portu garrantzitsu bezala ezagutzen zen. Gaur egun berriz, Santurtzi famatua da, besteak beste, Sotera arraun taldeagatik. Aurten, Sotera arraun taldeak Eusko Label Arraun Liga irabazi du. Baina… Soterak irabazi duela esaten dutenean, mutilen taldeak irabazi duela esan nahi du. Eta neskak? Ez dute arraun egiten? Hau jakin nahi baduzu, jolas hau gainditu beharko duzu. Prest? Aurrera!</string>
+    <string name="sotera3">Hona hemen letra-zopa bat. Hemen hurrengo hitzak bilatu behar dituzu: trainerua, arraunak, arrantza, kirola, taldea, sotera eta emakumea. Zorte on!</string>
     <string name="sotera4">Oso ondo! Hitz guztiak aurkitu dituzu! Hemen duzu zure saria! Bai, neskek ere arraun egiten dute! Eta adibide zoragarri bat jarriko dizut. Izaskun Etxaniz 23 urteko santurtziarrak 11 urte daramatza arraunean. Izaskun estatuko itsas arrauneko txapelduna eta olinpiar arrauneko txapeldunordea da. Harrigarria ezta?  Zoritxarrez informazio hau ez da oso ezaguna, baina gu hori aldatzera etorri gara! Abenturarekin jarraituko dugu?</string>
     <!--Kioskoa(parada 4)-->
     <string name="kioskoa1">Santurtziko parkearen erdian 1917an eraikitako musika kioskoa aurki dezakegu. Gaur egun, bere oinarria, zeramikazko mosaikoz apaindua dago, non inguruko herririk esanguratsuenak agertzen diren. Gainera, sardina-saltzaile eta arrantzaleen irudiak agertzen dira. Kupularen barruan jende garrantzitsuaren irudiak ere aurki ditzakegu.</string>
@@ -97,5 +99,5 @@
     <string name="asmakizuna1">Gure abentura amaitzear dago, baina amaitzeko azken asmakizuna gainditu beharko duzu. Asmakizun horri erantzuteko, hitz bat sortu beharko duzu lortu dituzun letra guztiekin. Kontzentratu eta… goazen azken ariketa egitera!</string>
     <string name="asmakizuna2">Oso ondo! Lortu duzu! EMAKUME da hitza. Emakumeak edozein lan egiteko gai direlako eta horrela erakutsi dute historian zehar. Horregatik, merezi duten garrantzia ematen hasi behar zaie, eta espero dut hemendik aurrera zuk hori lortzen laguntzea! Eskerrik asko istorio honetan parte hartzeagatik! Hurrengora arte!</string>
 
-    <string name="sotera3">Hona hemen letra-zopa bat. Hemen hurrengo hitzak bilatu behar dituzu: trainerua, arraunak, arrantza, kirola, taldea, sotera eta emakumea. Zorte on!</string>
+
 </resources>
