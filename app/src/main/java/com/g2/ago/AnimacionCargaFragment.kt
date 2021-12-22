@@ -44,6 +44,6 @@ class AnimacionCargaFragment : Fragment() {
                 }
                 fun replaceFragment(fragment: Fragment) {
                     requireActivity().supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentMain, fragment).commit()
+                        .replace(R.id.fragmentPrincipal, fragment).commit()
                 }
 }
