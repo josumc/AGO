@@ -1,9 +1,7 @@
 package com.g2.ago
 
-import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +12,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.g2.ago.databinding.FragmentExplicacionBinding
 import kotlinx.android.synthetic.main.activity_juego.*
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
