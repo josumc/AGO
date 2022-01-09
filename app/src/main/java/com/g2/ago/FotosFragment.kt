@@ -42,7 +42,7 @@ class FotosFragment : Fragment() {
                     "2"->{
                         binding.imagen.setImageResource(R.drawable.portua2argazkia)
                     }
-                    "3"->{
+                    "5"->{
                         binding.imagen.setImageResource(R.drawable.portua3argazkia)
                     }
                 }

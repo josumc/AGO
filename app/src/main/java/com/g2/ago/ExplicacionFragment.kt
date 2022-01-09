@@ -1,5 +1,6 @@
 package com.g2.ago
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -88,7 +89,11 @@ class ExplicacionFragment : Fragment() {
                         mp = MediaPlayer.create(requireContext(), R.raw.portua2audioa)
                         mp.start()
                         testua=getString(R.string.portua2)
-                        binding.pasarFase.isVisible = false
+                        binding.pasarFase.isVisible = true
+                    }
+                    "3" ->{
+                        Activityppal=requireContext() as Comunicador
+                        Activityppal!!.onPasarDato("Puzzle")
                     }
                     "4"->{
                         binding.pasarFase.isVisible = true

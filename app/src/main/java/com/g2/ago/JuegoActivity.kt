@@ -51,12 +51,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         fragmentBot = InfoRutaFragment()
         supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragmentBot).commit()
 
-//Para pruebas
-//        if (Sharedapp.puntopartida.Partida.equals("0")){
-//            replaceExplFragment(ExplicacionFragment())
-//        }else{
-//            replaceExplFragment(InfoRutaFragment())
-//        }
+
         navigationView.setNavigationItemSelectedListener(this)
 
         menu.findItem(R.id.nav_alumno).isVisible = false
@@ -74,10 +69,12 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
 
     override fun onPasarDato(dato: String) {
         if(Sharedapp.modolibre.modo){
-            println(dato.equals("superado"))
             if(!dato.equals("superado")){
-                var dato_act=(dato.toInt()+1).toString()
-                Sharedapp.puntopartida.Partida=dato_act
+                if(!dato.equals("Puzzle")) {
+                    var dato_act = (dato.toInt() + 1).toString()
+                    Sharedapp.puntopartida.Partida = dato_act
+                }
+
             }
             Sharedapp.puntojuego.Juego="1"
         }
@@ -115,6 +112,9 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
             }
             "acaba" ->{
                 startActivity(Intent(this, MainActivity::class.java))
+            }
+            "Puzzle" ->{
+                startActivity(Intent(this, PuzzleActivity::class.java))
             }
         }
     }
