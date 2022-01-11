@@ -87,6 +87,7 @@ class ExplicacionFragment : Fragment() {
 
                     }
                     "3"->{
+                        binding.textView.text = getString(R.string.portua2)
                         binding.pasarFase.isVisible = false
                     }
                     "4"->{
