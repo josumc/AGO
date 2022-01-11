@@ -15,11 +15,6 @@ class QSFragment : Fragment() {
 
     lateinit var binding: FragmentQSBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     fun abrirweb(web:String){
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(web))
         startActivity(browserIntent)
@@ -37,62 +32,71 @@ class QSFragment : Fragment() {
         binding = FragmentQSBinding.inflate(layoutInflater)
 
         //llamar
-        binding.imgllamada.setOnClickListener{
+        fun llamar(){
             val nTel = Uri.parse("tel:"+binding.txtllamada.text.toString())
             val phone = Intent(Intent.ACTION_DIAL, nTel)
             startActivity(phone)
+        }
+        binding.imgllamada.setOnClickListener{
+            llamar()
         }
         binding.txtllamada.setOnClickListener{
-            val nTel = Uri.parse("tel:"+binding.txtllamada.text.toString())
-            val phone = Intent(Intent.ACTION_DIAL, nTel)
-            startActivity(phone)
+            llamar()
         }
         //enlace a WhatsAPP
-        binding.imgwas.setOnClickListener{
+        fun WhatsApp(){
             abrirweb("https://api.whatsapp.com/send?phone=+3448980&text=Buenos%20d%C3%ADas.%20Necesito%20ayuda%20con%20la%20aplicacion.")
+        }
+        binding.imgwas.setOnClickListener{
+            WhatsApp()
         }
         binding.txtwas.setOnClickListener{
-            abrirweb("https://api.whatsapp.com/send?phone=+3448980&text=Buenos%20d%C3%ADas.%20Necesito%20ayuda%20con%20la%20aplicacion.")
+            WhatsApp()
         }
         //Enlace a Gmail
-        binding.imggmail.setOnClickListener{
+        fun Gmail(){
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/html"
             intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("G2_2DM3@fptxurdinaga.com"))
             intent.putExtra(Intent.EXTRA_SUBJECT, "")
             intent.putExtra(Intent.EXTRA_TEXT, "")
-
             startActivity(Intent(intent))
+        }
+        binding.imggmail.setOnClickListener{
+            Gmail()
         }
         binding.txtmail.setOnClickListener{
-            val intent = Intent(Intent.ACTION_SEND)
-            intent.type = "text/html"
-            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("G2_2DM3@fptxurdinaga.com"))
-            intent.putExtra(Intent.EXTRA_SUBJECT, "")
-            intent.putExtra(Intent.EXTRA_TEXT, "")
-
-            startActivity(Intent(intent))
+            Gmail()
         }
         //Enlace a instagram
-        binding.imginsta.setOnClickListener{
+        fun Instagram(){
             abrirweb("https://www.instagram.com/ago_Santurtzi/?hl=es")
+        }
+        binding.imginsta.setOnClickListener{
+            Instagram()
         }
         binding.txtinsta.setOnClickListener{
-            abrirweb("https://www.instagram.com/ago_Santurtzi/?hl=es")
+            Instagram()
         }
         //Enlace a twiter
-        binding.imgtwiter.setOnClickListener{
+        fun twitter(){
             abrirweb("https://twitter.com/ago_santurtzi")
+        }
+        binding.imgtwiter.setOnClickListener{
+            twitter()
         }
         binding.txttuit.setOnClickListener{
-            abrirweb("https://twitter.com/ago_santurtzi")
+            twitter()
         }
         //enlace a facebook
-        binding.imgfacebook.setOnClickListener{
+        fun facebook(){
             abrirweb("https://es-la.facebook.com/ago_santurtzi/")
         }
+        binding.imgfacebook.setOnClickListener{
+            facebook()
+        }
         binding.txtfacebook.setOnClickListener{
-            abrirweb("https://es-la.facebook.com/ago_santurtzi/")
+            facebook()
         }
 
         return binding.root

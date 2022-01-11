@@ -1,6 +1,5 @@
 package com.g2.ago
 
-import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -51,10 +50,6 @@ class ExplicacionFragment : Fragment() {
             repeat(text.length) {
                 delay(intervalMs)
                 this@typeWrite.text = text.take(it + 1)
-//                binding.textView.setOnClickListener {
-//                    lifecycleOwner.lifecycleScope.cancel()
-//                    binding.textView.text=explicaciones()
-//                }
             }
             binding.pasarFase.isEnabled = true
         }
@@ -89,19 +84,25 @@ class ExplicacionFragment : Fragment() {
                         mp = MediaPlayer.create(requireContext(), R.raw.portua2audioa)
                         mp.start()
                         testua=getString(R.string.portua2)
-                        binding.pasarFase.isVisible = true
+
                     }
-                    "3" ->{
-                        Activityppal=requireContext() as Comunicador
-                        Activityppal!!.onPasarDato("Puzzle")
+                    "3"->{
+                        binding.pasarFase.isVisible = false
                     }
                     "4"->{
                         binding.pasarFase.isVisible = true
+                        mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.portua3audioa)
                         mp.start()
                         testua=getString(R.string.portua3)
                     }
                     "5"->{
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.portua4audioa)
+                        mp.start()
+                        testua=getString(R.string.portua4)
+                    }
+                    "6"->{
                         mp.stop()
                         Sharedapp.puntopartida.Partida = "2"
                         superado()
@@ -370,6 +371,5 @@ class ExplicacionFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         mp.stop()
-        //replaceFragment(R.id.FragmentMapaJuego, MapsFragment2())
     }
 }

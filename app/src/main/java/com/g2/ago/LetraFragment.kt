@@ -43,13 +43,13 @@ class LetraFragment : Fragment() {
 
         if (moneda != null) {
             when(Sharedapp.puntopartida.Partida){
-                "2" -> moneda.setImageResource(R.drawable.monedam)
-                "3" -> moneda.setImageResource(R.drawable.monedae)
-                "4" -> moneda.setImageResource(R.drawable.monedak)
-                "5" -> moneda.setImageResource(R.drawable.monedau)
-                "6" -> moneda.setImageResource(R.drawable.monedaa)
-                "7" -> moneda.setImageResource(R.drawable.monedam)
-                "8" -> moneda.setImageResource(R.drawable.monedae)
+                "1" -> moneda.setImageResource(R.drawable.monedam)
+                "2" -> moneda.setImageResource(R.drawable.monedae)
+                "3" -> moneda.setImageResource(R.drawable.monedak)
+                "4" -> moneda.setImageResource(R.drawable.monedau)
+                "5" -> moneda.setImageResource(R.drawable.monedaa)
+                "6" -> moneda.setImageResource(R.drawable.monedam)
+                "7" -> moneda.setImageResource(R.drawable.monedae)
             }
             vistaanimada= AnimationUtils.loadAnimation(requireContext(),
                 R.anim.view_animacion)

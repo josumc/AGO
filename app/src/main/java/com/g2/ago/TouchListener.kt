@@ -8,7 +8,7 @@ import android.widget.RelativeLayout
 
 
 
-class TouchListener(private val activity: PuzzleActivity) : OnTouchListener {
+class TouchListener(private val fragment: PuzzleFragment) : OnTouchListener {
     private var xDelta = 0f
     private var yDelta = 0f
     override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
@@ -45,7 +45,7 @@ class TouchListener(private val activity: PuzzleActivity) : OnTouchListener {
                     piece.layoutParams = lParams
                     piece.canMove = false
                     sendViewToBack(piece)
-                    activity.checkGameOver()
+                    fragment.checkGameOver()
                 }
             }
         }

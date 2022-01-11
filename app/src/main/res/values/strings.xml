@@ -65,7 +65,7 @@
     <!--Portua(parada 1)-->
     <string name="portua1">Santurtzi izan da baxurako arrantzarako ontzi gehien erabili dituen Bizkaiko portuetako bat. Antzinean, trainerua arrantzarako erabiltzen zen, baina pixkanaka motorrek mugitutako itsasontziak erabiltzen hasi ziren arrain gehiago hartu ahal izateko.</string>
     <string name="portua2">Santurtziren izena San Jorge (gizon bat) santutik datorren arren, Karmengo Ama Birjina (emakume bat) da Santurtziko zaindaria. Karmengo Ama Birjina oso garrantzitsua da Santurtzirentzat. Horregatik, zure laguntza behar dugu puzzle hau konpontzeko! Prest zaude?</string>
-    <string name="portua3">Primeran! Lehenengo froga bete duzu, hemen daukazu zure saria! Santurtziko jendeak sinesten du Karmengo Amak arrantzale eta herriko biztanle guztiak babesten dituela. Uztailaren 16a Karmengo eguna da eta itsas prozesio bat egiten da. Goazen hurrengo frogara!</string>
+    <string name="portua3">Primeran! Lehenengo froga bete duzu, hemen daukazu zure saria! Santurtziko jendeak sinesten du Karmengo Amak arrantzale eta herriko biztanle guztiak babesten dituela.</string>
     <!--Kofradia(parada 2)-->
     <string name="kofradia1">Antzina, arrantzaleen kofradian egiten ziren arrain-enkate ospetsuak, eta Santurtziko biztanleek joaten ziren arraina lortu ahal izateko. Normalean sardin-saltzaileak arduratzen ziren lan honetaz. Gainera, kofradian, arrantza tresna guztiak ere gordetzen ziren, sardin-saltzaileak ehuntzen zituzten sareak adibidez.</string>
     <string name="kofradia2">Hau jakinda ariketa honetan bikoteak egin behar dituzu. Arreta jarri hurrengo argazkiei bikoteak egin ahal izateko!</string>
@@ -98,4 +98,6 @@
     <string name="asmakizuna2">Oso ondo! Lortu duzu! EMAKUME da hitza. Emakumeak edozein lan egiteko gai direlako eta horrela erakutsi dute historian zehar. Horregatik, merezi duten garrantzia ematen hasi behar zaie, eta espero dut hemendik aurrera zuk hori lortzen laguntzea! Eskerrik asko istorio honetan parte hartzeagatik! Hurrengora arte!</string>
 
     <string name="sotera3">Hona hemen letra-zopa bat. Hemen hurrengo hitzak bilatu behar dituzu: trainerua, arraunak, arrantza, kirola, taldea, sotera eta emakumea. Zorte on!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="portua4">Uztailaren 16a Karmengo eguna da eta itsas prozesio bat egiten da. Goazen hurrengo frogara!</string>
 </resources>

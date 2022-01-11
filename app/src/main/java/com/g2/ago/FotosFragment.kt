@@ -42,6 +42,9 @@ class FotosFragment : Fragment() {
                     "2"->{
                         binding.imagen.setImageResource(R.drawable.portua2argazkia)
                     }
+                    "3"->{
+                        replaceFragment(PuzzleFragment())
+                    }
                     "5"->{
                         binding.imagen.setImageResource(R.drawable.portua3argazkia)
                     }
@@ -54,7 +57,6 @@ class FotosFragment : Fragment() {
                     }
                     "2"->{
                         replaceFragment(MemoryFragment())
-
                     }
                 }
             }
@@ -70,7 +72,7 @@ class FotosFragment : Fragment() {
                         binding.imagen.setImageResource(R.drawable.sotera2argazkia)
                     }
                     "4"->{
-                        replaceFragment(MemoryFragment())
+                        replaceFragment(SLFragemt())
                     }
                     "6"->{
                         binding.imagen.setImageResource(R.drawable.sotera3izaskunetxaniz)

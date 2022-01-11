@@ -1,33 +1,51 @@
 package com.g2.ago
 
-import android.content.Intent
 import android.graphics.*
-import android.graphics.BitmapFactory.Options
 import android.graphics.drawable.BitmapDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
-import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.RelativeLayout
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
+import com.g2.ago.databinding.FragmentPuzzleBinding
 import java.io.IOException
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
 
-class PuzzleActivity : AppCompatActivity() {
-    var pieces: ArrayList<PuzzlePiece?>? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_puzzle)
-        val layout = findViewById<RelativeLayout>(R.id.layout)
-        val imageView = findViewById<ImageView>(R.id.imageView)
+class PuzzleFragment : Fragment() {
+    lateinit var binding: FragmentPuzzleBinding
+    var pieces: ArrayList<PuzzlePiece?>?=null
+    private lateinit var bd:Base_de_Datos
+    lateinit var prueba:ConstraintLayout
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        // Inflate the layout for this fragment
+        binding = FragmentPuzzleBinding.inflate(layoutInflater)
+        prueba =binding.root
+        return prueba
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val layout = view.findViewById<RelativeLayout>(R.id.layoutf)
+        val imageView = view.findViewById<ImageView>(R.id.imageView)
         val assetName = "portua2argazkia.JPG"
 
-        // run image related code after the view was laid out
-        // to have all dimensions calculated
+        // ejecutar el código relacionado con la imagen después de que se haya diseñado la vista
+        // para tener calculadas todas las dimensiones
         imageView.post {
-                setPicFromAsset(assetName, imageView)
-            pieces = splitImage()
-            val touchListener = TouchListener(this@PuzzleActivity)
+            setPicFromAsset(assetName, imageView)
+            pieces = splitImage(view)
+            val touchListener = TouchListener(this@PuzzleFragment)
             // shuffle pieces order
             Collections.shuffle(pieces)
             for (piece in pieces!!) {
@@ -43,24 +61,24 @@ class PuzzleActivity : AppCompatActivity() {
     }
 
     private fun setPicFromAsset(assetName: String, imageView: ImageView) {
-        // Get the dimensions of the View
+        // Obtener las dimensiones de la vista
         val targetW = imageView.width
         val targetH = imageView.height
-        val am = assets
+        val am = activity?.assets
         try {
-            val `is` = am.open("img/$assetName")
-            // Get the dimensions of the bitmap
-            val bmOptions = Options()
+            val `is` = am?.open("img/$assetName")
+            // Obtenemos las dimensiones del bitmap
+            val bmOptions = BitmapFactory.Options()
             bmOptions.inJustDecodeBounds = true
             BitmapFactory.decodeStream(`is`, Rect(-1, -1, -1, -1), bmOptions)
             val photoW = bmOptions.outWidth
             val photoH = bmOptions.outHeight
 
-            // Determine how much to scale down the image
+            // Determinar cuánto reducir la imagen
             val scaleFactor = Math.min(photoW / targetW, photoH / targetH)
-            `is`.reset()
+            `is`!!.reset()
 
-            // Decode the image file into a Bitmap sized to fill the View
+            // Decodifique el archivo de imagen en un tamaño de Bitmap para llenar la vista
             bmOptions.inJustDecodeBounds = false
             bmOptions.inSampleSize = scaleFactor
             bmOptions.inPurgeable = true
@@ -68,18 +86,19 @@ class PuzzleActivity : AppCompatActivity() {
             imageView.setImageBitmap(bitmap)
         } catch (e: IOException) {
             e.printStackTrace()
-            Toast.makeText(this, e.localizedMessage, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun splitImage(): ArrayList<PuzzlePiece?> {
-        val piecesNumber = 20
-        val rows = 5
-        val cols = 4
-        val imageView = findViewById<ImageView>(R.id.imageView)
-        val pieces = ArrayList<PuzzlePiece?>(piecesNumber)
+   private fun splitImage(view: View): ArrayList<PuzzlePiece?> {
+       //Asignamos el tamaño al puzzle
+       val piecesNumber = 20
+       val rows = 5
+       val cols = 4
+       val imageView = view.findViewById<ImageView>(R.id.imageView)
+       val pieces = ArrayList<PuzzlePiece?>(piecesNumber)
 
-        // Get the scaled bitmap of the source image
+        // Obtenga el bitmap escalado de la imagen de origen
         val drawable = imageView.drawable as BitmapDrawable
         val bitmap = drawable.bitmap
         val dimensions = getBitmapPositionInsideImageView(imageView)
@@ -99,16 +118,16 @@ class PuzzleActivity : AppCompatActivity() {
             croppedImageHeight
         )
 
-        // Calculate the with and height of the pieces
+        // Calculamos el ancho y alto de las piezas
         val pieceWidth = croppedImageWidth / cols
         val pieceHeight = croppedImageHeight / rows
 
-        // Create each bitmap piece and add it to the resulting array
+        // Cree cada pieza del bitmap y agréguela al array resultante
         var yCoord = 0
         for (row in 0 until rows) {
             var xCoord = 0
             for (col in 0 until cols) {
-                // calculate offset for each piece
+                // calcular la compensacion para cada pieza
                 var offsetX = 0
                 var offsetY = 0
                 if (col > 0) {
@@ -118,7 +137,7 @@ class PuzzleActivity : AppCompatActivity() {
                     offsetY = pieceHeight / 3
                 }
 
-                // apply the offset to each piece
+                // aplicar la compensacion a cada pieza
                 val pieceBitmap = Bitmap.createBitmap(
                     croppedBitmap,
                     xCoord - offsetX,
@@ -126,27 +145,27 @@ class PuzzleActivity : AppCompatActivity() {
                     pieceWidth + offsetX,
                     pieceHeight + offsetY
                 )
-                val piece = PuzzlePiece(applicationContext)
+                val piece = PuzzlePiece(requireContext())
                 piece.setImageBitmap(pieceBitmap)
                 piece.xCoord = xCoord - offsetX + imageView.left
                 piece.yCoord = yCoord - offsetY + imageView.top
                 piece.pieceWidth = pieceWidth + offsetX
                 piece.pieceHeight = pieceHeight + offsetY
 
-                // this bitmap will hold our final puzzle piece image
+                // este Bitmap contendrá nuestra imagen final de la pieza del puzzle
                 val puzzlePiece = Bitmap.createBitmap(
                     pieceWidth + offsetX,
                     pieceHeight + offsetY,
                     Bitmap.Config.ARGB_8888
                 )
 
-                // draw path
+                // dibujar la trayectoria
                 val bumpSize = pieceHeight / 4
                 val canvas = Canvas(puzzlePiece)
                 val path = Path()
                 path.moveTo(offsetX.toFloat(), offsetY.toFloat())
                 if (row == 0) {
-                    // top side piece
+                    // tamaño maximo de la pieza
                     path.lineTo(pieceBitmap.width.toFloat(), offsetY.toFloat())
                 } else {
                     // top bump
@@ -165,7 +184,7 @@ class PuzzleActivity : AppCompatActivity() {
                     path.lineTo(pieceBitmap.width.toFloat(), offsetY.toFloat())
                 }
                 if (col == cols - 1) {
-                    // right side piece
+                    // lado derecho de la pieza
                     path.lineTo(pieceBitmap.width.toFloat(), pieceBitmap.height.toFloat())
                 } else {
                     // right bump
@@ -184,7 +203,7 @@ class PuzzleActivity : AppCompatActivity() {
                     path.lineTo(pieceBitmap.width.toFloat(), pieceBitmap.height.toFloat())
                 }
                 if (row == rows - 1) {
-                    // bottom side piece
+                    // lado alto de la pieza
                     path.lineTo(offsetX.toFloat(), pieceBitmap.height.toFloat())
                 } else {
                     // bottom bump
@@ -203,7 +222,7 @@ class PuzzleActivity : AppCompatActivity() {
                     path.lineTo(offsetX.toFloat(), pieceBitmap.height.toFloat())
                 }
                 if (col == 0) {
-                    // left side piece
+                    // lado izqiuerdo de la pieza
                     path.close()
                 } else {
                     // left bump
@@ -222,7 +241,7 @@ class PuzzleActivity : AppCompatActivity() {
                     path.close()
                 }
 
-                // mask the piece
+                // mascara de la pieza
                 val paint = Paint()
                 paint.color = -0x1000000
                 paint.style = Paint.Style.FILL
@@ -230,21 +249,21 @@ class PuzzleActivity : AppCompatActivity() {
                 paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
                 canvas.drawBitmap(pieceBitmap, 0f, 0f, paint)
 
-                // draw a white border
+                // dibujamos borde nblanco
                 var border = Paint()
                 border.color = -0x7f000001
                 border.style = Paint.Style.STROKE
                 border.strokeWidth = 8.0f
                 canvas.drawPath(path, border)
 
-                // draw a black border
+                // dibujamos borde negro de la pieza
                 border = Paint()
                 border.color = -0x80000000
                 border.style = Paint.Style.STROKE
                 border.strokeWidth = 3.0f
                 canvas.drawPath(path, border)
 
-                // set the resulting bitmap to the piece
+                // Seleccionar el Bitmap resultante de la pieza
                 piece.setImageBitmap(puzzlePiece)
                 pieces.add(piece)
                 xCoord += pieceWidth
@@ -252,34 +271,34 @@ class PuzzleActivity : AppCompatActivity() {
             yCoord += pieceHeight
         }
         return pieces
-    }
+   }
 
     private fun getBitmapPositionInsideImageView(imageView: ImageView?): IntArray {
         val ret = IntArray(4)
         if (imageView == null || imageView.drawable == null) return ret
 
-        // Get image dimensions
-        // Get image matrix values and place them in an array
+        // Obtener la dimension de la imagen
+        // Obtenga valores de matriz de imagen y colóquelos en un array
         val f = FloatArray(9)
         imageView.imageMatrix.getValues(f)
 
-        // Extract the scale values using the constants (if aspect ratio maintained, scaleX == scaleY)
+        // Extraiga los valores de escala usando las constantes (si se mantiene la relación de aspecto, scaleX == scaleY)
         val scaleX = f[Matrix.MSCALE_X]
         val scaleY = f[Matrix.MSCALE_Y]
 
-        // Get the drawable (could also get the bitmap behind the drawable and getWidth/getHeight)
+        //Obtenga el dibujable (también podría obtener el mapa de bits detrás del dibujable y getWidth/getHeight)
         val d = imageView.drawable
         val origW = d.intrinsicWidth
         val origH = d.intrinsicHeight
 
-        // Calculate the actual dimensions
+        // Calcular las dimensiones actuales
         val actW = (origW * scaleX).roundToInt()
         val actH = (origH * scaleY).roundToInt()
         ret[2] = actW
         ret[3] = actH
 
-        // Get image position
-        // We assume that the image is centered into ImageView
+        // Obtener la posicion de la imagen
+        // Suponemos que la imagen está centrada en ImageView
         val imgViewW = imageView.width
         val imgViewH = imageView.height
         val top = (imgViewH - actH) / 2
@@ -292,13 +311,19 @@ class PuzzleActivity : AppCompatActivity() {
     fun checkGameOver()  {
         if (isGameOver) {
             //Meter aqui lo que cargara cuando se complete el juego
-
-            startActivity(Intent(this, JuegoActivity::class.java))
+            MediaPlayer.create(requireContext(), R.raw.ondo).start()
+            Sharedapp.puntojuego.Juego = "4"
+            if (Sharedapp.tipousu.tipo != "profesor"){
+                bd = Base_de_Datos(requireContext(), "bd", null, 1)
+                bd.actualizar(Sharedapp.users.User.toString(), "1")
+            }
+            replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
+            replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
         }
     }
 
     private val isGameOver: Boolean
-    get() {
+        get() {
             for (piece in pieces!!) {
                 if (piece!!.canMove) {
                     return false
@@ -306,4 +331,13 @@ class PuzzleActivity : AppCompatActivity() {
             }
             return true
         }
+        fun replaceFragment(Contenedor: Int, fragment: Fragment) {
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            if (transaction != null) {
+                transaction.replace(Contenedor, fragment)
+                transaction.disallowAddToBackStack()
+                transaction.commit()
+            }
+        }
+
 }

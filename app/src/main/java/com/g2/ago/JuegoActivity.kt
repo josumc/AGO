@@ -113,9 +113,6 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
             "acaba" ->{
                 startActivity(Intent(this, MainActivity::class.java))
             }
-            "Puzzle" ->{
-                startActivity(Intent(this, PuzzleActivity::class.java))
-            }
         }
     }
 
