@@ -98,6 +98,14 @@
     <string name="asmakizuna2">Oso ondo! Lortu duzu! EMAKUME da hitza. Emakumeak edozein lan egiteko gai direlako eta horrela erakutsi dute historian zehar. Horregatik, merezi duten garrantzia ematen hasi behar zaie, eta espero dut hemendik aurrera zuk hori lortzen laguntzea! Eskerrik asko istorio honetan parte hartzeagatik! Hurrengora arte!</string>
 
     <string name="sotera3">Hona hemen letra-zopa bat. Hemen hurrengo hitzak bilatu behar dituzu: trainerua, arraunak, arrantza, kirola, taldea, sotera eta emakumea. Zorte on!</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="portua4">Uztailaren 16a Karmengo eguna da eta itsas prozesio bat egiten da. Goazen hurrengo frogara!</string>
+
+    <!--Geralekuen zerrenda-->
+    <string name="parada1">Santurtziko Portua</string>
+    <string name="parada2">Arrantzaleen Kofradia</string>
+    <string name="parada3">Itsasoko Ama Arraun Taldea</string>
+    <string name="parada4">Santurtziko Parkea (kioskoa)</string>
+    <string name="parada5">Santurtziko Udaletxea</string>
+    <string name="parada6">Arrantzaleen Auzoa</string>
+    <string name="parada7">Sardinerako Parkea</string>
 </resources>

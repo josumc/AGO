@@ -64,6 +64,8 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
             menu.findItem(R.id.nav_cerrar_sesion).isVisible = false
         }
         menu.findItem(R.id.nav_ranking).isVisible = false
+
+
     }
 
     override fun onPasarDato(dato: String) {
@@ -88,6 +90,12 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     }
 
     override fun activarBoton(dato: Boolean) {
+        println(dato)
+        InfoRutaFragment().hasi(dato)
+//        bundle.putBoolean("activar", dato)
+//        var fragmento=InfoRutaFragment()
+//        fragmento.arguments=bundle
+//        println("Argumentos: "+fragmento.arguments+" .Bundle: "+bundle)
     }
 
     fun replaceMapFragment(fragment: Fragment) {

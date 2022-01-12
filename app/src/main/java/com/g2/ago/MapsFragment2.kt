@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,10 +21,10 @@ class MapsFragment2 : Fragment() {
     //Durante este fragment van a aparecer tres lineas marcadas como error pero que funcionan bien  (es un error de AS)
     private lateinit var fusedLocation: FusedLocationProviderClient
     lateinit var binding: FragmentMapsBinding
-    var Activityppal: Comunicador?=null
+    lateinit var Activityppal: Comunicador
     lateinit var googleMap: GoogleMap
     lateinit var ubicacion:LatLng
-    lateinit var circle: Circle
+//    lateinit var circle: Circle
     var marcadores:ArrayList<Marker> = arrayListOf()
     @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { GoogleMap ->
@@ -104,47 +105,54 @@ class MapsFragment2 : Fragment() {
          */
         if(!Sharedapp.modolibre.modo){
             fusedLocation.lastLocation.addOnSuccessListener {
-                if (it != null) {
-                    ubicacion = LatLng(it.latitude, it.longitude)
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
-                    println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
-                    val circleOptions = CircleOptions()
-                        .center(ubicacion)
-                        .radius(50.0)
-                    circle = googleMap.addCircle(circleOptions)
-                    println("El círculo: "+circle)
-                }
+                ubicacion = LatLng(it.latitude, it.longitude)
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+                println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
+//                val circleOptions = CircleOptions()
+//                    .center(ubicacion)
+//                    .radius(50.0)
+//                circle = googleMap.addCircle(circleOptions)
+//                println("El círculo: "+circle)
             }
         }else{
             ubicacion = LatLng(43.3351509,-3.0331127)
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
         }
-
+        Activityppal=requireContext() as Comunicador
         //Se activa el botón de juego al seleccionar un punto
         if(Sharedapp.modolibre.modo){
             googleMap.setOnMarkerClickListener { marker ->
                 //Genera un mensaje "Prueba: "+mX .Donde X es la id del marcador
                 println("Prueba: "+marker.id)
-
-                Activityppal=requireContext() as Comunicador
-                Activityppal!!.onPasarDato(marker.id.substring(1,2))
+                Activityppal.onPasarDato(marker.id.substring(1,2))
                 true
             }
         }
 
         /*Autofocus de la cámara al cambiar la ubicación
         (ahora está comentado por una cuestión de funcionalidad)*/
-//        googleMap.setOnMyLocationChangeListener {
-//            circle.remove()
-//            ubicacion= LatLng(it.latitude, it.longitude)
-//            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+        googleMap.setOnMyLocationChangeListener {
+            ubicacion= LatLng(it.latitude, it.longitude)
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 17f))
 //            circle.remove()
 //            val circleOptions = CircleOptions()
 //                .center(ubicacion)
 //                .radius(50.0)
 //            circle = googleMap.addCircle(circleOptions)
-//            println("El círculo: "+circle)
-//        }
+            var distancia=FloatArray(3)
+
+            //Distancia con las paradas
+            Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].latitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].longitude,distancia)
+
+            //Distancia con CIFP Txurdinaga LHII
+//            Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,43.257686, -2.902560,distancia)
+            
+            if (distancia[0]<50){
+                Activityppal.activarBoton(true)
+            }else{
+                Activityppal.activarBoton(false)
+            }
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -163,16 +171,13 @@ class MapsFragment2 : Fragment() {
             */
             if(!Sharedapp.modolibre.modo) {
                 fusedLocation.lastLocation.addOnSuccessListener {
-                    if (it != null) {
-                        ubicacion = LatLng(it.latitude, it.longitude)
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
-                        println("Ubicación actual. Latitud: " + it.latitude + ". Longitud: " + it.longitude)
-                        val circleOptions = CircleOptions()
-                            .center(ubicacion)
-                            .radius(50.0)
-                        circle = googleMap.addCircle(circleOptions)
-                        println("El círculo: "+circle)
-                    }
+                    ubicacion = LatLng(it.latitude, it.longitude)
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
+//                    println("Ubicación actual. Latitud: " + it.latitude + ". Longitud: " + it.longitude)
+//                    val circleOptions = CircleOptions()
+//                        .center(ubicacion)
+//                        .radius(50.0)
+//                    circle = googleMap.addCircle(circleOptions)
                 }
             }
         }

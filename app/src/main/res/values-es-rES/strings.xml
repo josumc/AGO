@@ -86,4 +86,11 @@
     <string name="finish">FINALIZADO</string>
     <string name="acierto">Bien hecho</string>
     <string name="portua4">El 16 de julio es el día del Carmen y se celebra una procesión marítima. ¡Vamos a la siguiente prueba!</string>
+    <string name="parada1">Puerto de Santurtzi</string>
+    <string name="parada5">Ayuntamiento de Santurtzi</string>
+    <string name="parada2">Cofradía de Pescadores de Santurtzi</string>
+    <string name="parada3">Club de Remo Itsasoko Ama</string>
+    <string name="parada4">Parque de Santurtzi(quiosco)</string>
+    <string name="parada6">Barrio de pescadores</string>
+    <string name="parada7">Parque de la Sardinera</string>
 </resources>
