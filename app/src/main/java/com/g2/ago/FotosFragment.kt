@@ -72,7 +72,7 @@ class FotosFragment : Fragment() {
                         binding.imagen.setImageResource(R.drawable.sotera2argazkia)
                     }
                     "4"->{
-                        replaceFragment(SLFragemt())
+                        replaceFragment(SLFragment())
                     }
                     "6"->{
                         binding.imagen.setImageResource(R.drawable.sotera3izaskunetxaniz)

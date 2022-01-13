@@ -1,10 +1,13 @@
 package com.g2.ago
 
+import android.animation.AnimatorSet
+import android.animation.ValueAnimator
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -32,7 +35,7 @@ class ExplicacionFragment : Fragment() {
         cargarTexto()
         binding.pasarFase.setOnClickListener{
                 val sharedappAct=(Sharedapp.puntojuego.Juego.toInt()+1).toString()
-                mp.stop()
+                //mp.stop()
                 Sharedapp.puntojuego.Juego=sharedappAct
                 cargarTexto()
                replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
@@ -86,13 +89,9 @@ class ExplicacionFragment : Fragment() {
                         testua=getString(R.string.portua2)
 
                     }
-                    "3"->{
-                        binding.textView.text = getString(R.string.portua2)
-                        binding.pasarFase.isVisible = false
-                    }
                     "4"->{
                         binding.pasarFase.isVisible = true
-                        mp.stop()
+                        //mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.portua3audioa)
                         mp.start()
                         testua=getString(R.string.portua3)

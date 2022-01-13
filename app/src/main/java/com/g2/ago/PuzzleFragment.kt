@@ -1,19 +1,24 @@
 package com.g2.ago
 
+import android.animation.AnimatorSet
+import android.animation.ValueAnimator
+import android.app.ActionBar
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.Toast
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.FragmentPuzzleBinding
 import java.io.IOException
+import java.time.Clock
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
@@ -39,25 +44,31 @@ class PuzzleFragment : Fragment() {
         val layout = view.findViewById<RelativeLayout>(R.id.layoutf)
         val imageView = view.findViewById<ImageView>(R.id.imageView)
         val assetName = "portua2argazkia.JPG"
+        slideView(1)
+
 
         // ejecutar el código relacionado con la imagen después de que se haya diseñado la vista
         // para tener calculadas todas las dimensiones
-        imageView.post {
-            setPicFromAsset(assetName, imageView)
-            pieces = splitImage(view)
-            val touchListener = TouchListener(this@PuzzleFragment)
-            // shuffle pieces order
-            Collections.shuffle(pieces)
-            for (piece in pieces!!) {
-                piece!!.setOnTouchListener(touchListener)
-                layout.addView(piece)
-                // randomize position, on the bottom of the screen
-                val lParams = piece.layoutParams as RelativeLayout.LayoutParams
-                lParams.leftMargin = Random().nextInt(layout.width - piece.pieceWidth)
-                lParams.topMargin = layout.height - piece.pieceHeight
-                piece.layoutParams = lParams
+
+        val handler = Handler()
+        handler.postDelayed({
+            imageView.post {
+                setPicFromAsset(assetName, imageView)
+                pieces = splitImage(view)
+                val touchListener = TouchListener(this@PuzzleFragment)
+                // shuffle pieces order
+                Collections.shuffle(pieces)
+                for (piece in pieces!!) {
+                    piece!!.setOnTouchListener(touchListener)
+                    layout.addView(piece)
+                    // randomize position, on the bottom of the screen
+                    val lParams = piece.layoutParams as RelativeLayout.LayoutParams
+                    lParams.leftMargin = Random().nextInt(layout.width - piece.pieceWidth)
+                    lParams.topMargin = layout.height - piece.pieceHeight
+                    piece.layoutParams = lParams
+                }
             }
-        }
+        }, 500)
     }
 
     private fun setPicFromAsset(assetName: String, imageView: ImageView) {
@@ -339,5 +350,43 @@ class PuzzleFragment : Fragment() {
                 transaction.commit()
             }
         }
+
+    fun slideView(i:Int) {
+
+        var fragment1 = requireActivity().findViewById<FrameLayout>(R.id.FragmentMapaJuego)
+        var activity = requireActivity().findViewById<LinearLayout>(R.id.Linearjuego)
+        var size:Int = 0
+
+        if (i==1){
+            size = activity.height
+        }else{
+            size = 0
+        }
+
+        var slideAnimator = ValueAnimator
+            .ofInt(fragment1.height, size)
+            .setDuration(500)
+
+        slideAnimator.addUpdateListener {
+            var value = it.animatedValue
+            fragment1.layoutParams.height = value as Int
+            fragment1.requestLayout()
+        }
+
+        var animationSet = AnimatorSet()
+        animationSet.interpolator = AccelerateDecelerateInterpolator()
+        animationSet.play(slideAnimator)
+        animationSet.start()
+    }
+
+    override fun onDestroy() {
+        slideView(0)
+        super.onDestroy()
+    }
+
+    override fun onPause() {
+        slideView(0)
+        super.onPause()
+    }
 
 }
