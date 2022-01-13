@@ -108,4 +108,8 @@
     <string name="parada5">Santurtziko Udaletxea</string>
     <string name="parada6">Arrantzaleen Auzoa</string>
     <string name="parada7">Sardinerako Parkea</string>
+
+
+    <string name="Hasi">Hasi</string>
+    <string name="Segi">Jarraitu</string>
 </resources>
