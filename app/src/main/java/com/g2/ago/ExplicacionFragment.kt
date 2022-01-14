@@ -1,13 +1,10 @@
 package com.g2.ago
 
-import android.animation.AnimatorSet
-import android.animation.ValueAnimator
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -72,6 +69,11 @@ class ExplicacionFragment : Fragment() {
                         mp = MediaPlayer.create(requireContext(), R.raw.hasiera2audioa)
                         mp.start()
                         testua=getString(R.string.hasiera2)
+                    }
+                    "3" ->{
+                        mp.stop()
+                        Sharedapp.puntopartida.Partida = "1"
+                        superado()
                     }
                 }
             }

@@ -1,17 +1,11 @@
 package com.g2.ago
 
-import android.animation.AnimatorSet
-import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.widget.FrameLayout
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -92,12 +86,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
     }
 
     override fun activarBoton(dato: Boolean) {
-        println(dato)
         InfoRutaFragment().hasi(dato)
-//        bundle.putBoolean("activar", dato)
-//        var fragmento=InfoRutaFragment()
-//        fragmento.arguments=bundle
-//        println("Argumentos: "+fragmento.arguments+" .Bundle: "+bundle)
     }
 
     fun replaceMapFragment(fragment: Fragment) {
