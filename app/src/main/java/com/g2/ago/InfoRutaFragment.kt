@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.FragmentInfoRutaBinding
 import kotlinx.android.synthetic.main.fragment_info_ruta.*
 
-lateinit var binding: FragmentInfoRutaBinding
+private lateinit var binding: FragmentInfoRutaBinding
 class InfoRutaFragment : Fragment() {
 
 
@@ -18,7 +18,7 @@ class InfoRutaFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentInfoRutaBinding.inflate(inflater, container, false)
+        binding = FragmentInfoRutaBinding.inflate(layoutInflater)
 
         //Genera el nombre del string que tiene que buscar
         val parada ="parada"+ Sharedapp.puntopartida.Partida
