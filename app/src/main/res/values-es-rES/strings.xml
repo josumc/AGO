@@ -100,5 +100,5 @@
     <string name="Hasi">Empieza</string>
     <string name="Segi">Continuar</string>
 
-    <string name="ArraySopaLetras">"TRAINERA,REMOS,PESCA,DEPORTE,EQUIPO,SOTERA,MUJER"</string>
+    <string name="ArraySopaLetras">TRAINERA,REMOS,PESCA,DEPORTE,EQUIPO,SOTERA,MUJER</string>
 </resources>

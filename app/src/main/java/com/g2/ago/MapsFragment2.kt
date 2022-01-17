@@ -24,7 +24,6 @@ class MapsFragment2 : Fragment() {
     lateinit var Activityppal: Comunicador
     lateinit var googleMap: GoogleMap
     lateinit var ubicacion:LatLng
-//    lateinit var circle: Circle
     var marcadores:ArrayList<Marker> = arrayListOf()
     @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { GoogleMap ->
@@ -108,11 +107,6 @@ class MapsFragment2 : Fragment() {
                 ubicacion = LatLng(it.latitude, it.longitude)
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
                 println("Ubicación actual. Latitud: "+it.latitude+". Longitud: "+it.longitude)
-//                val circleOptions = CircleOptions()
-//                    .center(ubicacion)
-//                    .radius(50.0)
-//                circle = googleMap.addCircle(circleOptions)
-//                println("El círculo: "+circle)
             }
         }else{
             ubicacion = LatLng(43.3351509,-3.0331127)
@@ -141,7 +135,7 @@ class MapsFragment2 : Fragment() {
                 Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].latitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].longitude,distancia)
 
                 //Distancia con CIFP Txurdinaga LHII
-//            Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,43.257686, -2.902560,distancia)
+//                Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,43.257686, -2.902560,distancia)
 
                 if (distancia[0]<50){
                     Activityppal.activarBoton(true)
@@ -171,11 +165,6 @@ class MapsFragment2 : Fragment() {
                 fusedLocation.lastLocation.addOnSuccessListener {
                     ubicacion = LatLng(it.latitude, it.longitude)
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f))
-//                    println("Ubicación actual. Latitud: " + it.latitude + ". Longitud: " + it.longitude)
-//                    val circleOptions = CircleOptions()
-//                        .center(ubicacion)
-//                        .radius(50.0)
-//                    circle = googleMap.addCircle(circleOptions)
                 }
             }
         }
