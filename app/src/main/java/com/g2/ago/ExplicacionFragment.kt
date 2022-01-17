@@ -123,7 +123,7 @@ class ExplicacionFragment : Fragment() {
                         mp = MediaPlayer.create(requireContext(), R.raw.kofradia2audioa)
                         mp.start()
                         testua=getString(R.string.kofradia2)
-                        binding.pasarFase.isVisible = false
+                        //binding.pasarFase.isVisible = false
                     }
                     "4"->{
                         binding.pasarFase.isVisible = true
@@ -172,7 +172,9 @@ class ExplicacionFragment : Fragment() {
                         testua=getString(R.string.sotera4)
                     }
                     "6"->{
-
+                        mp = MediaPlayer.create(requireContext(), R.raw.sotera5audioa)
+                        mp.start()
+                        testua=getString(R.string.sotera5)
                     }
                     "7"->{
                         mp.stop()

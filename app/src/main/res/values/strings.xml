@@ -73,7 +73,7 @@
     <!--Sotera(parada 3)-->
     <string name="sotera1">Geraleku honetan arraunari buruz hitz egingo dugu. Arrauna, gaur egun, kirol bat bezala ezagutzen da. Baina antzina, Santurtziko arrantzaleek arrantzara joateko tresna bezala erabiltzen zuten. Arraun egiteko trainerua eta bi arraunak behar dira.</string>
     <string name="sotera2">Antzina Santurtzi arrantza-portu garrantzitsu bezala ezagutzen zen. Gaur egun berriz, Santurtzi famatua da, besteak beste, Sotera arraun taldeagatik. Aurten, Sotera arraun taldeak Eusko Label Arraun Liga irabazi du. Baina… Soterak irabazi duela esaten dutenean, mutilen taldeak irabazi duela esan nahi du. Eta neskak? Ez dute arraun egiten? Hau jakin nahi baduzu, jolas hau gainditu beharko duzu. Prest? Aurrera!</string>
-    <string name="sotera4">Oso ondo! Hitz guztiak aurkitu dituzu! Hemen duzu zure saria! Bai, neskek ere arraun egiten dute! Eta adibide zoragarri bat jarriko dizut. Izaskun Etxaniz 23 urteko santurtziarrak 11 urte daramatza arraunean. Izaskun estatuko itsas arrauneko txapelduna eta olinpiar arrauneko txapeldunordea da. Harrigarria ezta?  Zoritxarrez informazio hau ez da oso ezaguna, baina gu hori aldatzera etorri gara! Abenturarekin jarraituko dugu?</string>
+    <string name="sotera4">"Oso ondo! Hitz guztiak aurkitu dituzu! Hemen duzu zure saria! "</string>
     <!--Kioskoa(parada 4)-->
     <string name="kioskoa1">Santurtziko parkearen erdian 1917an eraikitako musika kioskoa aurki dezakegu. Gaur egun, bere oinarria, zeramikazko mosaikoz apaindua dago, non inguruko herririk esanguratsuenak agertzen diren. Gainera, sardina-saltzaile eta arrantzaleen irudiak agertzen dira. Kupularen barruan jende garrantzitsuaren irudiak ere aurki ditzakegu.</string>
     <string name="kioskoa2">Santurtziko parkeko kioskoan zenbat emakumeen irudiak dauden zenbatu beharko duzu jarduera honetan. Alde batetik, kupularen barrualdean zenbat emakume agertzen diren zenbatu behar duzu. Beste aldetik, oinarrian dauden irudietan emakumeak soilik agertzen diren irudiak zenbatu behar dituzu. Prest? Goazen!</string>
@@ -108,6 +108,7 @@
     <string name="parada5">Santurtziko Udaletxea</string>
     <string name="parada6">Arrantzaleen Auzoa</string>
     <string name="parada7">Sardinerako Parkea</string>
+    <string name="sotera5">Bai, neskek ere arraun egiten dute! Eta adibide zoragarri bat jarriko dizut. Izaskun Etxaniz 23 urteko santurtziarrak 11 urte daramatza arraunean. Izaskun estatuko itsas arrauneko txapelduna eta olinpiar arrauneko txapeldunordea da. Harrigarria ezta?  Zoritxarrez informazio hau ez da oso ezaguna, baina gu hori aldatzera etorri gara! Abenturarekin jarraituko dugu?</string>
 
 
     <string name="Hasi">Hasi</string>
