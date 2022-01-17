@@ -3,7 +3,6 @@ package com.g2.ago
 import android.annotation.SuppressLint
 import android.media.MediaPlayer
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -12,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.FragmentSLBinding
 import java.util.*
 import kotlin.concurrent.schedule
@@ -39,11 +39,13 @@ class SLFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = FragmentSLBinding.inflate(inflater, container, false)
+        _binding = FragmentSLBinding.inflate(layoutInflater)
+
         return  binding.root
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+//        palabras.forEach { println(it) }
         cellWidth = resources.displayMetrics.widthPixels/10
         for (i in 0 until numWords){
             wordArray[i] = Letra(words[i])
@@ -405,6 +407,12 @@ class SLFragment : Fragment() {
         var foundWordsFlags = Array(gridSize) { BooleanArray(gridSize) { false } }
 
         val wordArray = Array<Letra>(numWords) { Letra("") }
-        val words = arrayOf("TRAINERA", "REMOS", "PESCA", "DEPORTE","EQUIPO","SOTERA", "MUJER")
+        
+
+        val words: Array<String> = if (Locale.getDefault().language == "es") {
+            arrayOf("TRAINERA", "REMOS", "PESCA", "DEPORTE", "EQUIPO", "SOTERA", "MUJER")
+        } else {
+            arrayOf("TRAINERUA","ARRAUNAK","ARRANTZA","KIROLA","TALDEA","SOTERA","EMAKUMEA")
+        }
     }
 }

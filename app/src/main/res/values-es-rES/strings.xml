@@ -86,12 +86,20 @@
     <string name="finish">FINALIZADO</string>
     <string name="acierto">Bien hecho</string>
     <string name="portua4">El 16 de julio es el día del Carmen y se celebra una procesión marítima. ¡Vamos a la siguiente prueba!</string>
+
+    <!--Lista de paradas-->
     <string name="parada1">Puerto de Santurtzi</string>
-    <string name="parada5">Ayuntamiento de Santurtzi</string>
     <string name="parada2">Cofradía de Pescadores de Santurtzi</string>
     <string name="parada3">Club de Remo Itsasoko Ama</string>
     <string name="parada4">Parque de Santurtzi(quiosco)</string>
+    <string name="parada5">Ayuntamiento de Santurtzi</string>
     <string name="parada6">Barrio de pescadores</string>
     <string name="parada7">Parque de la Sardinera</string>
+
+    <!--Texto de botones-->
+    <string name="Hasi">Empieza</string>
+    <string name="Segi">Continuar</string>
+
+    <string name="ArraySopaLetras">TRAINERA,REMOS,PESCA,DEPORTE,EQUIPO,SOTERA,MUJER</string>
     <string name="sotera5">¡Sí, las chicas también reman! Y te pondré un ejemplo maravilloso. Izaskun Etxaniz, santurtziarra de 23 años, lleva 11 años remando. Izaskun es campeona estatal de remo de mar y subcampeona olímpica de remo. Increíble, ¿verdad? Desgraciadamente esta información no es muy popular, ¡pero nosotros hemos venido a cambiarla! ¿Seguimos con la aventura?</string>
 </resources>
