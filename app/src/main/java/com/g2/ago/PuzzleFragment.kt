@@ -2,13 +2,11 @@ package com.g2.ago
 
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
-import android.app.ActionBar
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
-import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +16,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.FragmentPuzzleBinding
 import java.io.IOException
-import java.time.Clock
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
@@ -353,9 +350,9 @@ class PuzzleFragment : Fragment() {
 
     fun slideView(i:Int) {
 
-        var fragment1 = requireActivity().findViewById<FrameLayout>(R.id.FragmentMapaJuego)
-        var activity = requireActivity().findViewById<LinearLayout>(R.id.Linearjuego)
-        var size:Int = 0
+        val fragment1 = requireActivity().findViewById<FrameLayout>(R.id.FragmentMapaJuego)
+        val activity = requireActivity().findViewById<LinearLayout>(R.id.Linearjuego)
+        val size: Int
 
         if (i==1){
             size = activity.height
@@ -363,17 +360,17 @@ class PuzzleFragment : Fragment() {
             size = 0
         }
 
-        var slideAnimator = ValueAnimator
+        val slideAnimator = ValueAnimator
             .ofInt(fragment1.height, size)
             .setDuration(500)
 
         slideAnimator.addUpdateListener {
-            var value = it.animatedValue
+            val value = it.animatedValue
             fragment1.layoutParams.height = value as Int
             fragment1.requestLayout()
         }
 
-        var animationSet = AnimatorSet()
+        val animationSet = AnimatorSet()
         animationSet.interpolator = AccelerateDecelerateInterpolator()
         animationSet.play(slideAnimator)
         animationSet.start()

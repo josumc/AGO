@@ -28,19 +28,47 @@ class InfoRutaFragment : Fragment() {
                 //Genera el nombre del string que tiene que buscar
                 val parada ="parada"+ Sharedapp.puntopartida.Partida
                 //Usando la variable parada, busca el número de ID
-                var actividad=activity
+                val actividad=activity
                 val resID = resources.getIdentifier(parada,"string", actividad!!.packageName)
 
                 //getString() recibe el ID que hemos recogido en la línea anterior y carga ese texto en el textView
                 binding.Ubicacion.text=getString(resID)
             }
+            when(Sharedapp.puntopartida.Partida){
+                "1"->{
+                    binding.ImagenInfoRuta.setImageResource(R.drawable.portua2argazkia)
+                }
+                "2"->{
+                    binding.ImagenInfoRuta.setImageResource(R.drawable.kofradia1argazkia)
+                }
+                "3"->{
+                    binding.ImagenInfoRuta.setImageResource(R.drawable.sotera1argazkia)
+                }
+                "4"->{
+                    binding.ImagenInfoRuta.setImageResource(R.drawable.kioskoa1argazkia)
+                }
+                "5"->{
+                    binding.ImagenInfoRuta.setImageResource(R.drawable.udaletxea1argazkia)
+                }
+                "6"->{
+                    binding.ImagenInfoRuta.setImageResource(R.drawable.auzoa1argazkia)
+                }
+                "7"->{
+                    binding.ImagenInfoRuta.setImageResource(R.drawable.sardinera1argazkia)
+                }
+            }
 
-
-            binding.EmpezarJuego.text=getString(R.string.Hasi)
+//            binding.EmpezarJuego.text=getString(R.string.Jarraitu)
             binding.EmpezarJuego.setOnClickListener{
                 Toast.makeText(requireContext(), "${EmpezarJuego.isEnabled}", Toast.LENGTH_SHORT).show()
             }
         }
+        if (Sharedapp.modolibre.modo){
+            binding.Ubicacion.text=getString(R.string.GeralekuMezua)
+            binding.EmpezarJuego.visibility= View.INVISIBLE
+
+        }
+
         return binding.root
     }
 

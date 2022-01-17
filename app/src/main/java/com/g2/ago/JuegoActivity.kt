@@ -1,11 +1,15 @@
 package com.g2.ago
 
+import android.animation.AnimatorSet
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -67,6 +71,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
 
     }
 
+
     override fun onPasarDato(dato: String) {
         if(Sharedapp.modolibre.modo){
             if(dato != "superado"){
@@ -101,6 +106,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START)
         }else{
+            slideView(binding.FragmentMapaJuego, 0)
             super.onBackPressed()
         }
         replaceMapFragment(MapsFragment2())
@@ -145,7 +151,23 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+    fun slideView(view: View, endH: Int) {
 
+        val slideAnimator = ValueAnimator
+            .ofInt(view.height, endH)
+            .setDuration(500)
+
+        slideAnimator.addUpdateListener {
+            val value = it.animatedValue
+            view.layoutParams.height = value as Int
+            view.requestLayout()
+        }
+
+        val animationSet = AnimatorSet()
+        animationSet.interpolator = AccelerateDecelerateInterpolator()
+        animationSet.play(slideAnimator)
+        animationSet.start()
+    }
 }
 
 

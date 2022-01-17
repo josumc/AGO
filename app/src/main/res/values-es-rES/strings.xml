@@ -98,7 +98,8 @@
 
     <!--Texto de botones-->
     <string name="Hasi">Empieza</string>
-    <string name="Segi">Continuar</string>
+    <string name="Jarraitu">Continuar</string>
 
     <string name="ArraySopaLetras">TRAINERA,REMOS,PESCA,DEPORTE,EQUIPO,SOTERA,MUJER</string>
+    <string name="GeralekuMezua">Estás en modo libre. Puedes jugar a cualquier parada que quieras</string>
 </resources>

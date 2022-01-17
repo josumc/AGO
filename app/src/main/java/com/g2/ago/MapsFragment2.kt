@@ -6,9 +6,11 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.location.Location
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.FragmentMapsBinding
@@ -121,6 +123,10 @@ class MapsFragment2 : Fragment() {
                 Activityppal.onPasarDato(marker.id.substring(1,2))
                 true
             }
+            val handler= Handler()
+            handler.postDelayed({
+                JuegoActivity().slideView(requireActivity().findViewById(R.id.FragmentMapaJuego), requireActivity().findViewById<LinearLayout>(R.id.Linearjuego).height)
+            }, 500)
         }
 
         /*Autofocus de la cámara al cambiar la ubicación
@@ -135,7 +141,7 @@ class MapsFragment2 : Fragment() {
                 Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].latitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].longitude,distancia)
 
                 //Distancia con CIFP Txurdinaga LHII
-//                Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,43.257686, -2.902560,distancia)
+                //Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,43.257686, -2.902560,distancia)
 
                 if (distancia[0]<50){
                     Activityppal.activarBoton(true)
@@ -191,6 +197,16 @@ class MapsFragment2 : Fragment() {
                 }
             }
         }
+    }
 
+
+    override fun onDestroy() {
+        JuegoActivity().slideView(requireActivity().findViewById(R.id.FragmentMapaJuego), 0)
+        super.onDestroy()
+    }
+
+    override fun onPause() {
+        JuegoActivity().slideView(requireActivity().findViewById(R.id.FragmentMapaJuego), 0)
+        super.onPause()
     }
 }

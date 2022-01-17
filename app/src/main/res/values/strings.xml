@@ -111,6 +111,7 @@
 
 
     <string name="Hasi">Hasi</string>
-    <string name="Segi">Jarraitu</string>
+    <string name="Jarraitu">Jarraitu</string>
     <string name="ArraySopaLetras">TRAINERUA,ARRAUNAK,ARRANTZA,KIROLA,TALDEA,SOTERA,EMAKUMEA</string>
+    <string name="GeralekuMezua">Modu librean zaude. Nahi duzun edozein geraleku jolastu dezakezu</string>
 </resources>

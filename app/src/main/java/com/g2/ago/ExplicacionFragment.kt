@@ -171,6 +171,9 @@ class ExplicacionFragment : Fragment() {
                         mp.start()
                         testua=getString(R.string.sotera4)
                     }
+                    "6"->{
+
+                    }
                     "7"->{
                         mp.stop()
                         Sharedapp.puntopartida.Partida = "4"
