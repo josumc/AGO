@@ -191,7 +191,7 @@ class SLFragment : Fragment() {
         }
         if (found){
             binding.greenCheck.visibility = View.VISIBLE
-            Timer("delay", false).schedule(500) {
+            Timer("delay", false).schedule(0) {
                 requireActivity().runOnUiThread{
                     binding.greenCheck.visibility = View.GONE
                 }

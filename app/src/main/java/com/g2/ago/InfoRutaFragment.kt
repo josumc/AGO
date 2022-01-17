@@ -10,7 +10,7 @@ import android.widget.Toast
 import com.g2.ago.databinding.FragmentInfoRutaBinding
 import kotlinx.android.synthetic.main.fragment_info_ruta.*
 
-lateinit var binding: FragmentInfoRutaBinding
+private lateinit var binding: FragmentInfoRutaBinding
 class InfoRutaFragment : Fragment() {
 
 

@@ -56,6 +56,9 @@ class FotosFragment : Fragment() {
                         binding.imagen.setImageResource(R.drawable.kofradia1argazkia)
                     }
                     "2"->{
+
+                    }
+                    "3"->{
                         replaceFragment(MemoryFragment())
                     }
                 }

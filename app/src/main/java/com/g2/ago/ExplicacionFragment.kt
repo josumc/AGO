@@ -169,6 +169,11 @@ class ExplicacionFragment : Fragment() {
                         mp.start()
                         testua=getString(R.string.sotera4)
                     }
+                    "6"->{
+                        mp = MediaPlayer.create(requireContext(), R.raw.sotera5audioa)
+                        mp.start()
+                        testua=getString(R.string.sotera5)
+                    }
                     "7"->{
                         mp.stop()
                         Sharedapp.puntopartida.Partida = "4"
