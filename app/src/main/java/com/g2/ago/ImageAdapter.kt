@@ -1,4 +1,4 @@
-package com.malkinfo.puzzlegames
+package com.g2.ago
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,13 +6,11 @@ import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Rect
-import android.os.AsyncTask
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
-import com.g2.ago.R
 import java.io.IOException
 
 
