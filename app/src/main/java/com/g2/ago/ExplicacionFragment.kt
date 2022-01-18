@@ -376,6 +376,8 @@ class ExplicacionFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        mp=MediaPlayer()
+        mp.start()
         mp.stop()
     }
 }

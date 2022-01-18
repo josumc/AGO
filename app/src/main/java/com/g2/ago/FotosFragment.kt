@@ -11,10 +11,12 @@ import com.g2.ago.databinding.FragmentFotosBinding
 class FotosFragment : Fragment() {
     lateinit var binding: FragmentFotosBinding
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Sharedapp.atras.atras = "juegos"
         // Inflate the layout for this fragment
         binding = FragmentFotosBinding.inflate(layoutInflater)
         fotos()

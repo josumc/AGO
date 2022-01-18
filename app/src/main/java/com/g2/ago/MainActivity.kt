@@ -146,4 +146,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportFragmentManager.beginTransaction().replace(R.id.fragmentPrincipal, fragment).commit()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        finish()
+    }
+
 }

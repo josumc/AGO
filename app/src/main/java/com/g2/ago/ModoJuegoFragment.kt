@@ -24,11 +24,13 @@ class ModoJuegoFragment : Fragment() {
             Sharedapp.modolibre.modo = false
             Sharedapp.puntopartida.Partida="1"
             startActivity(Intent(requireContext(), JuegoActivity::class.java))
+            requireActivity().finish()
         }
 
         binding.btnLibre.setOnClickListener(){
             Sharedapp.modolibre.modo = true
             startActivity(Intent(requireContext(), JuegoActivity::class.java))
+            requireActivity().finish()
         }
 
         return binding.root

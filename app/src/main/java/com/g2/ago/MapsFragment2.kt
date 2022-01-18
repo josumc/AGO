@@ -2,6 +2,7 @@ package com.g2.ago
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.location.Location
@@ -30,6 +31,7 @@ class MapsFragment2 : Fragment() {
     @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { GoogleMap ->
         googleMap=GoogleMap
+
         /**
          * Manipulates the map once available.
          * This callback is triggered when the map is ready to be used.
@@ -138,10 +140,10 @@ class MapsFragment2 : Fragment() {
                 var distancia=FloatArray(3)
 
                 //Distancia con las paradas
-//                Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].latitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].longitude,distancia)
+                Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].latitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].longitude,distancia)
 
                 //Distancia con CIFP Txurdinaga LHII
-                Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,43.257686, -2.902560,distancia)
+                //Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,43.257686, -2.902560,distancia)
 
                 if (distancia[0]<50){
                     Activityppal.activarBoton(true)
@@ -180,6 +182,7 @@ class MapsFragment2 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Sharedapp.atras.atras = "mapa"
         val mapsFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapsFragment?.getMapAsync(callback)
     }
@@ -209,4 +212,5 @@ class MapsFragment2 : Fragment() {
         JuegoActivity().slideView(requireActivity().findViewById(R.id.FragmentMapaJuego), 0)
         super.onPause()
     }
+
 }

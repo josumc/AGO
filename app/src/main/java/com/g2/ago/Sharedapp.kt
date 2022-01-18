@@ -9,6 +9,7 @@ class Sharedapp : Application() {
         lateinit var puntopartida: PuntoPartida
         lateinit var puntojuego: PuntoJuego
         lateinit var modolibre: ModoLibre
+        lateinit var atras: Atras
     }
 
     override fun onCreate() {
@@ -19,5 +20,6 @@ class Sharedapp : Application() {
         puntopartida = PuntoPartida(applicationContext)
         puntojuego = PuntoJuego(applicationContext)
         modolibre = ModoLibre(applicationContext)
+        atras = Atras(applicationContext)
     }
 }
