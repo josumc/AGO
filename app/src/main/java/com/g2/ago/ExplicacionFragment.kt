@@ -72,8 +72,8 @@ class ExplicacionFragment : Fragment() {
                     }
                     "3" ->{
                         mp.stop()
-                        Sharedapp.puntopartida.Partida = "1"
                         superado()
+                        Sharedapp.puntopartida.Partida = "1"
                     }
                 }
             }
@@ -106,8 +106,8 @@ class ExplicacionFragment : Fragment() {
                     }
                     "6"->{
                         mp.stop()
-                        Sharedapp.puntopartida.Partida = "2"
                         superado()
+                        Sharedapp.puntopartida.Partida = "2"
                     }
                 }
             }
@@ -133,9 +133,8 @@ class ExplicacionFragment : Fragment() {
                     }
                     "5"->{
                         mp.stop()
-                        Sharedapp.puntopartida.Partida = "3"
                         superado()
-
+                        Sharedapp.puntopartida.Partida = "3"
                     }
                 }
             }
@@ -178,8 +177,8 @@ class ExplicacionFragment : Fragment() {
                     }
                     "7"->{
                         mp.stop()
-                        Sharedapp.puntopartida.Partida = "4"
                         superado()
+                        Sharedapp.puntopartida.Partida = "4"
                     }
                 }
             }
@@ -205,8 +204,8 @@ class ExplicacionFragment : Fragment() {
                     }
                     "4"->{
                         mp.stop()
-                        Sharedapp.puntopartida.Partida = "5"
                         superado()
+                        Sharedapp.puntopartida.Partida = "5"
                     }
                 }
             }
@@ -271,8 +270,8 @@ class ExplicacionFragment : Fragment() {
                     }
                     "5"->{
                         mp.stop()
-                        Sharedapp.puntopartida.Partida = "7"
                         superado()
+                        Sharedapp.puntopartida.Partida = "7"
                     }
                 }
             }
@@ -310,10 +309,10 @@ class ExplicacionFragment : Fragment() {
                     }
                     "6"->{
                         mp.stop()
-                        Sharedapp.puntopartida.Partida = "8"
                         if(Sharedapp.modolibre.modo){
                             superado()
                         }else{
+                            Sharedapp.puntopartida.Partida = "8"
                             Sharedapp.puntojuego.Juego = "1"
                             replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
                             replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())

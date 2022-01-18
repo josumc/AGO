@@ -107,8 +107,9 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
             slideView(binding.FragmentMapaJuego, 0)
             super.onBackPressed()
         }
-        replaceMapFragment(MapsFragment2())
-        replaceExplFragment(InfoRutaFragment())
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 

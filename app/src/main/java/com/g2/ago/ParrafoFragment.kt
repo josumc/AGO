@@ -1,6 +1,5 @@
 package com.g2.ago
 
-import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,14 +13,16 @@ import kotlinx.android.synthetic.main.fragment_parrafo.*
 
 class ParrafoFragment : Fragment(), AdapterView.OnItemSelectedListener{
    private lateinit var bd:Base_de_Datos
-   private var check:Int=7
+   private var check:Int=0
     private lateinit var spinner:Spinner
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_parrafo, container, false)
     }
 
@@ -29,6 +30,7 @@ class ParrafoFragment : Fragment(), AdapterView.OnItemSelectedListener{
         super.onViewCreated(view, savedInstanceState)
         btnComprobarParrafo.setOnClickListener{
             comprobar()
+            println("este es el chech $check")
             if(check == 7){
                 MediaPlayer.create(requireContext(), R.raw.ondo).start()
                 Sharedapp.puntojuego.Juego = "5"
@@ -54,36 +56,37 @@ class ParrafoFragment : Fragment(), AdapterView.OnItemSelectedListener{
         }
     }
     fun acierto(){
-        check = check+1
+        check += 1
         spinner.isEnabled=false
-        spinner.setBackgroundColor(Color.GREEN)
+        //spinner.setBackgroundColor(Color.GREEN)
     }
     fun comprobar (){
-        if (spinner1.selectedItem==1){
+        check = 0
+        if (spinner1.selectedItem.equals("Santurce")){
             spinner = spinner1
             acierto()
         }
-        if (spinner2.selectedItem==3){
+        if (spinner2.selectedItem.equals("salla")){
             spinner = spinner2
             acierto()
         }
-        if (spinner3.selectedItem==2){
+        if (spinner3.selectedItem.equals("corriendo")){
             spinner = spinner3
             acierto()
         }
-        if (spinner4.selectedItem==3){
+        if (spinner4.selectedItem.equals("gritando")){
             spinner = spinner4
             acierto()
         }
-        if (spinner5.selectedItem==2){
+        if (spinner5.selectedItem.equals("sardinitas")) {
             spinner = spinner5
             acierto()
         }
-        if (spinner6.selectedItem==1){
+        if (spinner6.selectedItem.equals("Santurce")){
             spinner = spinner6
             acierto()
         }
-        if (spinner7.selectedItem==3){
+        if (spinner7.selectedItem.equals("yo")){
             spinner = spinner7
             acierto()
         }
