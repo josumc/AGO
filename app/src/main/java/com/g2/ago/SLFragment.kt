@@ -257,7 +257,6 @@ class SLFragment : Fragment() {
             val linearLayout: LinearLayout = binding.wordsGrid.getChildAt(i) as LinearLayout
             for (t in 0 until linearLayout.childCount){
                 if(linearLayout.getChildAt(t).tag == tag){
-                    MediaPlayer.create(requireContext(), R.raw.ondo).start()
                     linearLayout.getChildAt(t).background = ContextCompat.getDrawable(requireContext(), R.color.Third)
                     return
                 }
