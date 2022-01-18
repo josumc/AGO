@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.FragmentInfoRutaBinding
-import kotlinx.android.synthetic.main.fragment_info_ruta.*
 
 private lateinit var binding: FragmentInfoRutaBinding
 class InfoRutaFragment : Fragment() {
@@ -23,7 +21,7 @@ class InfoRutaFragment : Fragment() {
 
         if(Sharedapp.tipousu.tipo=="alumno"||!Sharedapp.modolibre.modo){
             if (Sharedapp.puntopartida.Partida=="0"){
-                replaceFragment(ExplicacionFragment())
+                replaceFragment(ExplicacionFragment(), 1)
             }else{
                 //Genera el nombre del string que tiene que buscar
                 val parada ="parada"+ Sharedapp.puntopartida.Partida
@@ -58,9 +56,8 @@ class InfoRutaFragment : Fragment() {
                 }
             }
 
-//            binding.EmpezarJuego.text=getString(R.string.Jarraitu)
             binding.EmpezarJuego.setOnClickListener{
-                Toast.makeText(requireContext(), "${EmpezarJuego.isEnabled}", Toast.LENGTH_SHORT).show()
+                replaceFragment(FotosFragment(),2)
             }
         }
         if (Sharedapp.modolibre.modo){
@@ -76,17 +73,27 @@ class InfoRutaFragment : Fragment() {
         binding.EmpezarJuego.isEnabled = activar
     }
 
-    fun replaceFragment(fragment: Fragment) {
-        val transaction = activity?.supportFragmentManager?.beginTransaction()
-        if(transaction != null) {
-            transaction.replace(R.id.FragmentExplicacionJuego, fragment)
-            transaction.disallowAddToBackStack()
-            transaction.commit()
+    fun replaceFragment(fragment: Fragment, i:Int=1) {
+        if(i==1){
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            if(transaction != null) {
+                transaction.replace(R.id.FragmentExplicacionJuego, fragment)
+                transaction.disallowAddToBackStack()
+                transaction.commit()
+            }
+        }else if(i==2){
+            Sharedapp.puntojuego.Juego="1"
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            val transaction2 = activity?.supportFragmentManager?.beginTransaction()
+            if(transaction != null&&transaction2 != null) {
+                transaction.replace(R.id.FragmentExplicacionJuego, ExplicacionFragment())
+                transaction.disallowAddToBackStack()
+                transaction.commit()
+
+                transaction2.replace(R.id.FragmentMapaJuego, fragment)
+                transaction2.disallowAddToBackStack()
+                transaction2.commit()
+            }
         }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
     }
 }

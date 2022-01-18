@@ -67,8 +67,6 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
             menu.findItem(R.id.nav_cerrar_sesion).isVisible = false
         }
         menu.findItem(R.id.nav_ranking).isVisible = false
-
-
     }
 
 
@@ -98,7 +96,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
         supportFragmentManager.beginTransaction().replace(R.id.FragmentMapaJuego, fragment).addToBackStack("MapsFragment").commit()
     }
 
-    private fun replaceExplFragment(fragment: Fragment) {
+    fun replaceExplFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.FragmentExplicacionJuego, fragment).addToBackStack("RutaFragment").commit()
     }
 

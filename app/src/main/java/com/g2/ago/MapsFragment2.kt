@@ -138,10 +138,10 @@ class MapsFragment2 : Fragment() {
                 var distancia=FloatArray(3)
 
                 //Distancia con las paradas
-                Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].latitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].longitude,distancia)
+//                Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].latitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].longitude,distancia)
 
                 //Distancia con CIFP Txurdinaga LHII
-                //Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,43.257686, -2.902560,distancia)
+                Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,43.257686, -2.902560,distancia)
 
                 if (distancia[0]<50){
                     Activityppal.activarBoton(true)
