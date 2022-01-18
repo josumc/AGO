@@ -33,9 +33,6 @@ class FotosFragment : Fragment() {
                     "2"-> {
                         replaceFragment(MapsFragment2())
                     }
-                    "3" ->{
-                        replaceFragment(MapsFragment2())
-                    }
                 }
             }
             "1"->{

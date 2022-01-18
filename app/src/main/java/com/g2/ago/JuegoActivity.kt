@@ -157,6 +157,7 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
                 finish()
             }
             R.id.nav_salir -> {
+                System.exit(0)
                 finishAndRemoveTask()
             }
         }

@@ -27,7 +27,7 @@ class AnimacionCargaFragment : Fragment() {
                     Punto = array.data["Partida"].toString()
                     println(usuario)
                     bd.insertar_ranking(usuario, Punto)
-                    var fragment = RankingProfesFragment()
+                    val fragment = RankingProfesFragment()
                     replaceFragment(fragment)
                 }
             }

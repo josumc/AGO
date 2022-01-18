@@ -127,6 +127,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 finish()
             }
             R.id.nav_salir -> {
+                System.exit(0)
                 finishAndRemoveTask()
             }
         }
