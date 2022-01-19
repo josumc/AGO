@@ -113,7 +113,7 @@ class MemoryFragment : Fragment() {
             Sharedapp.puntojuego.Juego = "4"
             if (Sharedapp.tipousu.tipo != "profesor"){
                 bd = Base_de_Datos(requireContext(), "bd", null, 1)
-                bd.actualizar(Sharedapp.users.User.toString(), "2")
+                bd.actualizar(Sharedapp.users.user.toString(), "2")
             }
             replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
             replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
@@ -123,15 +123,15 @@ class MemoryFragment : Fragment() {
         var identificador:Int
         if(cards[1].identifier%2 == 0){
             if (idnt%2 == 0){
-                identificador = idnt - 1
-            }else{
                 identificador = idnt + 1
+            }else{
+                identificador = idnt - 1
             }
         }else{
             if (idnt%2 == 0){
-                identificador = idnt + 1
-            }else{
                 identificador = idnt - 1
+            }else{
+                identificador = idnt + 1
             }
         }
         return identificador

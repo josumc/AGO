@@ -40,7 +40,6 @@
     <string name="preguntamal">" Galderaren bat gaizki dago "</string>
     <string name="acierto">Oso ondo</string>
     <string name="error">Berriro izango da</string>
-    <string name="j8">Garrantzi handirik ematen ez didaten arren, funtsezkoa naiz munduaren historian. Edozein lan egiteko gai naiz, baita sardina-saltzaileak bezalako lan gogorra ere. Nor naiz?</string>
     <string name="j41">Zenbat emakumeen irudiak daude kupularen barrualdean?</string>
     <string name="j42">Zenbat emakumeen irudiak daude kioskoaren oinarrian?</string>
     <string name="test1">Zein urtetan eraiki zen Santurtziko udaletxea?</string>
@@ -95,7 +94,8 @@
     <string name="sardinera4">Primeran egin duzu! Oso omenaldi polita gure sardina-saltzaile maiteei! Tori, hemen daukazu zure azken saria!</string>
     <!--Asmakizuna(parada "8")-->
     <string name="asmakizuna1">Gure abentura amaitzear dago, baina amaitzeko azken asmakizuna gainditu beharko duzu. Asmakizun horri erantzuteko, hitz bat sortu beharko duzu lortu dituzun letra guztiekin. Kontzentratu eta… goazen azken ariketa egitera!</string>
-    <string name="asmakizuna2">Oso ondo! Lortu duzu! EMAKUME da hitza. Emakumeak edozein lan egiteko gai direlako eta horrela erakutsi dute historian zehar. Horregatik, merezi duten garrantzia ematen hasi behar zaie, eta espero dut hemendik aurrera zuk hori lortzen laguntzea! Eskerrik asko istorio honetan parte hartzeagatik! Hurrengora arte!</string>
+    <string name="asmakizuna2">Garrantzi handirik ematen ez didaten arren, funtsezkoa naiz munduaren historian. Edozein lan egiteko gai naiz, baita sardina-saltzaileak bezalako lan gogorra ere. Nor naiz?</string>
+    <string name="asmakizuna3">Oso ondo! Lortu duzu! EMAKUME da hitza. Emakumeak edozein lan egiteko gai direlako eta horrela erakutsi dute historian zehar. Horregatik, merezi duten garrantzia ematen hasi behar zaie, eta espero dut hemendik aurrera zuk hori lortzen laguntzea! Eskerrik asko istorio honetan parte hartzeagatik! Hurrengora arte!</string>
 
     <string name="sotera3">Hona hemen letra-zopa bat. Hemen hurrengo hitzak bilatu behar dituzu: trainerua, arraunak, arrantza, kirola, taldea, sotera eta emakumea. Zorte on!</string>
     <string name="portua4">Uztailaren 16a Karmengo eguna da eta itsas prozesio bat egiten da. Goazen hurrengo frogara!</string>

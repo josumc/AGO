@@ -333,12 +333,14 @@ class ExplicacionFragment : Fragment() {
                        mp = MediaPlayer.create(requireContext(), R.raw.asmakizuna3audioa)
                        mp.start()
                        testua=getString(R.string.asmakizuna2)
+                       binding.pasarFase.isVisible = false
                     }
                     "3"->{
+                        binding.pasarFase.isVisible = true
                         mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.asmakizuna3audioa)
                         mp.start()
-                        testua=getString(R.string.asmakizuna2)
+                        testua=getString(R.string.asmakizuna3)
 
                     }
                     "4"->{

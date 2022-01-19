@@ -56,7 +56,7 @@ class VFFragment : Fragment() {
                 Sharedapp.puntojuego.Juego = "4"
                 if (Sharedapp.tipousu.tipo != "profesor"){
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
-                    bd.actualizar(Sharedapp.users.User.toString(), "6")
+                    bd.actualizar(Sharedapp.users.user.toString(), "6")
                 }
                 replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
                 replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())

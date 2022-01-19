@@ -36,7 +36,7 @@ class ParrafoFragment : Fragment(), AdapterView.OnItemSelectedListener{
                 Sharedapp.puntojuego.Juego = "5"
                 if (Sharedapp.tipousu.tipo != "profesor"){
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
-                    bd.actualizar(Sharedapp.users.User.toString(), "7")
+                    bd.actualizar(Sharedapp.users.user.toString(), "7")
                 }
                 replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
                 replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())

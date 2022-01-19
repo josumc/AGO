@@ -211,7 +211,7 @@ class SLFragment : Fragment() {
                 Sharedapp.puntojuego.Juego = "5"
                 if (Sharedapp.tipousu.tipo != "profesor"){
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
-                    bd.actualizar(Sharedapp.users.User.toString(), "3")
+                    bd.actualizar(Sharedapp.users.user.toString(), "3")
                 }
                 replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
                 replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())

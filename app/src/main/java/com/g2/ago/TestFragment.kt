@@ -59,7 +59,7 @@ class TestFragment : Fragment() {
                 Sharedapp.puntojuego.Juego = "4"
                 if (Sharedapp.tipousu.tipo != "profesor"){
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
-                    bd.actualizar(Sharedapp.users.User.toString(), "5")
+                    bd.actualizar(Sharedapp.users.user.toString(), "5")
                 }
                 //fragment por el que lo reemplazamos
                 val fragment: Fragment = AnimacionFinalFragment()

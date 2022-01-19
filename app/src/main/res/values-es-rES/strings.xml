@@ -33,7 +33,6 @@
     <string name="Partidas">Partidas</string>
     <string name="Ranking">Ranking</string>
     <string name="Partida_nueva">Partida nueva</string>
-    <string name="j8">" Aunque no me dan mucha importancia, soy fundamental en la historia del mundo. Soy capaz de hacer cualquier trabajo, incluso un trabajo duro como las sardineras. ¿Quién soy? "</string>
     <string name="preguntamal">Alguna pregunta esta mal</string>
     <string name="j41">" ¿Cuántas imágenes de mujeres hay en el interior de la cúpula? "</string>
     <string name="error">Otra vez sera</string>
@@ -82,7 +81,8 @@
     <string name="sardinera3">¿Bonita, no es cierto? Pues espero que te hayan escuchado con atención, ya que en la próxima actividad tendrás que rellenar los huecos que aparecen en esta canción. ¡Vamos!</string>
     <string name="sardinera4">¡Estupendo! ¡Muy bonito homenaje a nuestros queridos sardineras! ¡Toma, aquí tienes tu último premio!</string>
     <string name="asmakizuna1">Nuestra aventura está a punto de terminar, pero para terminar tendrás que superar el último invento. Para responder a ese acertijo tendrás que crear una palabra con todas las letras que hayas conseguido. ¡Concéntrate y vamos a hacer el último ejercicio!</string>
-    <string name="asmakizuna2">¡Muy bien! ¡Lo lograste! La palabra es EMAKUME. Porque las mujeres son capaces de cualquier trabajo y así lo han demostrado a lo largo de la historia. Por eso hay que empezar a darles la importancia que merecen, ¡y espero que a partir de ahora les ayudes a conseguirlo! ¡Gracias por participar en esta historia! ¡Hasta la próxima vez!</string>
+    <string name="asmakizuna2">" Aunque no me dan mucha importancia, soy fundamental en la historia del mundo. Soy capaz de hacer cualquier trabajo, incluso un trabajo duro como las sardineras. ¿Quién soy? "</string>
+    <string name="asmakizuna3">¡Muy bien! ¡Lo lograste! La palabra es EMAKUME. Porque las mujeres son capaces de cualquier trabajo y así lo han demostrado a lo largo de la historia. Por eso hay que empezar a darles la importancia que merecen, ¡y espero que a partir de ahora les ayudes a conseguirlo! ¡Gracias por participar en esta historia! ¡Hasta la próxima vez!</string>
     <string name="finish">FINALIZADO</string>
     <string name="acierto">Bien hecho</string>
     <string name="portua4">El 16 de julio es el día del Carmen y se celebra una procesión marítima. ¡Vamos a la siguiente prueba!</string>

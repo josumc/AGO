@@ -25,15 +25,12 @@ class APFragment : Fragment() {
         btnValidar.setOnClickListener{
             if (txtEmakume.text.toString().lowercase(Locale.getDefault()).equals(respuesta)) {
                 val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
-                Sharedapp.puntopartida.Partida = "8"
-                Sharedapp.puntojuego.Juego = "1"
+                Sharedapp.puntojuego.Juego = "3"
                 if (Sharedapp.tipousu.tipo != "profesor") {
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
-                    bd.actualizar(Sharedapp.users.User.toString(), getString(R.string.finish))
+                    bd.actualizar(Sharedapp.users.user, "8")
                 }
-                bd = Base_de_Datos(requireContext(), "bd", null, 1)
-                bd.actualizar(Sharedapp.users.User.toString(), getString(R.string.finish))
-                replaceFragment(R.id.FragmentMapaJuego, LetraFragment())
+                replaceFragment(R.id.FragmentMapaJuego, AnimacionFinalFragment())
                 replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
                 mp!!.start()
             }else{
