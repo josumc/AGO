@@ -31,11 +31,15 @@ class InfoRutaFragment : Fragment() {
                 val resID = resources.getIdentifier(parada,"string", actividad!!.packageName)
 
                 //getString() recibe el ID que hemos recogido en la línea anterior y carga ese texto en el textView
+<<<<<<< Updated upstream
                     binding.Ubicacion.text=getString(resID)
 
             }else{
                 replaceFragment(ExplicacionFragment(), 1)
                 replaceFragment(FotosFragment(), 2)
+=======
+                binding.Ubicacion.text=getString(R.string.hurrengo)+'\n'+getString(resID)
+>>>>>>> Stashed changes
             }
             when(Sharedapp.puntopartida.Partida){
                 "1"->{
@@ -78,7 +82,7 @@ class InfoRutaFragment : Fragment() {
         binding.EmpezarJuego.isEnabled = activar
     }
 
-    fun replaceFragment(fragment: Fragment, i:Int=1) {
+    fun replaceFragment(fragment: Fragment, i:Int) {
         if(i==1){
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             if(transaction != null) {
