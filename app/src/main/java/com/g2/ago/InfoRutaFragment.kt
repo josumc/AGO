@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.g2.ago.databinding.FragmentInfoRutaBinding
-import kotlinx.android.synthetic.main.activity_juego.*
 
 private lateinit var binding: FragmentInfoRutaBinding
 class InfoRutaFragment : Fragment() {
@@ -31,15 +30,11 @@ class InfoRutaFragment : Fragment() {
                 val resID = resources.getIdentifier(parada,"string", actividad!!.packageName)
 
                 //getString() recibe el ID que hemos recogido en la línea anterior y carga ese texto en el textView
-<<<<<<< Updated upstream
-                    binding.Ubicacion.text=getString(resID)
-
+                binding.Ubicacion.text=getString(R.string.hurrengo)+'\n'+getString(resID)
             }else{
                 replaceFragment(ExplicacionFragment(), 1)
                 replaceFragment(FotosFragment(), 2)
-=======
-                binding.Ubicacion.text=getString(R.string.hurrengo)+'\n'+getString(resID)
->>>>>>> Stashed changes
+
             }
             when(Sharedapp.puntopartida.Partida){
                 "1"->{
