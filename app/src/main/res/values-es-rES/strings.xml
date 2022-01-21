@@ -95,9 +95,10 @@
     <string name="parada5">Ayuntamiento de Santurtzi</string>
     <string name="parada6">Barrio de pescadores</string>
     <string name="parada7">Parque de la Sardinera</string>
+    <string name="hurrengo">Siguiente parada:</string>
 
     <!--Texto de botones-->
-    <string name="Hasi">Empieza</string>
+    <string name="Hasi">Empezar juego</string>
     <string name="Jarraitu">Continuar</string>
 
     <string name="ArraySopaLetras">TRAINERA,REMOS,PESCA,DEPORTE,EQUIPO,SOTERA,MUJER</string>

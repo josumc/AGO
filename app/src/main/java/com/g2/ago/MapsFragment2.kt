@@ -2,7 +2,6 @@ package com.g2.ago
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.location.Location
@@ -72,13 +71,12 @@ class MapsFragment2 : Fragment() {
 
         //Generar marcadores y ubicar la cámara
         arrayParadas.forEach {
-            val marcador= googleMap.addMarker(MarkerOptions().position(it).title("Marker in $it"))
-//            googleMap.addMarker(MarkerOptions().position(it).title("Marker in $it"))
+            val marcador= googleMap.addMarker(MarkerOptions().position(it))
             if (marcador != null) {
                 marcadores.add(marcador)
             }
         }
-        if (!Sharedapp.modolibre.modo&&Sharedapp.tipousu.tipo=="alumno"){
+        if (!Sharedapp.modolibre.modo||Sharedapp.tipousu.tipo=="alumno"){
             cambiarMarcador(Sharedapp.puntopartida.Partida.toInt())
         }
 
@@ -137,7 +135,7 @@ class MapsFragment2 : Fragment() {
             googleMap.setOnMyLocationChangeListener {
                 ubicacion= LatLng(it.latitude, it.longitude)
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 17f))
-                var distancia=FloatArray(3)
+                val distancia=FloatArray(3)
 
                 //Distancia con las paradas
                 if (Sharedapp.puntopartida.Partida.toInt() == 0){

@@ -108,10 +108,13 @@
     <string name="parada5">Santurtziko Udaletxea</string>
     <string name="parada6">Arrantzaleen Auzoa</string>
     <string name="parada7">Sardinerako Parkea</string>
+    <string name="hurrengo">Hurrengo geralekua:</string>
+
+
     <string name="sotera5">Bai, neskek ere arraun egiten dute! Eta adibide zoragarri bat jarriko dizut. Izaskun Etxaniz 23 urteko santurtziarrak 11 urte daramatza arraunean. Izaskun estatuko itsas arrauneko txapelduna eta olinpiar arrauneko txapeldunordea da. Harrigarria ezta?  Zoritxarrez informazio hau ez da oso ezaguna, baina gu hori aldatzera etorri gara! Abenturarekin jarraituko dugu?</string>
 
 
-    <string name="Hasi">Hasi</string>
+    <string name="Hasi">Jokoa hasi</string>
     <string name="Jarraitu">Jarraitu</string>
     <string name="ArraySopaLetras">TRAINERUA,ARRAUNAK,ARRANTZA,KIROLA,TALDEA,SOTERA,EMAKUMEA</string>
     <string name="GeralekuMezua">Modu librean zaude. Nahi duzun edozein geraleku jolastu dezakezu</string>
