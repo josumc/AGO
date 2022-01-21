@@ -140,11 +140,11 @@ class MapsFragment2 : Fragment() {
                 var distancia=FloatArray(3)
 
                 //Distancia con las paradas
-//                if (Sharedapp.puntopartida.Partida.toInt() == 0){
-//                    Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].latitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].longitude,distancia)
-//                }else if (Sharedapp.puntopartida.Partida.toInt() in 1..7){
-//                    Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()-1].latitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()-1].longitude,distancia)
-//                }
+                if (Sharedapp.puntopartida.Partida.toInt() == 0){
+                    Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].latitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()].longitude,distancia)
+                }else if (Sharedapp.puntopartida.Partida.toInt() in 1..7){
+                    Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()-1].latitude,arrayParadas[Sharedapp.puntopartida.Partida.toInt()-1].longitude,distancia)
+                }
 
                 //Distancia con CIFP Txurdinaga LHII
                 //Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,43.257686, -2.902560,distancia)

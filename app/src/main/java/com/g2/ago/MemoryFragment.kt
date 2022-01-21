@@ -103,6 +103,7 @@ class MemoryFragment : Fragment() {
     }
 
     private fun checkForMatch(position1: Int, position2: Int) {
+        println(position1)
         if(comprobarpar(cards[position1].identifier) == cards[position2].identifier){
             cards[position1].isMatched = true
             cards[position2].isMatched = true
@@ -121,7 +122,7 @@ class MemoryFragment : Fragment() {
     }
     private fun comprobarpar(idnt: Int): Int {
         var identificador:Int
-        if(cards[1].identifier%2 == 0){
+        if(cards[0].identifier%2 == 0){
             if (idnt%2 == 0){
                 identificador = idnt + 1
             }else{
