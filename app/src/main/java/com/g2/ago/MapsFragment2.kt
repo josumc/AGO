@@ -145,7 +145,7 @@ class MapsFragment2 : Fragment() {
                 }
 
                 //Distancia con CIFP Txurdinaga LHII
-                //Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,43.257686, -2.902560,distancia)
+//                Location.distanceBetween(ubicacion.latitude,ubicacion.longitude,43.257686, -2.902560,distancia)
 
                 if (distancia[0]<50){
                     Activityppal.activarBoton(true)
