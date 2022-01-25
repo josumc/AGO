@@ -87,13 +87,8 @@ class InfoRutaFragment : Fragment() {
             }
         }else if(i==2){
             Sharedapp.puntojuego.Juego="1"
-            val transaction = activity?.supportFragmentManager?.beginTransaction()
             val transaction2 = activity?.supportFragmentManager?.beginTransaction()
-            if(transaction != null&&transaction2 != null) {
-                transaction.replace(R.id.FragmentExplicacionJuego, ExplicacionFragment())
-                transaction.disallowAddToBackStack()
-                transaction.commit()
-
+            if(transaction2 != null) {
                 transaction2.replace(R.id.FragmentMapaJuego, fragment)
                 transaction2.disallowAddToBackStack()
                 transaction2.commit()
