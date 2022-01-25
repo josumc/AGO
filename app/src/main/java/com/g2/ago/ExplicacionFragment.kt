@@ -31,11 +31,13 @@ class ExplicacionFragment : Fragment() {
         binding= FragmentExplicacionBinding.inflate(layoutInflater)
         cargarTexto()
         binding.pasarFase.setOnClickListener{
-                val sharedappAct=(Sharedapp.puntojuego.Juego.toInt()+1).toString()
-                //mp.stop()
-                Sharedapp.puntojuego.Juego=sharedappAct
-                cargarTexto()
-               replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
+            val sharedappAct=(Sharedapp.puntojuego.Juego.toInt()+1).toString()
+            //mp.stop()
+            Sharedapp.puntojuego.Juego=sharedappAct
+            cargarTexto()
+            if (Sharedapp.puntopartida.Partida.toInt() in 1..7){
+                replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
+            }
         }
         return binding.root
     }

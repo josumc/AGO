@@ -25,16 +25,16 @@ class FotosFragment : Fragment() {
 
     private fun fotos() {
         when(Sharedapp.puntopartida.Partida){
-            "0"->{
-                when(Sharedapp.puntojuego.Juego){
-                    "1"->{
-                        replaceFragment(MapsFragment2())
-                    }
-                    "2"-> {
-                        replaceFragment(MapsFragment2())
-                    }
-                }
-            }
+//            "0"->{
+//                when(Sharedapp.puntojuego.Juego){
+//                    "1"->{
+//                        replaceFragment(MapsFragment2())
+//                    }
+//                    "2"-> {
+//                        replaceFragment(MapsFragment2())
+//                    }
+//                }
+//            }
             "1"->{
                 when(Sharedapp.puntojuego.Juego){
                     "1"->{
