@@ -118,4 +118,28 @@
     <string name="Jarraitu">Jarraitu</string>
     <string name="ArraySopaLetras">TRAINERUA,ARRAUNAK,ARRANTZA,KIROLA,TALDEA,SOTERA,EMAKUMEA</string>
     <string name="GeralekuMezua">Modu librean zaude. Nahi duzun edozein geraleku jolastu dezakezu</string>
+
+    <!--Creditos finales-->
+    <string name="Creditos">
+    "Erakunde laguntzaileak:"\n
+    "UPV/EHU"\n
+    "CIFP Txurdinaga"\n
+    " "\n
+    "Parte hartzen duten taldeak:"\n
+    "AGO"\n
+    "Gr2Dev"\n
+    " "\n
+    "Diseinatzaileak:"\n
+    "Alain Alaña"\n
+    "Ana Garaitagoitia"\n
+    "Alazne Hernández"\n
+    "Oier Melsio"\n
+    "Garazi Siara"\n
+    " "\n
+    "programatzaile:"\n
+    "Mikel Ayala"\n
+    "Gonzalo Alonso"\n
+    "Josu Morán"
+    </string>
+
 </resources>

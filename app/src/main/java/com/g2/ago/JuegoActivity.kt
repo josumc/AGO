@@ -85,8 +85,9 @@ class JuegoActivity : AppCompatActivity(), Comunicador,
             startActivity(Intent(this, JuegoActivity::class.java))
             finish()
         }else if (dato == "acaba"){
-            startActivity(Intent(this, MainActivity::class.java))
             finish()
+            startActivity(Intent(this, MainActivity::class.java))
+
         }else if (dato.toInt() in 0..6){
             replaceMapFragment(FotosFragment())
             replaceExplFragment(ExplicacionFragment())

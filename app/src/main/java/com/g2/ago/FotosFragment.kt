@@ -145,8 +145,8 @@ class FotosFragment : Fragment() {
                     "2"->{
                         replaceFragment(APFragment())
                     }
-                    "3"->{
-                        replaceFragment(AnimacionFinalFragment())
+                    "4"->{
+                        replaceFragment(AnimacionCancionFragmen())
                     }
                 }
             }

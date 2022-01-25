@@ -103,7 +103,6 @@ class MemoryFragment : Fragment() {
     }
 
     private fun checkForMatch(position1: Int, position2: Int) {
-        println(position1)
         if(comprobarpar(cards[position1].identifier) == cards[position2].identifier){
             cards[position1].isMatched = true
             cards[position2].isMatched = true

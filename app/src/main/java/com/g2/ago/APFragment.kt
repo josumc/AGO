@@ -23,8 +23,8 @@ class APFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         btnValidar.setOnClickListener{
-            if (txtEmakume.text.toString().lowercase(Locale.getDefault()).equals(respuesta)) {
-                val mp: MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.ondo)
+            if (txtEmakume.text.toString().lowercase(Locale.getDefault()) == respuesta) {
+                MediaPlayer.create(requireContext(), R.raw.ondo).start()
                 Sharedapp.puntojuego.Juego = "3"
                 if (Sharedapp.tipousu.tipo != "profesor") {
                     bd = Base_de_Datos(requireContext(), "bd", null, 1)
@@ -32,11 +32,12 @@ class APFragment : Fragment() {
                 }
                 replaceFragment(R.id.FragmentMapaJuego, AnimacionFinalFragment())
                 replaceFragment(R.id.FragmentExplicacionJuego, ExplicacionFragment())
-                mp!!.start()
             }else{
+                txtEmakume.setText("")
                 val mp:MediaPlayer? = MediaPlayer.create(requireContext(), R.raw.txarto)
                 Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_SHORT).show()
                 mp!!.start()
+
             }
         }
     }

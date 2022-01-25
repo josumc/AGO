@@ -31,13 +31,12 @@ class ExplicacionFragment : Fragment() {
         binding= FragmentExplicacionBinding.inflate(layoutInflater)
         cargarTexto()
         binding.pasarFase.setOnClickListener{
-            val sharedappAct=(Sharedapp.puntojuego.Juego.toInt()+1).toString()
-            //mp.stop()
-            Sharedapp.puntojuego.Juego=sharedappAct
-            cargarTexto()
-            if (Sharedapp.puntopartida.Partida.toInt() in 1..7){
-                replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
-            }
+                val sharedappAct=(Sharedapp.puntojuego.Juego.toInt()+1).toString()
+                Sharedapp.puntojuego.Juego=sharedappAct
+                cargarTexto()
+                if (Sharedapp.puntopartida.Partida.toInt()>0){
+                    replaceFragment(R.id.FragmentMapaJuego, FotosFragment())
+                }
         }
         return binding.root
     }
@@ -330,36 +329,35 @@ class ExplicacionFragment : Fragment() {
                         testua=getString(R.string.asmakizuna1)
                     }
                    "2"->{
-
                        mp.stop()
-                       mp = MediaPlayer.create(requireContext(), R.raw.asmakizuna3audioa)
+                       mp = MediaPlayer.create(requireContext(), R.raw.asmakizuna2audioa)
                        mp.start()
                        testua=getString(R.string.asmakizuna2)
                        binding.pasarFase.isVisible = false
                     }
                     "3"->{
                         binding.pasarFase.isVisible = true
-                        mp.stop()
                         mp = MediaPlayer.create(requireContext(), R.raw.asmakizuna3audioa)
+                        mp.stop()
                         mp.start()
                         testua=getString(R.string.asmakizuna3)
 
                     }
                     "4"->{
-                        runBlocking {
-                            launch {
-                                delay(50000L)
-                                mp.stop()
-                                Activityppal=requireContext() as Comunicador
-                                Activityppal!!.onPasarDato("acaba")
-                            }
-                            mp = MediaPlayer.create(requireContext(), R.raw.desdesanturceabilbao)
-                            testua=""
-                            mp.start()
-                        }
+                        mp.stop()
+                        mp = MediaPlayer.create(requireContext(), R.raw.desdesanturceabilbao)
+                        mp.start()
+                        testua=getString(R.string.Creditos)
+
+                    }
+                    "5"->{
+                        mp.stop()
+                        Activityppal=requireContext() as Comunicador
+                        Activityppal!!.onPasarDato("acaba")
                     }
                 }
             }
+
             
         }
         return testua
@@ -380,6 +378,13 @@ class ExplicacionFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        mp=MediaPlayer()
+        mp.start()
+        mp.stop()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
         mp=MediaPlayer()
         mp.start()
         mp.stop()

@@ -104,4 +104,27 @@
     <string name="ArraySopaLetras">TRAINERA,REMOS,PESCA,DEPORTE,EQUIPO,SOTERA,MUJER</string>
     <string name="sotera5">¡Sí, las chicas también reman! Y te pondré un ejemplo maravilloso. Izaskun Etxaniz, santurtziarra de 23 años, lleva 11 años remando. Izaskun es campeona estatal de remo de mar y subcampeona olímpica de remo. Increíble, ¿verdad? Desgraciadamente esta información no es muy popular, ¡pero nosotros hemos venido a cambiarla! ¿Seguimos con la aventura?</string>
     <string name="GeralekuMezua">Estás en modo libre. Puedes jugar a cualquier parada que quieras</string>
+
+    <!--Creditos-->
+    <string name="Creditos">
+    "Entidades colaboradoras:"\n
+    "UPV/EHU"\n
+    "CIFP Txurdinaga"\n
+    " "\n
+    "Grupos partícipes:"\n
+    "AGO"\n
+    "Gr2Dev"\n
+    " "\n
+    "Diseñadores:"\n
+    "Alain Alaña"\n
+    "Ana Garaitagoitia"\n
+    "Alazne Hernández"\n
+    "Oier Melsio"\n
+    "Garazi Siara"\n
+    " "\n
+    "Desarrolladores:"\n
+    "Mikel Ayala"\n
+    "Gonzalo Alonso"\n
+    "Josu Morán"
+    </string>
 </resources>
